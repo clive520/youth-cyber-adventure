@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>青春連線不迷網：中小學生數位素養與網路法治冒險</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Noto Sans TC & Fredoka -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Noto Sans TC"', 'sans-serif'],
+            fun: ['"Fredoka"', '"Noto Sans TC"', 'sans-serif']
+          },
+          colors: {
+            cyber: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              900: '#14532d',
+            },
+            danger: {
+              500: '#ef4444',
+              600: '#dc2626'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background: radial-gradient(circle at 50% 10%, #1e1e38 0%, #0d0f18 100%);
+      color: #e2e8f0;
+      min-height: 100vh;
+    }
+    .glass-card {
+      background: rgba(26, 32, 53, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .glass-button {
+      background: rgba(36, 44, 70, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .glass-button:hover {
+      transform: translateY(-2px);
+      background: rgba(49, 60, 95, 0.95);
+      border-color: rgba(99, 102, 241, 0.4);
+      box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.25);
+    }
+    .pulse-glow {
+      animation: pulse-glow 2.5s infinite;
+    }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 15px rgba(99, 102, 241, 0.4); }
+      50% { box-shadow: 0 0 30px rgba(99, 102, 241, 0.8); }
+    }
+    /* Hide scrollbar for neatness */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="font-sans antialiased flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+
+  <!-- Top Navigation & Stats Bar -->
+  <header class="w-full glass-card sticky top-0 z-50 border-b border-slate-700/60 shadow-xl">
+    <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-3 cursor-pointer" onclick="game.showHome()">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-emerald-400 flex items-center justify-center text-white shadow-lg">
+          <i data-lucide="shield-check" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <h1 class="text-base sm:text-lg font-bold text-white tracking-wide flex items-center gap-2">
+            青春連線不迷網
+            <span class="text-xs bg-indigo-500/20 text-indigo-300 px-2 py-0.5 rounded-full border border-indigo-400/30">數位素養多結局</span>
+          </h1>
+          <p class="text-xs text-slate-400 hidden sm:block">中小學生網路成癮防制與法律責任互動教具</p>
+        </div>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="flex items-center space-x-2">
+        <button id="soundToggle" onclick="game.toggleSound()" class="p-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition" title="開關音效">
+          <i data-lucide="volume-2" id="soundIcon" class="w-5 h-5"></i>
+        </button>
+        <button onclick="game.showLawBook()" class="px-3 py-1.5 rounded-lg bg-indigo-600/30 border border-indigo-500/40 text-indigo-200 hover:bg-indigo-600/50 text-xs sm:text-sm font-medium flex items-center gap-1.5 transition">
+          <i data-lucide="book-open" class="w-4 h-4"></i>
+          <span>法律小百科</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Real-time Status Gauge (Visible during story) -->
+    <div id="statsBar" class="hidden bg-slate-900/90 border-t border-slate-800 px-4 py-2 text-xs">
+      <div class="max-w-4xl mx-auto grid grid-cols-3 gap-3">
+        <!-- Energy / Sanity -->
+        <div>
+          <div class="flex justify-between items-center mb-1 text-slate-300">
+            <span class="flex items-center gap-1"><i data-lucide="battery-charging" class="w-3.5 h-3.5 text-emerald-400"></i> 精力理智</span>
+            <span id="statEnergyVal" class="font-bold text-emerald-400">100%</span>
+          </div>
+          <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+            <div id="statEnergyBar" class="bg-emerald-500 h-full transition-all duration-500" style="width: 100%"></div>
+          </div>
+        </div>
+
+        <!-- Legal Safety -->
+        <div>
+          <div class="flex justify-between items-center mb-1 text-slate-300">
+            <span class="flex items-center gap-1"><i data-lucide="scale" class="w-3.5 h-3.5 text-blue-400"></i> 法律守護</span>
+            <span id="statLegalVal" class="font-bold text-blue-400">100%</span>
+          </div>
+          <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+            <div id="statLegalBar" class="bg-blue-500 h-full transition-all duration-500" style="width: 100%"></div>
+          </div>
+        </div>
+
+        <!-- Relationship -->
+        <div>
+          <div class="flex justify-between items-center mb-1 text-slate-300">
+            <span class="flex items-center gap-1"><i data-lucide="heart" class="w-3.5 h-3.5 text-pink-400"></i> 同儕友誼</span>
+            <span id="statFriendVal" class="font-bold text-pink-400">100%</span>
+          </div>
+          <div class="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+            <div id="statFriendBar" class="bg-pink-500 h-full transition-all duration-500" style="width: 100%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Game Container -->
+  <main class="flex-grow max-w-4xl w-full mx-auto p-4 sm:p-6 flex flex-col justify-center">
+
+    <!-- Screen 1: Home / Chapter Selector -->
+    <section id="screenHome" class="space-y-8 py-4">
+      <!-- Hero Banner -->
+      <div class="text-center space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-400/30 text-indigo-300 text-xs sm:text-sm font-medium">
+          <i data-lucide="sparkles" class="w-4 h-4 text-amber-300"></i>
+          沉浸式多分支角色扮演・看你怎麼選
+        </div>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-300 via-teal-200 to-indigo-300">
+          每一次點擊，都是人生的分水嶺
+        </h2>
+        <p class="max-w-2xl mx-auto text-slate-300 text-sm sm:text-base leading-relaxed">
+          手機與網路是你每天的日常夥伴，但一不小心，可能滑進成癮的泥淖，甚至踩到法律紅線！<br>
+          在以下兩個故事中，每一步你都有 <span class="text-amber-400 font-bold">4 個選項</span>，你的選擇將直接決定命運的走向。
+        </p>
+      </div>
+
+      <!-- Chapter Cards Grid -->
+      <div class="grid md:grid-cols-2 gap-6 pt-2">
+        <!-- Story A Card -->
+        <div class="glass-card rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between border-slate-700/80 hover:border-emerald-500/50 transition duration-300 group">
+          <div class="absolute -top-12 -right-12 w-36 h-36 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition"></div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2.5 py-1 rounded-md text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">主題一：成癮與自律</span>
+              <span class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> 約 5 分鐘</span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold text-white mb-2 group-hover:text-emerald-300 transition">
+              🎮 深夜的排位賽與黑眼圈
+            </h3>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              明天就是段考第一天，深夜 11:30 手機突然響起死黨的開黑語音邀請！打一場就好？還是滑短影音逃避？你該如何抗拒成癮魔咒？
+            </p>
+            <div class="space-y-1 text-xs text-slate-400">
+              <p>🎯 學習重點：手遊課金沉迷、短影音演算法、睡眠剝奪、同儕焦慮（FOMO）</p>
+              <p>🏁 分支結局：共 4 種獨立結局（自律典範 vs 考場崩潰）</p>
+            </div>
+          </div>
+          <button onclick="game.startStory('gaming')" class="mt-6 w-full py-3 px-4 rounded-xl font-bold text-white bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 shadow-lg shadow-emerald-900/30 flex items-center justify-center gap-2 transition">
+            <span>開始這場冒險</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- Story B Card -->
+        <div class="glass-card rounded-2xl p-6 relative overflow-hidden flex flex-col justify-between border-slate-700/80 hover:border-indigo-500/50 transition duration-300 group">
+          <div class="absolute -top-12 -right-12 w-36 h-36 bg-indigo-500/10 rounded-full blur-2xl group-hover:bg-indigo-500/20 transition"></div>
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2.5 py-1 rounded-md text-xs font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">主題二：言論禮貌與法律</span>
+              <span class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> 約 6 分鐘</span>
+            </div>
+            <h3 class="text-xl sm:text-2xl font-bold text-white mb-2 group-hover:text-indigo-300 transition">
+              💬 班級群組裡的神秘截圖
+            </h3>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              同學出糗摔倒的照片被偷拍上傳班群，大家起鬨改圖嘲笑。你選擇跟風按讚、加碼改圖發限動，還是挺身而出？小心少年法庭傳票就在眼前！
+            </p>
+            <div class="space-y-1 text-xs text-slate-400">
+              <p>🎯 學習重點：公然侮辱罪、加重誹謗、個資法、民事連帶賠償、旁觀者效應</p>
+              <p>🏁 分支結局：共 4 種獨立結局（少年法庭傳票 vs 正義數位守護者）</p>
+            </div>
+          </div>
+          <button onclick="game.startStory('legal')" class="mt-6 w-full py-3 px-4 rounded-xl font-bold text-white bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 shadow-lg shadow-indigo-900/30 flex items-center justify-center gap-2 transition">
+            <span>開始這場冒險</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Feature Badges -->
+      <div class="pt-6 border-t border-slate-800 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+        <div class="p-3 rounded-xl bg-slate-800/40 border border-slate-700/50">
+          <div class="text-indigo-400 font-bold text-lg mb-0.5">4 選 1 分支</div>
+          <div class="text-slate-400 text-xs">不同性格心理驅動</div>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-800/40 border border-slate-700/50">
+          <div class="text-emerald-400 font-bold text-lg mb-0.5">即時數值系統</div>
+          <div class="text-slate-400 text-xs">理智・法律・友誼狀態</div>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-800/40 border border-slate-700/50">
+          <div class="text-amber-400 font-bold text-lg mb-0.5">法律白話剖析</div>
+          <div class="text-slate-400 text-xs">台灣刑民法真實條款</div>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-800/40 border border-slate-700/50">
+          <div class="text-pink-400 font-bold text-lg mb-0.5">學習證書生成</div>
+          <div class="text-slate-400 text-xs">課堂作業截圖存證</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screen 2: Story Playing Node -->
+    <section id="screenPlay" class="hidden space-y-6">
+      <!-- Breadcrumb and Progress -->
+      <div class="flex items-center justify-between text-xs text-slate-400">
+        <div class="flex items-center gap-2">
+          <span id="storyTag" class="px-2 py-0.5 rounded bg-indigo-900/50 text-indigo-300 font-medium">主題</span>
+          <span id="storyStepTitle">第 1 階段</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="game.undoStep()" id="btnUndo" class="text-slate-400 hover:text-white flex items-center gap-1 transition" title="悔棋回上一步">
+            <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+            <span>回上一抉擇</span>
+          </button>
+          <span class="text-slate-600">|</span>
+          <button onclick="game.showHome()" class="text-slate-400 hover:text-rose-400 flex items-center gap-1 transition">
+            <i data-lucide="home" class="w-3.5 h-3.5"></i>
+            <span>選單</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Story Narrative Card -->
+      <div class="glass-card rounded-2xl p-6 sm:p-8 border-slate-700 relative overflow-hidden shadow-2xl">
+        <!-- Floating Theme Icon / Character Avatar -->
+        <div class="flex items-start gap-4 mb-4">
+          <div id="sceneAvatar" class="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-tr from-indigo-500 to-purple-600 flex-shrink-0 flex items-center justify-center text-3xl shadow-lg border border-white/10">
+            📱
+          </div>
+          <div>
+            <div id="sceneSpeaker" class="text-xs uppercase font-bold tracking-wider text-indigo-400 mb-1">場景情境</div>
+            <h3 id="sceneTitle" class="text-xl sm:text-2xl font-bold text-white leading-snug">情境標題載入中...</h3>
+          </div>
+        </div>
+
+        <!-- Narrative Content -->
+        <div id="sceneText" class="text-slate-200 text-base sm:text-lg leading-relaxed space-y-3 font-normal pt-2 border-t border-slate-700/50">
+          情境描述文字...
+        </div>
+
+        <!-- Dynamic feedback alert (when coming from a previous choice) -->
+        <div id="choiceFeedback" class="hidden mt-5 p-3.5 rounded-xl bg-slate-800/80 border border-slate-600/50 text-sm text-slate-300 flex items-center gap-3">
+          <span id="feedbackIcon" class="text-xl">💡</span>
+          <div id="feedbackText" class="text-xs sm:text-sm">上一選擇的後果與反思...</div>
+        </div>
+      </div>
+
+      <!-- 4 Options Title -->
+      <div class="flex items-center justify-between pt-2">
+        <h4 class="text-sm font-bold text-slate-300 flex items-center gap-2">
+          <i data-lucide="git-branch" class="w-4 h-4 text-indigo-400"></i>
+          請做出你的決定（4 選 1）：
+        </h4>
+        <span class="text-xs text-slate-400">審慎考慮，每個選擇都會帶來不同後果</span>
+      </div>
+
+      <!-- 4 Options Container -->
+      <div id="optionsContainer" class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+        <!-- Buttons injected dynamically -->
+      </div>
+    </section>
+
+    <!-- Screen 3: Ending & Review Screen -->
+    <section id="screenEnding" class="hidden space-y-6 py-4">
+      <!-- Ending Header Card -->
+      <div id="endingCard" class="glass-card rounded-2xl p-6 sm:p-8 text-center space-y-4 border-2 relative overflow-hidden shadow-2xl">
+        <div id="endingBadge" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2">
+          結局達成
+        </div>
+        <div id="endingEmoji" class="text-6xl my-2">🏆</div>
+        <h3 id="endingTitle" class="text-2xl sm:text-3xl font-black text-white">結局標題</h3>
+        <p id="endingDesc" class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
+          結局說明文字...
+        </p>
+
+        <!-- Final Stats Scoreboard -->
+        <div class="grid grid-cols-3 gap-3 max-w-md mx-auto pt-4 border-t border-slate-700/60">
+          <div class="bg-slate-800/60 p-2.5 rounded-xl border border-slate-700/60">
+            <div class="text-xs text-slate-400">精力體力</div>
+            <div id="endStatEnergy" class="text-lg font-bold text-emerald-400">80%</div>
+          </div>
+          <div class="bg-slate-800/60 p-2.5 rounded-xl border border-slate-700/60">
+            <div class="text-xs text-slate-400">法律守護</div>
+            <div id="endStatLegal" class="text-lg font-bold text-blue-400">95%</div>
+          </div>
+          <div class="bg-slate-800/60 p-2.5 rounded-xl border border-slate-700/60">
+            <div class="text-xs text-slate-400">同儕好感</div>
+            <div id="endStatFriend" class="text-lg font-bold text-pink-400">70%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Educational Debrief & Law Capsule (數位素養與法治小錦囊) -->
+      <div class="glass-card rounded-2xl p-6 border-slate-700 space-y-4">
+        <div class="flex items-center gap-2 text-indigo-400 font-bold text-base sm:text-lg border-b border-slate-700/60 pb-3">
+          <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+          <span>本篇故事核心複盤：數位素養與法律小錦囊</span>
+        </div>
+
+        <div id="endingDebriefContent" class="space-y-3 text-sm text-slate-300 leading-relaxed">
+          <!-- Injected dynamically -->
+        </div>
+
+        <!-- Real emergency / report hotlines -->
+        <div class="bg-slate-900/80 rounded-xl p-4 border border-slate-700/60 mt-4 text-xs space-y-2">
+          <div class="font-bold text-slate-200 flex items-center gap-2">
+            <i data-lucide="life-buoy" class="w-4 h-4 text-rose-400"></i>
+            遇到網路危機？記下這些免費求助管道：
+          </div>
+          <div class="grid sm:grid-cols-3 gap-2 text-slate-400">
+            <div>📞 <strong>教育部反霸凌專線</strong>：1953</div>
+            <div>🛡️ <strong>iWIN 網路內容防護機構</strong>：02-2577-5118</div>
+            <div>🤝 <strong>兒福聯盟心靈專線</strong>：0800-003-123</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Certificate Input Box -->
+      <div class="glass-card rounded-2xl p-6 border-slate-700 space-y-4">
+        <h4 class="text-base font-bold text-white flex items-center gap-2">
+          <i data-lucide="award" class="w-5 h-5 text-amber-400"></i>
+          領取你的「數位素養冒險挑戰證書」
+        </h4>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <input type="text" id="studentNameInput" placeholder="請輸入你的姓名或暱稱（如：王小明）" class="flex-grow px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 text-sm">
+          <input type="text" id="studentClassInput" placeholder="班級/座號（如：7年2班 15號）" class="sm:w-48 px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500 text-sm">
+          <button onclick="game.generateCertificate()" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm flex items-center justify-center gap-2 transition shadow-lg shadow-amber-900/30">
+            <i data-lucide="file-check" class="w-4 h-4"></i>
+            <span>生成證書</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center gap-3 pt-2">
+        <button onclick="game.restartCurrentStory()" class="w-full sm:w-1/2 py-3 px-4 rounded-xl font-bold text-white bg-indigo-600 hover:bg-indigo-500 flex items-center justify-center gap-2 transition shadow-lg">
+          <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+          <span>換個選擇重試一次</span>
+        </button>
+        <button onclick="game.showHome()" class="w-full sm:w-1/2 py-3 px-4 rounded-xl font-bold text-slate-200 bg-slate-800 hover:bg-slate-700 border border-slate-700 flex items-center justify-center gap-2 transition">
+          <i data-lucide="layout-grid" class="w-4 h-4"></i>
+          <span>體驗另一個故事主題</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Modal: Law Handbook (法律小百科) -->
+    <div id="modalLawBook" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+      <div class="glass-card rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 space-y-4 border-slate-700 shadow-2xl relative">
+        <div class="flex items-center justify-between border-b border-slate-700 pb-3">
+          <div class="flex items-center gap-2 text-indigo-300 font-bold text-lg">
+            <i data-lucide="scale" class="w-6 h-6 text-indigo-400"></i>
+            <span>中小學生必知：網路言論與法律自保百科</span>
+          </div>
+          <button onclick="game.closeLawBook()" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <div class="space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed">
+          <div class="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700/80">
+            <h5 class="font-bold text-amber-400 text-sm mb-1">⚖️ 刑法第 309 條【公然侮辱罪】</h5>
+            <p>在網路公開留言板、遊戲大廳、或 3 人以上的班級私密群組中，用「三字經」、「廢物」、「豬頭」等抽象謾罵侮辱他人，損害他人名譽尊嚴，即構成公然侮辱！</p>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700/80">
+            <h5 class="font-bold text-rose-400 text-sm mb-1">⚖️ 刑法第 310 條【誹謗罪與加重誹謗】</h5>
+            <p>散布具體的虛假不實消息、捏造醜聞毀損他人名譽。若是透過「文字、截圖、迷因圖畫」在網路散布傳播，屬於加重誹謗罪，刑責比口頭說說更嚴重！</p>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700/80">
+            <h5 class="font-bold text-blue-400 text-sm mb-1">⚖️ 個人資料保護法（個資法）</h5>
+            <p>未經對方同意，擅自將對方的真實姓名、家中住址、手機電話、私人生活照或 IG 小帳公佈在網路上號召網友公審（俗稱肉搜），屬於違法利用個資，會面臨民刑事責任。</p>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700/80">
+            <h5 class="font-bold text-emerald-400 text-sm mb-1">⚖️ 民法第 187 條【父母連帶賠償責任】</h5>
+            <p>很多學生以為「我未滿 18 歲又不用坐牢」，但侵害他人名譽權與隱私權需負民事侵權賠償責任！依照法律，父母（法定代理人）必須一同負擔連帶賠償金，動輒數萬至數十萬元。</p>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700/80">
+            <h5 class="font-bold text-purple-400 text-sm mb-1">🚨 兒童及少年性剝削防制條例（紅線絕對不能踩）</h5>
+            <p>無論任何理由，絕對不可向同學朋友要求、誘騙、持有或散布私密身體照片！即使只是情侶互傳或惡作劇，在台灣法律均屬於極嚴重的非告訴乃論重罪！</p>
+          </div>
+        </div>
+
+        <div class="pt-2 text-right">
+          <button onclick="game.closeLawBook()" class="px-5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm">
+            我知道了，關閉
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Interactive Certificate Preview & Print -->
+    <div id="modalCert" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+      <div class="max-w-xl w-full bg-slate-900 border-2 border-amber-500/60 rounded-3xl p-6 sm:p-8 space-y-6 text-center relative shadow-2xl">
+        <button onclick="document.getElementById('modalCert').classList.add('hidden')" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+
+        <!-- Certificate Border -->
+        <div class="border-4 border-double border-amber-400/40 rounded-2xl p-6 bg-gradient-to-b from-slate-800/80 to-slate-900/90 relative">
+          <div class="text-amber-400 text-4xl mb-2">🏅</div>
+          <div class="text-xs uppercase tracking-widest text-amber-300 font-bold">CERTIFICATE OF COMPLETION</div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white mt-1 mb-2">數位公民素養冒險證書</h2>
+          <div class="w-16 h-1 bg-amber-400 mx-auto rounded-full mb-4"></div>
+
+          <p class="text-slate-300 text-sm">茲證明</p>
+          <div id="certStudentName" class="text-xl sm:text-2xl font-black text-amber-300 my-1 underline decoration-amber-500/50 underline-offset-4">同學姓名</div>
+          <div id="certStudentClass" class="text-xs text-slate-400 mb-4">班級座號</div>
+
+          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed px-4">
+            於「青春連線不迷網」多結局互動學習歷程中，完成了重大數位情境考驗，展現對網路成癮自我節制、言論禮儀與法律邊界之高度思辨素養，特頒此證以資表彰！
+          </p>
+
+          <div class="mt-6 pt-4 border-t border-slate-700/80 flex items-center justify-between text-xs text-slate-400 px-2">
+            <div>
+              <div>獲頒稱號：<span id="certTitle" class="font-bold text-white">智慧數位護盾</span></div>
+              <div id="certDate" class="text-[11px] text-slate-500 mt-0.5">2026年</div>
+            </div>
+            <div class="text-right">
+              <div class="text-indigo-400 font-bold">青春連線不迷網專案</div>
+              <div class="text-[10px] text-slate-500">教育部數位素養指引推動</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex items-center justify-center gap-3">
+          <button onclick="window.print()" class="px-5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm flex items-center gap-2 transition">
+            <i data-lucide="printer" class="w-4 h-4"></i>
+            <span>列印 / 另存 PDF</span>
+          </button>
+          <button onclick="document.getElementById('modalCert').classList.add('hidden')" class="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm transition">
+            關閉視窗
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full border-t border-slate-800/80 py-4 px-4 text-center text-xs text-slate-500">
+    <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+      <div>青春連線不迷網・國中小學生數位素養與法治互動教材</div>
+      <div>具備防沉迷自我覺察、公然侮辱與個資法律科普</div>
+    </div>
+  </footer>
+
+  <!-- Web Audio API Sound Synthesizer (Zero Dependencies) -->
+  <script>
+    class SoundEngine {
+      constructor() {
+        this.ctx = null;
+        this.enabled = true;
+      }
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          this.ctx = new AudioContext();
+        }
+      }
+      playClick() {
+        if (!this.enabled) return;
+        this.init();
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(480, this.ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(720, this.ctx.currentTime + 0.08);
+        gain.gain.setValueAtTime(0.12, this.ctx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.01, this.ctx.currentTime + 0.08);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.08);
+      }
+      playWarning() {
+        if (!this.enabled) return;
+        this.init();
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(220, this.ctx.currentTime);
+        osc.frequency.linearRampToValueAtTime(160, this.ctx.currentTime + 0.25);
+        gain.gain.setValueAtTime(0.18, this.ctx.currentTime);
+        gain.gain.linearRampToValueAtTime(0.01, this.ctx.currentTime + 0.25);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.25);
+      }
+      playSuccess() {
+        if (!this.enabled) return;
+        this.init();
+        const notes = [440, 554.37, 659.25, 880];
+        notes.forEach((freq, idx) => {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.value = freq;
+          const start = this.ctx.currentTime + idx * 0.1;
+          gain.gain.setValueAtTime(0.15, start);
+          gain.gain.linearRampToValueAtTime(0.01, start + 0.25);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(start);
+          osc.stop(start + 0.25);
+        });
+      }
+    }
+  </script>
+
+  <!-- Complete Branching Story Database -->
+  <script>
+    const STORY_DATABASE = {
+      // -------------------------------------------------------------
+      // STORY 1: GAMING & ADDICTION
+      // -------------------------------------------------------------
+      gaming: {
+        id: 'gaming',
+        tag: '成癮防制篇',
+        initialStats: { energy: 80, legal: 100, friend: 85 },
+        nodes: {
+          'start': {
+            step: '第 1 抉擇：深夜的誘惑',
+            avatar: '🎮',
+            speaker: '深夜 11:30 的房間',
+            title: '死黨的排位賽緊急召喚',
+            text: `
+              <p>明天一早就是學校段考的第一天，你剛複習完國文與數學，眼皮沈重，正準備關燈就寢。</p>
+              <p>突然間，桌上的手機發出清脆的叮咚聲！你拿起來一看，死黨阿凱在《傳說對決》四人群組瘋狂標記你：</p>
+              <p class="p-3 rounded-lg bg-slate-900 border border-slate-700 text-indigo-300 font-mono text-sm">
+                「兄弟三缺一！今晚是賽季最後一天結算，差一場就衝上傳說王者了！不來開黑就不是好哥們，速上！」
+              </p>
+              <p>看著群組訊息，你心裡開始天人交戰……</p>
+            `,
+            options: [
+              {
+                id: 'opt1_A',
+                type: '衝動戰狂',
+                badge: '🅰️ 衝動上線',
+                text: '「排位一生一次，段考隨便猜都有分！兄弟有難豈能不救，開黑打爆對面！」',
+                delta: { energy: -30, legal: 0, friend: +15 },
+                feedback: '你立刻開機連線，語音通話裡傳來兄弟們興奮的吶喊，腎上腺素瞬間狂飆！',
+                sound: 'click',
+                next: 'gaming_late_match'
+              },
+              {
+                id: 'opt1_B',
+                type: '僥倖妥協',
+                badge: '🅱️ 僥倖一場',
+                text: '「在群組回覆：『好啦，真的只打一把喔！輸贏我都要馬上下線睡覺！』」',
+                delta: { energy: -15, legal: 0, friend: +5 },
+                feedback: '你說服自己「只花 15 分鐘而已」，但連線手遊真的能說停就停嗎？',
+                sound: 'click',
+                next: 'gaming_compromise'
+              },
+              {
+                id: 'opt1_C',
+                type: '焦慮逃避',
+                badge: '🅲️ 逃避刷片',
+                text: '「不回覆群組，但心裡又內疚又睡不著，乾脆打開 TikTok / Reels 打算滑個五分鐘放鬆。」',
+                delta: { energy: -25, legal: 0, friend: -5 },
+                feedback: '演算法精準掌握了你的喜好，短影音一個接著一個，時間在不知不覺中悄悄流逝……',
+                sound: 'warning',
+                next: 'gaming_short_video'
+              },
+              {
+                id: 'opt1_D',
+                type: '覺察自律',
+                badge: '🅳️ 堅定自律',
+                text: '「直接回覆語音：『明天考試是大事，考完週末我陪你們通宵！』並將手機拿去客廳充電。」',
+                delta: { energy: +20, legal: 0, friend: 0 },
+                feedback: '雖然當下有些可惜，但你成功抵禦了誘惑，把手機物理隔離在臥室之外！',
+                sound: 'success',
+                next: 'gaming_self_control'
+              }
+            ]
+          },
+
+          // Node: gaming_late_match (衝動大戰)
+          'gaming_late_match': {
+            step: '第 2 抉擇：無止境的逆風局',
+            avatar: '🔥',
+            speaker: '凌晨 01:20 的戰局',
+            title: '連敗與憤怒的泥淖',
+            text: `
+              <p>不知不覺已經打了一個半小時！然而戰況慘烈無比，對面選角極度針對，你們已經連輸了兩場，排位直接倒退一顆星。</p>
+              <p>阿凱在語音裡氣得砸桌子咆哮：「對面根本開外掛吧！隊友又是雷包！再打一把，這把不贏我今晚絕對睡不著！」</p>
+              <p>此時你的眼睛乾澀發酸、頭部隱隱作痛，但心中那股「不甘心」的火焰也燒了起來……</p>
+            `,
+            options: [
+              {
+                id: 'opt2_A1',
+                type: '賭徒心態',
+                badge: '🅰️ 戰到天亮',
+                text: '「不能就這樣吞下去！今晚不把星星打回來，誰都不准去睡，戰到天亮！」',
+                delta: { energy: -40, legal: 0, friend: +10 },
+                feedback: '多巴胺與皮質醇讓你心跳飆升，但身體的能量已經亮起紅色警報！',
+                sound: 'warning',
+                next: 'end_gaming_collapse'
+              },
+              {
+                id: 'opt2_A2',
+                type: '暴躁摔機',
+                badge: '🅱️ 氣急敗壞',
+                text: '「直接爆氣摔耳機罵隊友，憤而強制退遊戲，躺在床上生悶氣翻來覆去失眠。」',
+                delta: { energy: -25, legal: 0, friend: -20 },
+                feedback: '負面情緒讓你大腦高速運轉，躺在床上到了凌晨三點依然無法入睡。',
+                sound: 'warning',
+                next: 'end_gaming_insomnia'
+              },
+              {
+                id: 'opt2_A3',
+                type: '課金改運',
+                badge: '🅲️ 偷偷課金',
+                text: '「為了變強，瞞著父母偷偷用綁定帳戶刷了 300 元買新英雄皮膚，想要快速反敗為勝。」',
+                delta: { energy: -15, legal: -25, friend: 0 },
+                feedback: '未經法定代理人允許擅自課金，不僅引發家庭糾紛，也沒有挽救你的睡眠。',
+                sound: 'warning',
+                next: 'end_gaming_collapse'
+              },
+              {
+                id: 'opt2_A4',
+                type: '及時煞車',
+                badge: '🅳️ 理智停損',
+                text: '「在語音冷靜安撫大家：『今天大家心態亂了，再打只會連敗。停損睡覺，明天考完再討回來！』說完立刻關機。」',
+                delta: { energy: +10, legal: 0, friend: +5 },
+                feedback: '你展現了領袖般的成熟風範，成功及時踩下煞車，避免了全盤崩潰！',
+                sound: 'success',
+                next: 'end_gaming_survivor'
+              }
+            ]
+          },
+
+          // Node: gaming_compromise (只打一場的陷阱)
+          'gaming_compromise': {
+            step: '第 2 抉擇：一場結束後的抉擇',
+            avatar: '⏳',
+            speaker: '凌晨 00:05',
+            title: '勝利後的興奮劑',
+            text: `
+              <p>第一場打得異常順利，你在最後一波團戰拿下 MVP，成功贏下對局！</p>
+              <p>阿凱在語音裡歡呼狂叫：「手感來了！你剛剛那波操作太神了！趁現在氣勢旺，再接再厲再排一場，五分鐘就結束！」</p>
+              <p>腦海裡的勝利多巴胺正在呼喚你，但看看時鐘，已經午夜十二點了……</p>
+            `,
+            options: [
+              {
+                id: 'opt2_B1',
+                type: '打破承諾',
+                badge: '🅰️ 趁勝追擊',
+                text: '「好吧！手感這麼好不打太可惜了，最後再一把，真的最後一把！」',
+                delta: { energy: -35, legal: 0, friend: +5 },
+                feedback: '「再一把就好」是所有網路成癮者最常見的心理盲區，結局往往是再五把。',
+                sound: 'warning',
+                next: 'end_gaming_collapse'
+              },
+              {
+                id: 'opt2_B2',
+                type: '守信下線',
+                badge: '🅱️ 瀟灑退場',
+                text: '「『說好一場就是一場，哥只在傳說留下傳奇。』直接退出隊伍、關閉語音準備睡覺。」',
+                delta: { energy: +15, legal: 0, friend: +10 },
+                feedback: '言出必行！你在最高峰時優雅停手，保留了明天的精神，也贏得了自律的成就感。',
+                sound: 'success',
+                next: 'end_gaming_balanced'
+              },
+              {
+                id: 'opt2_B3',
+                type: '轉移陣地',
+                badge: '🅲️ 換滑社群',
+                text: '「下線遊戲，但把剛剛 MVP 的戰績截圖發到 IG 限動，然後一直刷新看誰看過、誰按讚。」',
+                delta: { energy: -20, legal: 0, friend: +5 },
+                feedback: '渴望獲得同儕讚美讓你陷在社群回饋迴圈裡，盯著螢幕直到一點多。',
+                sound: 'warning',
+                next: 'end_gaming_insomnia'
+              },
+              {
+                id: 'opt2_B4',
+                type: '自我反思',
+                badge: '🅳️ 記取教訓',
+                text: '「雖然贏了，但發現自己心跳超快。立刻喝杯溫開水做 5 次深呼吸，把手機放遠放鬆身心。」',
+                delta: { energy: +20, legal: 0, friend: 0 },
+                feedback: '你具備優秀的身體覺察能力，主動讓交感神經降溫，進入安穩睡眠狀態。',
+                sound: 'success',
+                next: 'end_gaming_master'
+              }
+            ]
+          },
+
+          // Node: gaming_short_video (短影音黑洞)
+          'gaming_short_video': {
+            step: '第 2 抉擇：短影音演算法黑洞',
+            avatar: '🌀',
+            speaker: '凌晨 01:45',
+            title: '大腦被多巴胺綁架的深夜',
+            text: `
+              <p>你明明只是想看個兩則搞笑短影片放鬆，手指卻像中了魔法一樣不停往上滑……</p>
+              <p>遊戲搞笑剪輯、萌寵影片、荒謬挑戰，演算法精準塞給你最想看的內容。當你猛然回神看時間，竟然已經快凌晨兩點了！</p>
+              <p>你的脖子酸痛、眼睛流淚，大腦處於高度興奮卻極度疲倦的詭異狀態，明天早上 7:00 就要起床……</p>
+            `,
+            options: [
+              {
+                id: 'opt2_C1',
+                type: '破罐破摔',
+                badge: '🅰️ 滑到手機砸臉',
+                text: '「反正都這麼晚了，乾脆滑到睡著為止吧！不知不覺手機直接砸在臉上昏睡。」',
+                delta: { energy: -40, legal: 0, friend: 0 },
+                feedback: '螢幕藍光嚴重抑制了褪黑激素分泌，你的睡眠深度極差，幾乎等同徹夜未眠。',
+                sound: 'warning',
+                next: 'end_gaming_collapse'
+              },
+              {
+                id: 'opt2_C2',
+                type: '焦慮抱佛腳',
+                badge: '🅱️ 驚慌爬起',
+                text: '「內疚心爆發！覺得浪費太多時間，嚇得爬起來想重新翻課本，但腦袋一片空白完全讀不進去。」',
+                delta: { energy: -30, legal: 0, friend: 0 },
+                feedback: '自責與恐慌造成無效熬夜，身心內耗達到頂峰。',
+                sound: 'warning',
+                next: 'end_gaming_insomnia'
+              },
+              {
+                id: 'opt2_C3',
+                type: '物理斷網',
+                badge: '🅲️ 丟開手機',
+                text: '「深呼吸一口氣，狠下心把手機滑動螢幕鎖定，直接塞進抽屜深處，閉眼躺平。」',
+                delta: { energy: +10, legal: 0, friend: 0 },
+                feedback: '及時物理阻隔！雖然失去了一些睡眠時間，但你成功阻止了損失繼續擴大。',
+                sound: 'click',
+                next: 'end_gaming_survivor'
+              },
+              {
+                id: 'opt2_C4',
+                type: '設定限制',
+                badge: '🅳️ 啟動防沉迷',
+                text: '「打開手機內建的『螢幕使用時間』與『睡眠專注模式』，設定每天 23:00 自動鎖住娛樂 App。」',
+                delta: { energy: +25, legal: 0, friend: 0 },
+                feedback: '善用科技工具輔助自律！這是一個具備高度數位韌性的成熟決定。',
+                sound: 'success',
+                next: 'end_gaming_master'
+              }
+            ]
+          },
+
+          // Node: gaming_self_control (自律之夜)
+          'gaming_self_control': {
+            step: '第 2 抉擇：同儕嘲諷與心性考驗',
+            avatar: '🌟',
+            speaker: '隔天清晨 06:40',
+            title: '晨光下的清醒者',
+            text: `
+              <p>昨晚把手機放客廳後，你安安穩穩睡了 7 個多小時。</p>
+              <p>早上鬧鐘一響，你神清氣爽地起床，拿回手機看到群組未讀訊息 99+。原來阿凱他們昨晚打到凌晨四點，結果連跪掉到鑽石段位，一群人在群組哀鴻遍野：「頭好痛想吐……今天段考要完蛋了……」</p>
+              <p>阿凱還在群組丟了一句：「某人昨晚臨陣脫逃，太沒義氣了吧！」面對同儕的酸言，你打算如何應對？</p>
+            `,
+            options: [
+              {
+                id: 'opt2_D1',
+                type: '幽默同理',
+                badge: '🅰️ 幽默打氣',
+                text: '「在群組回覆：『早安爆肝戰隊！我帶了多兩瓶能量飲料去學校救你們，考完下午換我帶你們贏回來！』」',
+                delta: { energy: +10, legal: 0, friend: +20 },
+                feedback: '情商拉滿！既堅守自己的健康原則，又溫暖照顧了朋友的情緒，人際關係大加分！',
+                sound: 'success',
+                next: 'end_gaming_master'
+              },
+              {
+                id: 'opt2_D2',
+                type: '得意開嘲',
+                badge: '🅱️ 炫耀嘲笑',
+                text: '「『哈哈誰叫你們不聽我的話，活該掉段位考零分啦！』在群組狂刷嘲諷貼圖。」',
+                delta: { energy: 0, legal: 0, friend: -25 },
+                feedback: '雖然你做對了自律，但缺乏同理心的冷嘲熱諷會深深刺傷受挫的朋友。',
+                sound: 'warning',
+                next: 'end_gaming_balanced'
+              },
+              {
+                id: 'opt2_D3',
+                type: '動搖內疚',
+                badge: '🅲️ 盲目道歉',
+                text: '「覺得真的是自己不夠義氣，連忙在群組一直低頭道歉，答應考完請大家喝手搖飲料彌補。」',
+                delta: { energy: -5, legal: 0, friend: +5 },
+                feedback: '真正的友誼不該建立在犧牲自身健康與責任的勒索之上，要有健康的心理界線。',
+                sound: 'click',
+                next: 'end_gaming_balanced'
+              },
+              {
+                id: 'opt2_D4',
+                type: '分享方法',
+                badge: '🅳️ 倡議健康',
+                text: '「私訊關心阿凱，並分享自己把手機放客廳睡覺的方法：『熬夜打排位手感真的只會變爛，改天試試早睡真的差很多！』」',
+                delta: { energy: +10, legal: 0, friend: +15 },
+                feedback: '以建設性的方式影響身邊同儕，成為班級裡積極健康的數位小領袖！',
+                sound: 'success',
+                next: 'end_gaming_master'
+              }
+            ]
+          }
+        },
+
+        // Endings for Story 1
+        endings: {
+          'end_gaming_collapse': {
+            type: 'bad',
+            emoji: '🧟',
+            badge: '嚴重成癮結局',
+            badgeClass: 'bg-rose-500/20 text-rose-300 border border-rose-500/40',
+            title: '考場崩潰與身心透支',
+            desc: '你在考場上哈欠連連，腦中全是昨晚遊戲的技能音效，數學公式忘得一乾二淨。下午被老師發現上課昏睡，通知家長進行家庭懇談，手機被強制沒收一個月。',
+            debrief: `
+              <p>📌 <strong>成癮警訊剖析</strong>：醫學研究指出，藍光與即時對戰會使大腦處於高度戒備狀態。當你為了「不甘心」或「再一把」而犧牲睡眠，大腦的前額葉皮質（掌管自控力與專注）功能會直線下降 40% 以上。</p>
+              <p>💡 <strong>專家建議策略</strong>：
+                <br>1. <strong>實體隔離法</strong>：睡前半小時，將手機充電器移至「臥室以外」（如客廳）。
+                <br>2. <strong>界線預告</strong>：在開始玩遊戲前就先告知朋友：「我只玩到 22:30，時間到系統會自動踢人喔！」建立健康的同儕預期。
+              </p>
+            `,
+            certTitle: '覺察重生者'
+          },
+          'end_gaming_insomnia': {
+            type: 'warning',
+            emoji: '🐼',
+            badge: '焦慮失衡結局',
+            badgeClass: 'bg-amber-500/20 text-amber-300 border border-amber-500/40',
+            title: '雙輸的黑眼圈與精神內耗',
+            desc: '你既沒盡興玩到遊戲，也沒能好好睡一覺。躺在床上被自責與短影音資訊碎片淹沒，考試雖然勉強答完，但整天渾渾噩噩，情緒特別脆弱易怒。',
+            debrief: `
+              <p>📌 <strong>短影音與無意識逃避</strong>：短影音（TikTok / Shorts / Reels）以 15-30 秒為單位給予快速廉價多巴胺，最容易成為拖延問題的「逃避避難所」。</p>
+              <p>💡 <strong>專家建議策略</strong>：
+                <br>當發現自己「明明很累卻停不下來」時，對自己大聲說出：「<strong>我現在停下來！</strong>」打破自動導航模式，站起來去喝口水或洗臉。
+              </p>
+            `,
+            certTitle: '數位自覺探險家'
+          },
+          'end_gaming_survivor': {
+            type: 'neutral',
+            emoji: '🛡️',
+            badge: '及時停損結局',
+            badgeClass: 'bg-blue-500/20 text-blue-300 border border-blue-500/40',
+            title: '懸崖勒馬的理智生存者',
+            desc: '雖然昨晚開了頭，但在危機進一步擴大前，你及時踩下了煞車！今天的考試發揮得中規中矩，你也親身體會到了誘惑的可怕與自律的重要。',
+            debrief: `
+              <p>📌 <strong>及時停損的價值</strong>：在行為心理學中，「沉沒成本謬誤」（Sunk Cost Fallacy）常讓人覺得「都打到這時候了，乾脆繼續」。能夠在連敗或熬夜途中毅然說不，是極高價值的自制力。</p>
+            `,
+            certTitle: '自制力先鋒'
+          },
+          'end_gaming_balanced': {
+            type: 'good',
+            emoji: '⚖️',
+            badge: '良好平衡結局',
+            badgeClass: 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40',
+            title: '掌握節奏的自律高手',
+            desc: '你做到了多數同儕難以做到的自律！段考發揮出色，下午考完後你開心地與朋友們連線放鬆，享受無憂無慮的真正遊戲樂趣。',
+            debrief: `
+              <p>📌 <strong>延遲滿足的快樂</strong>：先完成重要任務再給予娛樂獎勵（延遲滿足），大腦獲得的愉悅感是「充實而心安的」，絕非帶著罪惡感熬夜玩耍能比擬！</p>
+            `,
+            certTitle: '自律生活大師'
+          },
+          'end_gaming_master': {
+            type: 'best',
+            emoji: '👑',
+            badge: '全能典範結局',
+            badgeClass: 'bg-gradient-to-r from-amber-400/20 to-emerald-400/20 text-amber-300 border border-amber-400/50',
+            title: '全能數位領袖・自律與情商王者',
+            desc: '你不僅管好了自己的時間與睡眠，更用溫暖、幽默的高情商化解了同儕壓力，帶動朋友一起建立健康的使用習慣。你就是現代數位世界中最難能可貴的健康典範！',
+            debrief: `
+              <p>📌 <strong>從自律邁向影響力</strong>：真正的數位素養，不僅是不讓螢幕控制自己，更是能用正向的方式幫助身邊同儕走出焦慮與迷惘。</p>
+            `,
+            certTitle: '五星數位卓越公民'
+          }
+        }
+      },
+
+      // -------------------------------------------------------------
+      // STORY 2: ONLINE SPEECH, ETIQUETTE & LAW
+      // -------------------------------------------------------------
+      legal: {
+        id: 'legal',
+        tag: '言論法治篇',
+        initialStats: { energy: 90, legal: 100, friend: 80 },
+        nodes: {
+          'start': {
+            step: '第 1 抉擇：班群裡的惡搞迷因',
+            avatar: '📸',
+            speaker: '中午 12:40 的秘密班群',
+            title: '同學摔倒的醜照瘋傳',
+            text: `
+              <p>午休時間，平時沒有老師在的「八年三班私密同學群」突然訊息狂跳！</p>
+              <p>平常個性害羞內向的小明，今天早上在校門口下雨天不小心踩空滑倒，整個人四腳朝天摔進泥水坑裡，褲子破了一個大洞，模樣非常狼狽。</p>
+              <p>班上的調皮王阿翔剛好拍下了全過程，把特寫照片上傳到群組，並配上嘲諷文字：<br>
+                <span class="inline-block mt-2 p-2.5 rounded-lg bg-slate-900 border border-slate-700 text-rose-300 font-mono text-xs sm:text-sm">
+                  「笑死！大家快來看新品種泥巴豬！這姿勢可以去比殘障奧運了哈哈哈！」
+                </span>
+              </p>
+              <p>群組裡立刻有人跟著刷「笑死」、「太神啦」，甚至有人慫恿要把照片公開發到學校匿名告白版。這時你會……？</p>
+            `,
+            options: [
+              {
+                id: 'optL1_A',
+                type: '加碼起鬨',
+                badge: '🅰️ 改圖發限動',
+                text: '「覺得超好笑，順手用手機 App 把小明的臉 P 成豬頭，加粗體字發上自己公開的 IG 限動並標記他。」',
+                delta: { energy: 0, legal: -35, friend: -20 },
+                feedback: '你覺得「只是好玩開玩笑」，但公開發表侮辱性圖片已經踩到了法律紅線！',
+                sound: 'warning',
+                next: 'legal_public_escalation'
+              },
+              {
+                id: 'optL1_B',
+                type: '跟風吃瓜',
+                badge: '🅱️ 刷貼圖轉傳',
+                text: '「跟著在群組傳『笑到肚子痛』貼圖，並把照片轉發給隔壁班死黨群：『看我們班的小丑哈哈』。」',
+                delta: { energy: 0, legal: -15, friend: -10 },
+                feedback: '雖然照片不是你拍的，但散布貶損他人名譽之圖文，在法律上屬於傳播的共同侵權行為。',
+                sound: 'warning',
+                next: 'legal_group_spread'
+              },
+              {
+                id: 'optL1_C',
+                type: '冷漠旁觀',
+                badge: '🅲️ 怕事假裝沒看見',
+                text: '「心裡覺得這樣取笑很過分，但怕跳出來講話會被大家當抓耙仔孤立，默默關掉手機螢幕。」',
+                delta: { energy: -10, legal: 0, friend: -5 },
+                feedback: '旁觀者的沉默往往會被加害者解讀為「默許」，導致網路霸凌風波迅速失控。',
+                sound: 'click',
+                next: 'legal_bystander_dilemma'
+              },
+              {
+                id: 'optL1_D',
+                type: '正義覺察',
+                badge: '🅳️ 善意踩煞車',
+                text: '「在群組留言：『大家適可而止喔，摔倒很痛，被拍已經很難過了別再傳了。』並私訊關心小明。」',
+                delta: { energy: 0, legal: +15, friend: +15 },
+                feedback: '勇敢挺身而出！你的正義發言讓群組火熱的起鬨氣氛瞬間冷靜了下來。',
+                sound: 'success',
+                next: 'legal_peacekeeper'
+              }
+            ]
+          },
+
+          // Node: legal_public_escalation (公開發限動惡化)
+          'legal_public_escalation': {
+            step: '第 2 抉擇：風暴擴大與家長提告',
+            avatar: '⚖️',
+            speaker: '下午 16:30 學務處門口',
+            title: '警察與律師的截圖蒐證',
+            text: `
+              <p>你的 IG 限動被全校同學瘋狂截圖轉發，連隔壁校的學生都在看熱鬧留言嘲笑。</p>
+              <p>小明在走廊上被指指點點，最後在廁所崩潰痛哭。放學時，小明的父母帶著神情凝重的律師親自來到學務處！</p>
+              <p>主任把你們幾位在網路上散布、改圖的同學叫進辦公室。桌上擺著一張張彩色列印的螢幕截圖，上面清楚標記了你的 IG 帳號、發文時間與侮辱性文字。</p>
+              <p>小明爸爸嚴肅地說：「我們已經到警察局完成報案筆錄，決定提告《公然侮辱》與民事名譽侵害賠償！」這時你……</p>
+            `,
+            options: [
+              {
+                id: 'optL2_A1',
+                type: '嘴硬狡辯',
+                badge: '🅰️ 嘴硬回嗆',
+                text: '「『我又沒有指名道姓！而且大家都這樣玩啊，開個玩笑都不行喔，玩不起是不是？』」',
+                delta: { energy: -30, legal: -40, friend: -30 },
+                feedback: '態度惡劣將直接影響法官與少年調查官的心證！在實務上，無悔意者通常會面臨更嚴重的司法處分與連帶賠償。',
+                sound: 'warning',
+                next: 'end_legal_court'
+              },
+              {
+                id: 'optL2_A2',
+                type: '火速刪文',
+                badge: '🅱️ 刪文滅證',
+                text: '「藉口上廁所偷偷拿手機刪除 IG 限動和小帳，以為只要把貼文刪除，警方就查不到證據。」',
+                delta: { energy: -20, legal: -25, friend: -10 },
+                feedback: '數位時代「凡走過必留下痕跡」！對方早已公證截圖，警方也能向平台調閱伺服器紀錄，滅證只會加深罪責。',
+                sound: 'warning',
+                next: 'end_legal_court'
+              },
+              {
+                id: 'optL2_A3',
+                type: '真誠認錯',
+                badge: '🅲️ 鞠躬道歉',
+                text: '「看見小明紅腫的雙眼，內心愧疚無比。深吸一口氣，主動站出來向小明與其父母 90 度鞠躬道歉，承認錯誤。」',
+                delta: { energy: -10, legal: +15, friend: +10 },
+                feedback: '真誠的悔過與負責的態度，是爭取受害者諒解與和解撤告最重要的關鍵！',
+                sound: 'click',
+                next: 'end_legal_reconcile'
+              },
+              {
+                id: 'optL2_A4',
+                type: '家長面對',
+                badge: '🅳️ 勇於承擔',
+                text: '「主動請老師聯絡自己的父母到校，坦白說明事情經過，並願意公開在 IG 發布道歉聲明以消除不良影響。」',
+                delta: { energy: -5, legal: +25, friend: +15 },
+                feedback: '主動採取補救措施消除侵害名譽之不良影響，展現了真正的勇氣與責任感。',
+                sound: 'success',
+                next: 'end_legal_reconcile'
+              }
+            ]
+          },
+
+          // Node: legal_group_spread (私群轉傳蔓延)
+          'legal_group_spread': {
+            step: '第 2 抉擇：個資外洩與肉搜危機',
+            avatar: '🔍',
+            speaker: '隔天上午班會課',
+            title: '失控的肉搜與校園霸凌調查',
+            text: `
+              <p>你轉發的照片像病毒一樣在各班群組擴散，最後有人甚至把小明的本名、住家地址、甚至他國小時候的黑歷史都肉搜出來貼在網路上！</p>
+              <p>小明今天沒有來學校。導師臉色凝重地走進教室，宣布全班暫停上課，啟動「疑似校園網路霸凌調查小組」。</p>
+              <p>學務處正在逐一清查「轉傳者」與「肉搜者」名單。隔壁座位的同學偷偷跟你說：「欸，如果老師問起來，我們就咬定說是阿翔逼我們轉傳的，好不好？」這時你會……？</p>
+            `,
+            options: [
+              {
+                id: 'optL2_B1',
+                type: '推卸責任',
+                badge: '🅰️ 甩鍋切割',
+                text: '「同意串供，在調查表上全部推給阿翔，聲稱自己完全是被逼迫的無辜受害者。」',
+                delta: { energy: -20, legal: -25, friend: -30 },
+                feedback: '謊言在客觀通訊紀錄面前不堪一擊，互相甩鍋只會徹底撕裂班級的人際信任。',
+                sound: 'warning',
+                next: 'end_legal_bullying_accomplice'
+              },
+              {
+                id: 'optL2_B2',
+                type: '裝死沉默',
+                badge: '🅱️ 一問三不知',
+                text: '「在調查過程中問什麼都說『我不知道、我沒看手機、我忘記了』，企圖混過去。」',
+                delta: { energy: -15, legal: -10, friend: -10 },
+                feedback: '消極應對只會延長問題的發酵期，逃避無法消除心中對小明的罪惡感。',
+                sound: 'warning',
+                next: 'end_legal_bullying_accomplice'
+              },
+              {
+                id: 'optL2_B3',
+                type: '坦白認錯',
+                badge: '🅲️ 誠實自首',
+                text: '「私下主動找導師坦白：『老師，我有轉傳過，我當時覺得好玩沒想那麼多，我知道我錯了。』」',
+                delta: { energy: +5, legal: +20, friend: +5 },
+                feedback: '誠實是最好的解藥。主動坦承轉傳行為，大幅降低了霸凌調查中的惡性評價。',
+                sound: 'success',
+                next: 'end_legal_reconcile'
+              },
+              {
+                id: 'optL2_B4',
+                type: '協助修復',
+                badge: '🅳️ 串聯送暖',
+                text: '「除了向老師認錯，主動提議全班寫一張暖心卡片送給小明，並承諾絕不再犯，支持他回校上課。」',
+                delta: { energy: +10, legal: +20, friend: +25 },
+                feedback: '從「加害者附和者」轉變為「創傷修復者」，這是班級團體中最重要的修復式正義。',
+                sound: 'success',
+                next: 'end_legal_guardian'
+              }
+            ]
+          },
+
+          // Node: legal_bystander_dilemma (旁觀者困境)
+          'legal_bystander_dilemma': {
+            step: '第 2 抉擇：越過紅線的私密照危機',
+            avatar: '🚨',
+            speaker: '當天傍晚 18:00',
+            title: '不可觸碰的極限紅線',
+            text: `
+              <p>因為群組裡沒有人敢出聲制止，阿翔等人的起鬨越來越囂張。</p>
+              <p>傍晚時，群組竟然有人發了一句：「這算什麼，我這裡有小明更勁爆的！之前游泳課在更衣室偷拍到他不小心露出身體的照片，想看的打 +1！」</p>
+              <p>此時底下開始有幾個人跟風留「+1」、「卡一個」、「求私訊」。</p>
+              <p>看到這則訊息，你知道這已經不是普通的摔倒嘲笑了，這涉及到未成年私密身體隱私與極其嚴重的法律犯罪！你該怎麼做？</p>
+            `,
+            options: [
+              {
+                id: 'optL2_C1',
+                type: '好奇觸法',
+                badge: '🅰️ 好奇跟喊',
+                text: '「被好奇心沖昏頭，也跟著在群組留言『+1，我也想看真的假的』。」',
+                delta: { energy: -20, legal: -50, friend: -20 },
+                feedback: '索取、持有未成年人私密影像，涉犯《兒童及少年性剝削防制條例》，屬於非告訴乃論重罪！',
+                sound: 'warning',
+                next: 'end_legal_court'
+              },
+              {
+                id: 'optL2_C2',
+                type: '驚恐退群',
+                badge: '🅱️ 默默退出',
+                text: '「嚇得手心冒汗，覺得太可怕了，趕快按『退出群組』假裝自己什麼都不知道。」',
+                delta: { energy: -15, legal: 0, friend: -10 },
+                feedback: '退群雖然保護了自己不被牽扯，但你錯過了拯救同學免於重大性隱私受害的黃金時機。',
+                sound: 'warning',
+                next: 'end_legal_bullying_accomplice'
+              },
+              {
+                id: 'optL2_C3',
+                type: '即時通報',
+                badge: '🅲️ 截圖密告',
+                text: '「立刻把要傳私密照的對話『長截圖』存證，馬上打電話向導師與家長通報，阻止照片被傳出！」',
+                delta: { energy: +15, legal: +30, friend: +20 },
+                feedback: '英雄般的果斷舉動！你的及時截圖通報，成功在私密照流出前攔截了不可挽回的悲劇！',
+                sound: 'success',
+                next: 'end_legal_guardian'
+              },
+              {
+                id: 'optL2_C4',
+                type: '嚴正警告',
+                badge: '🅳️ 法律喝止',
+                text: '「在群組用粗體回覆：『傳這個是違反兒少性剝削防制條例的重罪，會留下前科要坐牢的！立刻停手！』」',
+                delta: { energy: +10, legal: +25, friend: +15 },
+                feedback: '精準點出法律責任！你的法律警語讓發熱的同儕大腦瞬間被澆了一盆冷水，全員噤聲。',
+                sound: 'success',
+                next: 'end_legal_guardian'
+              }
+            ]
+          },
+
+          // Node: legal_peacekeeper (正向守護者)
+          'legal_peacekeeper': {
+            step: '第 2 抉擇：智慧化解同儕對立',
+            avatar: '🕊️',
+            speaker: '當天下午放學後',
+            title: '同儕壓力下的智慧堅持',
+            text: `
+              <p>你在群組的善意發言，讓原本熱烈起鬨的群組突然安靜了下來。</p>
+              <p>阿翔有點下不來台，私訊你嗆道：「你幹嘛裝聖人啊？大家笑一笑而已，你很無聊欸！」</p>
+              <p>與此同時，受害的小明發來了一條滿懷感激的訊息：「謝謝你……剛才我看到群組差點哭出來，還好有你幫我說話……」</p>
+              <p>面對阿翔的敵意與小明的感謝，你打算怎麼圓滿收尾這件事？</p>
+            `,
+            options: [
+              {
+                id: 'optL2_D1',
+                type: '智慧溝通',
+                badge: '🅰️ 換位思考',
+                text: '「私訊回阿翔：『如果今天摔倒褲子破掉的是你，你被全班做成迷因圖會開心嗎？大家都是同學，沒必要這樣傷人啦。』」',
+                delta: { energy: +15, legal: +20, friend: +20 },
+                feedback: '透過換位思考喚醒同理心，阿翔讀完後雖然嘴硬沒回，但默默收回了群組的照片。',
+                sound: 'success',
+                next: 'end_legal_guardian'
+              },
+              {
+                id: 'optL2_D2',
+                type: '對罵互嗆',
+                badge: '🅱️ 爆氣回嗆',
+                text: '「直接回嗆阿翔：『你才幼稚！長得醜心態又壞，有種單挑啊！』把戰火演變成自己跟阿翔的對罵。」',
+                delta: { energy: -20, legal: -10, friend: -10 },
+                feedback: '出發點是好的，但演變成情緒對罵反而模糊了焦點，甚至自己也落入公然侮辱的風險中。',
+                sound: 'warning',
+                next: 'end_legal_reconcile'
+              },
+              {
+                id: 'optL2_D3',
+                type: '陪伴支持',
+                badge: '🅲️ 溫暖陪伴',
+                text: '「不理會阿翔的挑釁，主動約小明放學一起去喝飲料、聊聊喜歡的動漫，給予實質的情感支持。」',
+                delta: { energy: +15, legal: +20, friend: +25 },
+                feedback: '雪中送炭的真摯友誼！你的陪伴讓小明重新找回了面對校園生活的勇氣。',
+                sound: 'success',
+                next: 'end_legal_guardian'
+              },
+              {
+                id: 'optL2_D4',
+                type: '宣導自保',
+                badge: '🅳️ 教導自保',
+                text: '「私下教小明如何截圖存證，並告訴他若再遇到類似事情，可以尋求教育部 1953 反霸凌專線或告訴輔導老師。」',
+                delta: { energy: +20, legal: +30, friend: +25 },
+                feedback: '授人以魚不如授人以漁！你不僅保護了同學，更普及了實用的法律自保武器。',
+                sound: 'success',
+                next: 'end_legal_guardian'
+              }
+            ]
+          }
+        },
+
+        // Endings for Story 2
+        endings: {
+          'end_legal_court': {
+            type: 'bad',
+            emoji: '⚖️',
+            badge: '法律風暴結局',
+            badgeClass: 'bg-rose-500/20 text-rose-300 border border-rose-500/40',
+            title: '少年法庭傳票與家庭風暴',
+            desc: '因為公開改圖侮辱與散播個資，小明家長堅持提告。警方依法將案件送交地方法院少年法庭。父母必須向公司請假陪同你出庭接受少年調查官訊問，除了面臨民事連帶賠償 5 萬元外，你也被裁定保護管束處分。全家籠罩在巨大的悔恨與陰影中。',
+            debrief: `
+              <p>📌 <strong>法律紅線解析</strong>：
+                <br>• <strong>刑法第 309 條【公然侮辱罪】</strong>：在不特定多數人可見之網路空間（包含公開 IG 限動、三人以上群組）使用具有侮辱性的詞彙或改圖貶損他人名譽。
+                <br>• <strong>民法第 187 條【法定代理人責任】</strong>：未成年子女侵害他人名譽，父母須負「連帶損害賠償責任」，需掏出數萬至數十萬元賠償精神慰撫金！
+                <br>• <strong>少年事件處理法</strong>：12歲以上未滿18歲觸犯刑罰法律，並非「免責」，會進入少年法庭由法官調查審理。
+              </p>
+            `,
+            certTitle: '法律思辨重修生'
+          },
+          'end_legal_bullying_accomplice': {
+            type: 'warning',
+            emoji: '⛓️',
+            badge: '霸凌共犯結局',
+            badgeClass: 'bg-amber-500/20 text-amber-300 border border-amber-500/40',
+            title: '無形的旁觀共犯與信任瓦解',
+            desc: '小明最後因不堪精神壓力選擇轉學。雖然你沒有被起訴重罪，但在學校的霸凌調查與訪談中，全班陷入互相指責與猜忌的氛圍。你深深體會到：原來沉默與盲從轉傳，也是傷人最深的隱形匕首。',
+            debrief: `
+              <p>📌 <strong>打破旁觀者效應（Bystander Effect）</strong>：
+                在群體網路霸凌中，80% 的人常認為「反正不是我帶頭的」、「別人也轉發了」。然而研究顯示，只要有 **一位旁觀者** 站出來說出「這樣不妥」，就有超過 57% 的機率能立刻阻止霸凌擴大！
+              </p>
+            `,
+            certTitle: '反思覺醒者'
+          },
+          'end_legal_reconcile': {
+            type: 'good',
+            emoji: '🤝',
+            badge: '和解自新結局',
+            badgeClass: 'bg-blue-500/20 text-blue-300 border border-blue-500/40',
+            title: '勇敢認錯的和解與救贖',
+            desc: '在嚴重的法律危機爆發之際，你沒有選擇狡辯與逃避，而是鼓起勇氣真誠認錯道歉，並主動承擔責任消除網路影響。小明與其父母看見了你的悔意，同意撤銷告訴，雙方在調解室握手言和。',
+            debrief: `
+              <p>📌 <strong>勇於承擔的法律價值</strong>：在法律實務中，事後的「真誠悔意」、「迅速刪文澄清」與「誠懇和解態度」，是民事減輕賠償、刑事爭取不起訴或訓誡處分的最關鍵因素。</p>
+            `,
+            certTitle: '誠實擔當先鋒'
+          },
+          'end_legal_guardian': {
+            type: 'best',
+            emoji: '🛡️',
+            badge: '數位守護神結局',
+            badgeClass: 'bg-gradient-to-r from-indigo-400/20 to-teal-400/20 text-indigo-300 border border-indigo-400/50',
+            title: '正義勇氣・數位安全守護者',
+            desc: '你不僅有清晰的法律常識，更有挺身而出的道德勇氣！你的及時制止成功化解了一場可能摧毀同學人生的網路風暴。班級在這次事件中上了一堂無價的法治課，你成為大家心中最值得信賴的正面榜樣！',
+            debrief: `
+              <p>📌 <strong>成熟數位公民三要素</strong>：
+                <br>1. <strong>法律界線</strong>：清楚知道言論自由止於他人合法權益。
+                <br>2. <strong>數位同理心</strong>：在按下「發送」或「分享」鍵前，先問自己：「如果是我被這樣對待，我能接受嗎？」
+                <br>3. <strong>守護者的勇氣</strong>：面對不公義時，善用「截圖存證、通報師長、冷靜喝止」，保護自己也保護身邊的人！
+              </p>
+            `,
+            certTitle: '榮譽數位法治守護者'
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Game Logic Engine -->
+  <script>
+    class AdventureGame {
+      constructor() {
+        this.sound = new SoundEngine();
+        this.currentStoryId = null;
+        this.currentNodeKey = null;
+        this.history = [];
+        this.stats = { energy: 100, legal: 100, friend: 100 };
+      }
+
+      init() {
+        lucide.createIcons();
+      }
+
+      toggleSound() {
+        this.sound.enabled = !this.sound.enabled;
+        const icon = document.getElementById('soundIcon');
+        if (this.sound.enabled) {
+          icon.setAttribute('data-lucide', 'volume-2');
+          this.sound.playClick();
+        } else {
+          icon.setAttribute('data-lucide', 'volume-x');
+        }
+        lucide.createIcons();
+      }
+
+      showHome() {
+        this.sound.playClick();
+        document.getElementById('screenHome').classList.remove('hidden');
+        document.getElementById('screenPlay').classList.add('hidden');
+        document.getElementById('screenEnding').classList.add('hidden');
+        document.getElementById('statsBar').classList.add('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      startStory(storyId) {
+        this.sound.playClick();
+        this.currentStoryId = storyId;
+        const story = STORY_DATABASE[storyId];
+        this.stats = { ...story.initialStats };
+        this.history = [];
+        this.currentNodeKey = 'start';
+
+        document.getElementById('screenHome').classList.add('hidden');
+        document.getElementById('screenEnding').classList.add('hidden');
+        document.getElementById('screenPlay').classList.remove('hidden');
+        document.getElementById('statsBar').classList.remove('hidden');
+
+        document.getElementById('storyTag').innerText = story.tag;
+        this.updateStatsDisplay();
+        this.renderNode('start', null);
+      }
+
+      restartCurrentStory() {
+        if (this.currentStoryId) {
+          this.startStory(this.currentStoryId);
+        }
+      }
+
+      updateStatsDisplay() {
+        // Clamp stats between 0 and 100
+        const clamp = (val) => Math.max(0, Math.min(100, val));
+        this.stats.energy = clamp(this.stats.energy);
+        this.stats.legal = clamp(this.stats.legal);
+        this.stats.friend = clamp(this.stats.friend);
+
+        document.getElementById('statEnergyVal').innerText = `${this.stats.energy}%`;
+        document.getElementById('statEnergyBar').style.width = `${this.stats.energy}%`;
+
+        document.getElementById('statLegalVal').innerText = `${this.stats.legal}%`;
+        document.getElementById('statLegalBar').style.width = `${this.stats.legal}%`;
+
+        document.getElementById('statFriendVal').innerText = `${this.stats.friend}%`;
+        document.getElementById('statFriendBar').style.width = `${this.stats.friend}%`;
+      }
+
+      renderNode(nodeKey, previousChoice) {
+        const story = STORY_DATABASE[this.currentStoryId];
+        const node = story.nodes[nodeKey];
+        if (!node) return;
+
+        this.currentNodeKey = nodeKey;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        document.getElementById('storyStepTitle').innerText = node.step;
+        document.getElementById('sceneAvatar').innerText = node.avatar;
+        document.getElementById('sceneSpeaker').innerText = node.speaker;
+        document.getElementById('sceneTitle').innerText = node.title;
+        document.getElementById('sceneText').innerHTML = node.text;
+
+        // Feedback alert from previous choice
+        const fbEl = document.getElementById('choiceFeedback');
+        if (previousChoice && previousChoice.feedback) {
+          fbEl.classList.remove('hidden');
+          document.getElementById('feedbackText').innerText = previousChoice.feedback;
+        } else {
+          fbEl.classList.add('hidden');
+        }
+
+        // Render Options
+        const container = document.getElementById('optionsContainer');
+        container.innerHTML = '';
+
+        node.options.forEach(opt => {
+          const btn = document.createElement('button');
+          btn.className = 'glass-button rounded-xl p-4 text-left flex flex-col justify-between group';
+          btn.onclick = () => this.handleOptionSelect(opt);
+
+          // Delta tag calculation
+          let deltaTags = [];
+          if (opt.delta.energy !== 0) {
+            const color = opt.delta.energy > 0 ? 'text-emerald-400' : 'text-rose-400';
+            deltaTags.push(`<span class="${color}">${opt.delta.energy > 0 ? '+' : ''}${opt.delta.energy} 精力</span>`);
+          }
+          if (opt.delta.legal !== 0) {
+            const color = opt.delta.legal > 0 ? 'text-blue-400' : 'text-rose-400';
+            deltaTags.push(`<span class="${color}">${opt.delta.legal > 0 ? '+' : ''}${opt.delta.legal} 法律</span>`);
+          }
+          if (opt.delta.friend !== 0) {
+            const color = opt.delta.friend > 0 ? 'text-pink-400' : 'text-rose-400';
+            deltaTags.push(`<span class="${color}">${opt.delta.friend > 0 ? '+' : ''}${opt.delta.friend} 友誼</span>`);
+          }
+
+          btn.innerHTML = `
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-slate-800 text-indigo-300 border border-slate-700">${opt.badge}</span>
+                <div class="text-[11px] font-mono space-x-1">${deltaTags.join(' ')}</div>
+              </div>
+              <div class="text-sm sm:text-base font-medium text-slate-100 group-hover:text-indigo-200 transition leading-snug">
+                ${opt.text}
+              </div>
+            </div>
+            <div class="mt-3 flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-slate-700/40">
+              <span class="text-slate-400 text-[11px]">性格導向：${opt.type}</span>
+              <span class="text-indigo-400 flex items-center gap-1 group-hover:translate-x-1 transition font-bold">選擇此項 →</span>
+            </div>
+          `;
+          container.appendChild(btn);
+        });
+
+        // Toggle undo button
+        const undoBtn = document.getElementById('btnUndo');
+        if (this.history.length > 0) {
+          undoBtn.classList.remove('opacity-40', 'pointer-events-none');
+        } else {
+          undoBtn.classList.add('opacity-40', 'pointer-events-none');
+        }
+
+        lucide.createIcons();
+      }
+
+      handleOptionSelect(opt) {
+        if (opt.sound === 'warning') this.sound.playWarning();
+        else if (opt.sound === 'success') this.sound.playSuccess();
+        else this.sound.playClick();
+
+        // Push to history
+        this.history.push({
+          nodeKey: this.currentNodeKey,
+          statsBefore: { ...this.stats },
+          chosenOption: opt
+        });
+
+        // Apply deltas
+        this.stats.energy += opt.delta.energy;
+        this.stats.legal += opt.delta.legal;
+        this.stats.friend += opt.delta.friend;
+        this.updateStatsDisplay();
+
+        // Check if next is an ending or another node
+        const story = STORY_DATABASE[this.currentStoryId];
+        if (story.endings[opt.next]) {
+          this.renderEnding(opt.next);
+        } else {
+          this.renderNode(opt.next, opt);
+        }
+      }
+
+      undoStep() {
+        if (this.history.length === 0) return;
+        this.sound.playClick();
+        const last = this.history.pop();
+        this.stats = { ...last.statsBefore };
+        this.updateStatsDisplay();
+        this.renderNode(last.nodeKey, null);
+      }
+
+      renderEnding(endingKey) {
+        const story = STORY_DATABASE[this.currentStoryId];
+        const ending = story.endings[endingKey];
+        if (!ending) return;
+
+        if (ending.type === 'best' || ending.type === 'good') {
+          this.sound.playSuccess();
+          if (typeof confetti === 'function') {
+            confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+          }
+        } else {
+          this.sound.playWarning();
+        }
+
+        document.getElementById('screenPlay').classList.add('hidden');
+        document.getElementById('screenEnding').classList.remove('hidden');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        const badgeEl = document.getElementById('endingBadge');
+        badgeEl.className = `inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider mb-2 ${ending.badgeClass}`;
+        badgeEl.innerText = ending.badge;
+
+        document.getElementById('endingEmoji').innerText = ending.emoji;
+        document.getElementById('endingTitle').innerText = ending.title;
+        document.getElementById('endingDesc').innerText = ending.desc;
+
+        document.getElementById('endStatEnergy').innerText = `${this.stats.energy}%`;
+        document.getElementById('endStatLegal').innerText = `${this.stats.legal}%`;
+        document.getElementById('endStatFriend').innerText = `${this.stats.friend}%`;
+
+        document.getElementById('endingDebriefContent').innerHTML = ending.debrief;
+        this.currentCertTitle = ending.certTitle || '數位素養小達人';
+
+        lucide.createIcons();
+      }
+
+      generateCertificate() {
+        const name = document.getElementById('studentNameInput').value.trim() || '熱忱數位公民';
+        const userClass = document.getElementById('studentClassInput').value.trim() || '學生學員';
+
+        document.getElementById('certStudentName').innerText = name;
+        document.getElementById('certStudentClass').innerText = userClass;
+        document.getElementById('certTitle').innerText = this.currentCertTitle || '數位公民探險家';
+
+        const now = new Date();
+        const dateStr = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日`;
+        document.getElementById('certDate').innerText = dateStr;
+
+        this.sound.playSuccess();
+        document.getElementById('modalCert').classList.remove('hidden');
+        lucide.createIcons();
+      }
+
+      showLawBook() {
+        this.sound.playClick();
+        document.getElementById('modalLawBook').classList.remove('hidden');
+        lucide.createIcons();
+      }
+
+      closeLawBook() {
+        this.sound.playClick();
+        document.getElementById('modalLawBook').classList.add('hidden');
+      }
+    }
+
+    // Initialize Game Instance
+    const game = new AdventureGame();
+    window.addEventListener('DOMContentLoaded', () => {
+      game.init();
+    });
+  </script>
+</body>
+</html>
