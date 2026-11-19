@@ -79,7 +79,7 @@
 
   <!-- Header -->
   <header class="w-full novel-card sticky top-0 z-50 border-b border-slate-800">
-    <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between">
+    <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
       <div class="flex items-center space-x-3 cursor-pointer" onclick="game.showHome()">
         <div class="w-9 h-9 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-indigo-400 shadow-md">
           <i data-lucide="compass" class="w-5 h-5"></i>
@@ -99,78 +99,102 @@
         </button>
         <button onclick="game.showLawBook()" class="px-2.5 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 hover:text-indigo-300 hover:border-indigo-500/50 text-xs font-medium flex items-center gap-1.5 transition">
           <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
-          <span>法治與素養百科</span>
+          <span>法治與自保百科</span>
         </button>
       </div>
     </div>
   </header>
 
   <!-- Main Content Area -->
-  <main class="flex-grow max-w-3xl w-full mx-auto p-4 sm:p-6 flex flex-col justify-center">
+  <main class="flex-grow max-w-4xl w-full mx-auto p-4 sm:p-6 flex flex-col justify-center">
 
     <!-- Screen 1: Story Selection & Introduction -->
     <section id="screenHome" class="space-y-8 py-4 fade-in">
       <div class="text-center space-y-3">
         <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700 text-indigo-300 text-xs tracking-wider">
           <i data-lucide="sparkles" class="w-3.5 h-3.5 text-indigo-400"></i>
-          無劇透・多幕遞進・深度心理分支
+          三大主題・無劇透・多幕遞進・深度心理分支
         </div>
         <h2 class="text-2xl sm:text-4xl font-serif font-black text-white leading-tight">
           在誘惑與風暴前，看清真實的自己
         </h2>
-        <p class="max-w-xl mx-auto text-slate-300 text-sm leading-relaxed">
+        <p class="max-w-2xl mx-auto text-slate-300 text-sm leading-relaxed">
           這裡沒有預告好壞的「提示標籤」，也沒有非黑即白的簡單說教。<br>
           請選擇一場你想要探索的數位情境，依循你的直覺、同理心與價值觀做出決定。
         </p>
       </div>
 
-      <!-- Two Story Selection Cards -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 pt-1">
+      <!-- Three Story Selection Cards Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 pt-1">
         <!-- Story Card 1: Speech & Law -->
-        <div class="novel-card rounded-2xl p-6 border-slate-700/80 hover:border-indigo-500/50 flex flex-col justify-between transition group">
+        <div class="novel-card rounded-2xl p-5 border-slate-700/80 hover:border-indigo-500/50 flex flex-col justify-between transition group">
           <div>
             <div class="flex items-center justify-between mb-3">
-              <span class="px-2 py-0.5 rounded bg-indigo-950 text-indigo-300 border border-indigo-900 text-xs font-medium">主題一：言論與法治</span>
-              <span class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> 約 7 分鐘</span>
+              <span class="px-2 py-0.5 rounded bg-indigo-950 text-indigo-300 border border-indigo-900 text-[11px] font-medium">主題一：言論與法治</span>
+              <span class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i> 約 7 分鐘</span>
             </div>
-            <h3 class="text-lg sm:text-xl font-serif font-bold text-white mb-2 group-hover:text-indigo-300 transition">
+            <h3 class="text-base sm:text-lg font-serif font-bold text-white mb-2 group-hover:text-indigo-300 transition leading-snug">
               💬 那一張沒有人刪除的照片
             </h3>
-            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
-              午休私密班群傳來同學出糗跌倒的狼狽照片，嬉笑蔓延成公開 IG 迷因帳號。走廊上的耳語、被出賣的私訊，最後竟演變成家長提告與少年法庭傳票……
+            <p class="text-slate-300 text-xs leading-relaxed mb-4">
+              私密班群傳來同學出糗跌倒的狼狽照片，嬉笑蔓延成公開 IG 迷因帳號公審。走廊耳語與被出賣的私訊，最終竟演變成少年法庭傳票……
             </p>
-            <div class="space-y-1 text-xs text-slate-400 border-t border-slate-800/80 pt-3">
-              <p>🎯 核心考驗：公然侮辱罪、個資保護、網路霸凌與旁觀者的道德勇氣</p>
-              <p>🏁 分支收束：6 種人生走向（從司法傳票到破局公民）</p>
+            <div class="space-y-1 text-[11px] text-slate-400 border-t border-slate-800/80 pt-3">
+              <p>🎯 核心考驗：公然侮辱罪、個資保護、網路霸凌與旁觀者責任</p>
+              <p>🏁 分支結局：6 種人生收束</p>
             </div>
           </div>
-          <button onclick="game.startStory('speech')" class="mt-5 w-full py-2.5 px-4 rounded-xl font-bold text-white bg-indigo-600 hover:bg-indigo-500 shadow-lg shadow-indigo-950 flex items-center justify-center gap-2 transition text-sm">
+          <button onclick="game.startStory('speech')" class="mt-5 w-full py-2.5 px-3 rounded-xl font-bold text-white bg-indigo-600 hover:bg-indigo-500 shadow-md shadow-indigo-950 flex items-center justify-center gap-1.5 transition text-xs sm:text-sm">
             <span>翻開此篇章</span>
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </button>
         </div>
 
-        <!-- Story Card 2: Addiction & Self-Regulation (New!) -->
-        <div class="novel-card rounded-2xl p-6 border-slate-700/80 hover:border-teal-500/50 flex flex-col justify-between transition group">
+        <!-- Story Card 2: Addiction & Self-Regulation -->
+        <div class="novel-card rounded-2xl p-5 border-slate-700/80 hover:border-teal-500/50 flex flex-col justify-between transition group">
           <div>
             <div class="flex items-center justify-between mb-3">
-              <span class="px-2 py-0.5 rounded bg-teal-950 text-teal-300 border border-teal-900 text-xs font-medium">主題二：成癮與自律</span>
-              <span class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> 約 7 分鐘</span>
+              <span class="px-2 py-0.5 rounded bg-teal-950 text-teal-300 border border-teal-900 text-[11px] font-medium">主題二：成癮與自律</span>
+              <span class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i> 約 7 分鐘</span>
             </div>
-            <h3 class="text-lg sm:text-xl font-serif font-bold text-white mb-2 group-hover:text-teal-300 transition">
+            <h3 class="text-base sm:text-lg font-serif font-bold text-white mb-2 group-hover:text-teal-300 transition leading-snug">
               🎮 被偷走的深夜光年
             </h3>
-            <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mb-4">
-              段考前夕的深夜，戰隊隊友在 Discord 催促上線衝排位。連敗的憤怒、限時課金造型的誘惑、被窩裡刷不完的短影音，現實的鬧鐘與大腦的失控拉鋸……
+            <p class="text-slate-300 text-xs leading-relaxed mb-4">
+              段考前夕深夜，戰隊隊長催促上線衝排位。連敗的怒火、限時課金造型、被窩裡刷不完的短影音，現實的鬧鐘與大腦的失控拉鋸……
             </p>
-            <div class="space-y-1 text-xs text-slate-400 border-t border-slate-800/80 pt-3">
-              <p>🎯 核心考驗：手遊段位執念、短影音演算法多巴胺綁架、課金誘惑、生理時鐘崩塌</p>
-              <p>🏁 分支收束：6 種人生走向（從晝夜失序到奪回主控權）</p>
+            <div class="space-y-1 text-[11px] text-slate-400 border-t border-slate-800/80 pt-3">
+              <p>🎯 核心考驗：手遊段位執念、短影音多巴胺綁架、課金誘惑與睡眠剝奪</p>
+              <p>🏁 分支結局：6 種人生收束</p>
             </div>
           </div>
-          <button onclick="game.startStory('addiction')" class="mt-5 w-full py-2.5 px-4 rounded-xl font-bold text-white bg-teal-600 hover:bg-teal-500 shadow-lg shadow-teal-950 flex items-center justify-center gap-2 transition text-sm">
+          <button onclick="game.startStory('addiction')" class="mt-5 w-full py-2.5 px-3 rounded-xl font-bold text-white bg-teal-600 hover:bg-teal-500 shadow-md shadow-teal-950 flex items-center justify-center gap-1.5 transition text-xs sm:text-sm">
             <span>翻開此篇章</span>
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <!-- Story Card 3: Online Grooming & Privacy (NEW!) -->
+        <div class="novel-card rounded-2xl p-5 border-slate-700/80 hover:border-rose-500/50 flex flex-col justify-between transition group">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="px-2 py-0.5 rounded bg-rose-950 text-rose-300 border border-rose-900 text-[11px] font-medium">主題三：誘騙與隱私</span>
+              <span class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i> 約 8 分鐘</span>
+            </div>
+            <h3 class="text-base sm:text-lg font-serif font-bold text-white mb-2 group-hover:text-rose-300 transition leading-snug">
+              🎭 螢幕對面的「完美朋友」
+            </h3>
+            <p class="text-slate-300 text-xs leading-relaxed mb-4">
+              遊戲裡認識了溫柔又送禮物的高手大哥哥。當他提出「拍張私密照證明真心」，溫柔的面具瞬間化作恐嚇外流的無底黑洞……
+            </p>
+            <div class="space-y-1 text-[11px] text-slate-400 border-t border-slate-800/80 pt-3">
+              <p>🎯 核心考驗：網路誘騙（Grooming）、私密照勒索、兒少性剝削防制與求助</p>
+              <p>🏁 分支結局：6 種人生收束</p>
+            </div>
+          </div>
+          <button onclick="game.startStory('grooming')" class="mt-5 w-full py-2.5 px-3 rounded-xl font-bold text-white bg-rose-600 hover:bg-rose-500 shadow-md shadow-rose-950 flex items-center justify-center gap-1.5 transition text-xs sm:text-sm">
+            <span>翻開此篇章</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </button>
         </div>
       </div>
@@ -187,7 +211,7 @@
         </div>
         <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
           <div class="text-indigo-300 font-bold mb-1">深度心理複盤</div>
-          <div class="text-slate-400">剖析多巴胺、同儕壓力與法律代價</div>
+          <div class="text-slate-400">剖析誘騙、多巴胺、同儕壓力與法律代價</div>
         </div>
       </div>
     </section>
@@ -279,7 +303,7 @@
         <div class="bg-slate-900/80 rounded-xl p-4 border border-slate-800 mt-4 text-xs space-y-2">
           <div class="font-bold text-slate-200 flex items-center gap-2">
             <i data-lucide="life-buoy" class="w-4 h-4 text-rose-400"></i>
-            真實世界中的求助防護網（若你或身邊同學正面臨沉迷或人際危機）：
+            真實世界中的求助防護網（若你或身邊同學正面臨沉迷、勒索或霸凌危機）：
           </div>
           <div class="grid sm:grid-cols-3 gap-2 text-slate-400 pt-1">
             <div>📞 <strong>教育部反霸凌專線</strong>：1953（24小時）</div>
@@ -313,7 +337,7 @@
         </button>
         <button onclick="game.showHome()" class="w-full sm:w-1/2 py-3 px-4 rounded-xl font-bold text-slate-300 bg-slate-900 hover:bg-slate-800 border border-slate-800 flex items-center justify-center gap-2 transition">
           <i data-lucide="layout-grid" class="w-4 h-4"></i>
-          <span>體驗另一個主題篇章</span>
+          <span>體驗其他主題篇章</span>
         </button>
       </div>
     </section>
@@ -324,7 +348,7 @@
         <div class="flex items-center justify-between border-b border-slate-800 pb-3">
           <div class="flex items-center gap-2 text-indigo-300 font-bold text-lg">
             <i data-lucide="scale" class="w-5 h-5 text-indigo-400"></i>
-            <span>數位生活百科：法律界線與大腦自律</span>
+            <span>數位生活百科：法律界線、隱私與自保指引</span>
           </div>
           <button onclick="game.closeLawBook()" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800">
             <i data-lucide="x" class="w-5 h-5"></i>
@@ -333,13 +357,22 @@
 
         <div class="space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed">
           <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
-            <h5 class="font-bold text-teal-300 text-sm mb-1">🧠 什麼是「演算法多巴胺劫持」？</h5>
-            <p>短影音（TikTok / Reels / Shorts）與抽卡手遊利用心理學上的「變動比率增強（Variable Ratio Schedule）」，每隔 15~30 秒給予大腦微量多巴胺刺激。這種廉價快感會逐漸麻痺前額葉皮質（負責自制力與長遠規劃的區域），讓人不知不覺陷入「明明很累卻停不下來」的病態循環。</p>
+            <h5 class="font-bold text-rose-400 text-sm mb-1">🚨 兒童及少年性剝削防制條例（紅線絕對不能踩！）</h5>
+            <p>拍攝、製造、散布、持有、使兒少交付私密照片或影片，依台灣現行法律屬於<strong>非告訴乃論之公訴重罪</strong>（最輕本刑一年以上起跳）。就算是情侶交往、自願互傳或被誘騙，警方一旦接獲通報均須立案偵辦，切勿心存僥倖！</p>
           </div>
 
           <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
-            <h5 class="font-bold text-teal-300 text-sm mb-1">🌙 為什麼深夜滑手機會摧毀隔天的考試與情緒？</h5>
-            <p>手機螢幕發出的短波藍光會強烈抑制大腦松果體分泌「褪黑激素（Melatonin）」。即便在被窩中閉上眼睛，大腦仍處於高度戒備的淺層睡眠狀態。長期缺乏深層睡眠會使人記憶力崩跌、注意力渙散、情緒極度易怒脆弱。</p>
+            <h5 class="font-bold text-rose-400 text-sm mb-1">🛡️ 遭遇網路私密照勒索（Sextortion）的黃金處理四原則</h5>
+            <p>1. <strong>絕對不順從</strong>：千萬不要傳第二張！妥協只會招來更多無底洞般的威脅。<br>
+               2. <strong>絕對不刪除</strong>：將對方的帳號、通訊對話、個人首頁、威脅字句進行長截圖存證。<br>
+               3. <strong>立刻向大人求助</strong>：告訴家長、導師或輔導室，或直接聯絡 <strong>iWIN 網路內容防護機構（02-2577-5118）</strong> 啟動「StopNCII / 性影像移除防護機制」，由專業人員協助在各大平台下架攔截。<br>
+               4. <strong>立即報警封鎖</strong>：向少年警察隊報案，並將對方帳號封鎖檢舉。
+            </p>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+            <h5 class="font-bold text-teal-300 text-sm mb-1">🧠 什麼是「演算法多巴胺劫持」？</h5>
+            <p>短影音（TikTok / Reels / Shorts）與抽卡手遊利用心理學上的「變動比率增強」，每隔 15~30 秒給予大腦微量多巴胺刺激。這種廉價快感會逐漸麻痺前額葉皮質（負責自制力與長遠規劃），讓人陷入「明明很累卻停不下來」的病態循環。</p>
           </div>
 
           <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
@@ -365,7 +398,7 @@
     <div id="modalCert" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
       <div class="max-w-xl w-full bg-slate-900 border-2 border-indigo-500/50 rounded-2xl p-6 sm:p-8 space-y-6 text-center relative shadow-2xl">
         <button onclick="document.getElementById('modalCert').classList.add('hidden')" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1">
-          <i data-lucide="x" class="w-6 h-6"></i>
+          <i data-lucide="x" class="w-5 h-5"></i>
         </button>
 
         <div class="border-2 border-slate-700 rounded-xl p-6 bg-slate-950/80 relative">
@@ -378,7 +411,7 @@
           <div id="certStudentClass" class="text-xs text-slate-400 mb-4">班級座號</div>
 
           <p class="text-slate-300 text-xs sm:text-sm leading-relaxed px-2 text-left sm:text-center">
-            於「微光與暗潮」多分支情境思辨歷程中，完成了校園社群人際、言論邊界、成癮自律與生活掌控之多重難題考驗，展現出高度的自主反思與數位公民素養。
+            於「微光與暗潮」多分支情境思辨歷程中，完成了校園社群人際、言論邊界、成癮自律、防範誘騙與生活掌控之多重難題考驗，展現出高度的自主反思與數位公民素養。
           </p>
 
           <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-500 px-2">
@@ -409,7 +442,7 @@
 
   <!-- Footer -->
   <footer class="w-full border-t border-slate-800/80 py-4 px-4 text-center text-xs text-slate-500">
-    <div class="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+    <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
       <div>微光與暗潮・青少年數位素養與網路情境教材</div>
       <div>無引導標籤・深度心理分支・促進自主思辨</div>
     </div>
@@ -478,7 +511,7 @@
     }
   </script>
 
-  <!-- Complete Narrative Graph Data for Both Stories -->
+  <!-- Complete Narrative Graph Data for All Three Stories -->
   <script>
     // =========================================================================
     // STORY 1: 言論與法治篇《那一張沒有人刪除的照片》
@@ -516,7 +549,6 @@
           <p>你的笑哭貼圖混在一大串嘲弄的訊息裡，迅速被淹沒。但這股取笑的狂歡並沒有在放學時停止。</p>
           <p>到了傍晚，阿翔和幾位常常一起打手遊的同學，乾脆開了一個公開的 IG 匿名帳號<strong>「202 黑歷史收容所」</strong>，把敏萱跌倒的照片裁切成迷因哏圖，甚至加上了豬頭特效和侮辱性的粗體大字：「<em>泥巴怪現身，求好心人領養</em>」。</p>
           <p>短短兩小時內，那個帳號在年級的群體裡傳開，追蹤數迅速破了兩百，底下留言全是各班學生的嬉笑與標記。</p>
-          <p class="inner-thought">公車上，旁邊坐著隔壁班的學生，正興奮地拿著手機指著螢幕說：「你看二班那個女的，超搞笑的！」你的心臟莫名漏跳了一拍。你突然意識到，這張照片已經徹底脫離了原本「班上鬧著玩」的範圍……</p>
         `,
         options: [
           { id: 'A', text: '追蹤那個帳號並在底下按了愛心，心想「反正大家都在看，不差我這一個」。', next: 'act3_night_drift' },
@@ -531,15 +563,8 @@
         place: '下課後的走廊轉角',
         title: '未讀與冷嘲',
         body: `
-          <p>你的私訊送出後，阿翔過了二十分鐘都沒有已讀。</p>
-          <p>然而第四節下課時，大群組裡突然跳出阿翔發的一條新訊息：</p>
-          <div class="chat-bubble p-3 rounded-xl my-2 text-xs sm:text-sm space-y-1">
-            <div class="text-indigo-400 font-bold">阿翔：</div>
-            <div class="text-slate-200">「笑死，班上居然有人當正義魔人，私下叫我收回照片耶。大家鬧著玩而已，開不起玩笑就別待在群組啊。」</div>
-          </div>
-          <p>底下立刻有人起鬨：「誰啊？誰那麼掃興？」、「自以為聖人喔。」</p>
-          <p>雖然阿翔沒有直接指名道姓，但走廊上跟他走在一起的幾個男生，眼神時不時朝你身上飄過來，嘴角掛著若有似無的譏諷微笑。</p>
-          <p class="inner-thought">空氣彷彿一下子凝固了。你感到喉嚨發乾、後背微微冒汗。原本只是出於好意的提醒，卻瞬間把你推到了班級社交圈的風口浪尖……</p>
+          <p>你的私訊送出後，阿翔過了二十分鐘都沒有已讀。第四節下課時，大群組裡突然跳出阿翔發的新訊息：「笑死，班上居然有人當正義魔人，私下叫我收回照片耶。大家鬧著玩而已，開不起玩笑就別待在群組啊。」</p>
+          <p>底下立刻有人起鬨：「誰啊？誰那麼掃興？」、「自以為聖人喔。」阿翔跟旁邊幾個男生眼神時不時朝你身上飄過來……</p>
         `,
         options: [
           { id: 'A', text: '急忙在大群組打圓場：「哈哈沒有啦，大家開心就好，我剛剛只是隨口說說。」立刻退縮示弱。', next: 'act3_night_drift' },
@@ -554,10 +579,7 @@
         place: '放學後的便利商店',
         title: '外洩的耳語',
         body: `
-          <p>你在三人死黨小群的發問，很快有了回音。其中一位朋友說：「其實我也覺得阿翔這次太過火了。」但另一位卻說：「可是阿翔在班上勢力很大，得罪他以後在班上會很難過喔。」</p>
-          <p>然而，你萬萬沒想到的是，這段對話不知道被誰口耳相傳，甚至截圖轉發給了阿翔那群人！</p>
-          <p>在便利商店買飲料時，同班的體育股長迎面走過來，冷冷地拍了拍你的肩膀：「聽說你在背後碎嘴翔哥喔？有話不會當面講，在背後搞小圈圈講壞話很光彩嗎？」</p>
-          <p class="inner-thought">你愣在原地，心臟狂跳。原本只是想找信任的朋友傾訴不安，卻在同儕圈複雜的社交關係網裡，被扭曲成了「背地裡搞小動作的抓耙仔」……</p>
+          <p>你在死黨小群的發問，被截圖轉發給了阿翔那群人！在便利商店買飲料時，同班的體育股長冷冷地拍了拍你的肩膀：「聽說你在背後碎嘴翔哥喔？有話不會當面講，在背後搞小圈圈講壞話很光彩嗎？」</p>
         `,
         options: [
           { id: 'A', text: '連忙辯解：「不是我！一定是別人亂傳的，我跟阿翔感情那麼好怎麼可能說他壞話！」', next: 'act3_night_drift' },
@@ -572,10 +594,7 @@
         place: '自家客廳的沙發上',
         title: '沉默之牆後的發酵',
         body: `
-          <p>你選擇了轉過頭去不看。整個下午，你逼自己專注在黑板上的數學公式和英文單字。</p>
-          <p>然而，當你回到家、脫下書包打開手機時，幾十則通知瞬間跳了出來。敏萱在下午最後一節下課時，因為受不了走廊上其他班級學生的指指點點，在女廁所放聲大哭，甚至出現過度換氣被送進了健康中心。</p>
-          <p>而群組裡的嘲弄並沒有因此停下，反而有人傳了一句：「哇，抗壓性這麼低喔？摔個泥巴就哭到進健康中心，演給誰看啊。」</p>
-          <p class="inner-thought">你坐在安靜的客廳裡，客廳鐘擺滴答滴答地走著。你的沉默並沒有讓風暴平息，反而像一塊吸音海綿，縱容著殘忍的聲音在空氣裡越滾越大……</p>
+          <p>敏萱在下午最後一節下課時，因為受不了走廊上同學的指指點點，在廁所崩潰過度換氣被送進了健康中心。群組裡的嘲弄並沒有因此停下，反而有人傳了一句：「抗壓性這麼低喔？摔個泥巴就哭到進健康中心，演給誰看啊。」</p>
         `,
         options: [
           { id: 'A', text: '心想「反正我也沒笑她、也沒發照片，事情再鬧大也怪不到我頭上」，繼續滑手遊放鬆。', next: 'act3_night_drift' },
@@ -590,13 +609,7 @@
         place: '只開著床頭小燈的臥室',
         title: '排位賽與黑歷史帳號',
         body: `
-          <p>接近午夜，白天繁雜的人際關係讓你心力交瘁，你只想把自己埋進虛擬世界裡。</p>
-          <p>你在手遊排位賽連勝了兩把，語音頻道裡傳來阿翔和其他男生的笑鬧聲。打完一局後，阿翔突然在語音裡說：</p>
-          <div class="chat-bubble p-3 rounded-xl my-2 text-xs sm:text-sm space-y-1">
-            <div class="text-indigo-400 font-bold">阿翔（語音）：</div>
-            <div class="text-slate-200">「欸，剛剛有人投稿那個黑歷史帳號，居然有人有敏萱國小換牙時戴牙套的超醜鬼臉照，還有她小時候跟她媽媽吵架的影片！我打算待會一點一起發出來，絕對衝破五百追蹤！」</div>
-          </div>
-          <p class="inner-thought">螢幕的藍光刺得你眼睛發酸，時鐘已經指向午夜零點。明天一早有重要的段考複習考。你知道這已經徹底越過了底線，但大家在語音裡熱烈討論著，如果你這時候潑冷水，很可能會立刻被踢出隊伍並被排擠……</p>
+          <p>接近午夜，手遊語音頻道裡阿翔興奮地說有人投稿了敏萱國小換牙醜照與小時候吵架影片，打算一點準時發出來衝五百追蹤！明天是段考複習考，你知道這已經徹底越過了底線……</p>
         `,
         options: [
           { id: 'A', text: '在語音裡跟著附和：「太誇張了吧哈哈，發出來記得 tag 我看一下。」繼續連線打下一場排位。', next: 'act4_legal_abyss' },
@@ -611,9 +624,7 @@
         place: '漆黑的房間・螢幕的微光',
         title: '逃避現實的無底黑洞',
         body: `
-          <p>屋內一片死寂，只有手機螢幕映照著你毫無血色的臉龐。腦海中不斷重播著白天走廊上的竊竊私語、同學被欺負的無助神情。</p>
-          <p>為了逃避這種窒息感，你的手指下意識地在短影音平台上無休止地上滑。搞笑短劇、電競剪輯、八卦短片……一則接著一則。</p>
-          <p class="inner-thought">每滑過一則影片，大腦似乎能得到短暫的麻痺；但只要螢幕暗下來哪怕一秒鐘，白天的恐懼與罪惡感就會像潮水般重新淹沒上來。你發現自己陷在一個「極度疲憊卻不敢閉上眼睛」的怪圈裡……</p>
+          <p>為了逃避白天的窒息感，你的手指在短影音平台上無休止地上滑。每滑過一則影片大腦得到短暫麻痺，但只要螢幕一暗，恐懼與罪惡感便排山倒海而來……</p>
         `,
         options: [
           { id: 'A', text: '繼續漫無目的地滑下去，直到大腦徹底放空、手機從無力的手中滑落砸在臉上昏睡。', next: 'act4_morning_hangover' },
@@ -628,9 +639,7 @@
         place: '自家書房',
         title: '孤立的代價與考驗',
         body: `
-          <p>因為你今天白天公開在群組提出質疑，你發現自己突然被踢出了平時聊天的另外兩個遊戲小群。甚至有人在班級群組發了「抓耙仔退散」的迷因圖。</p>
-          <p>這時，平時在班上很低調的副班長突然傳來私訊：「你今天很勇敢。其實很多人都覺得阿翔太過分了，只是大家都不敢得罪他。你還好嗎？」</p>
-          <p class="inner-thought">看著這條私訊，你眼眶微酸。做正確的事往往伴隨著孤獨與誤解的代價。但至少在黑暗中，你並不是唯一看見微光的人……</p>
+          <p>你被踢出了遊戲群，班群裡也充滿針對你的諷刺迷因。這時，副班長傳來私訊：「你今天很勇敢。其實很多人都覺得阿翔太過分了，只是大家都不敢得罪他。你還好嗎？」</p>
         `,
         options: [
           { id: 'A', text: '向副班長吐露委屈：「謝謝你，但我現在好像成了全班的公敵，我不知道明天該怎麼面對大家。」', next: 'act4_alliance' },
@@ -645,13 +654,11 @@
         place: '臥室書桌前',
         title: '黑暗中接住的一雙手',
         body: `
-          <p>你發給敏萱的那句關心，隔了將近一個多小時才收到回信：「謝謝你……看到你的訊息我哭了好久。今天一整天，大家都在看著手機笑，我真的好害怕、好不想去學校……」</p>
-          <p>敏萱接著告訴你，今天體育課她其實是因為貧血頭暈才摔倒的，沒想到會被拍下來做成全校瘋傳的笑料。</p>
-          <p class="inner-thought">文字背後，是一個活生生、受盡凌遲的心靈。這不是一場打完就可以重來的遊戲，螢幕上的一則貼圖、一張照片，在現實中是一道深可見骨的傷痕……</p>
+          <p>敏萱回訊：「看到你的訊息我哭了好久。今天一整天大家都在看著手機笑，我真的好害怕去學校……」文字背後是一個活生生受傷的心靈，這不是按個讚就算了的遊戲。</p>
         `,
         options: [
-          { id: 'A', text: '鼓勵敏萱：「這絕對不是妳的錯！妳要把事情完整告訴媽媽，大人才能幫妳爭取公道。」', next: 'act4_legal_escalation' },
-          { id: 'B', text: '教導敏萱：「妳先把所有惡意留言和那個帳號的貼文截圖存證，包含時間和帳號，留作證據。」', next: 'act4_legal_escalation' },
+          { id: 'A', text: '鼓勵敏萱：「這絕對不是妳的錯！妳要把事情完整告訴媽媽，大人才能幫妳爭取公道。」', next: 'act4_morning_storm' },
+          { id: 'B', text: '教導敏萱：「妳先把所有惡意留言和那個帳號的貼文截圖存證，包含時間和帳號，留作證據。」', next: 'act4_morning_storm' },
           { id: 'C', text: '安慰她說：「忍過這兩天大家就會忘記了，別把事情鬧大，不然在班上會更難做人。」', next: 'act4_morning_storm' },
           { id: 'D', text: '答應敏萱：「明天早上我在校門口等妳，我們一起走進教室，我陪著妳。」', next: 'act4_alliance' }
         ]
@@ -662,8 +669,7 @@
         place: '家中客廳沙發',
         title: '與家長的深夜對話',
         body: `
-          <p>晚餐過後，你鼓起勇氣向爸媽提起了學校班群裡發生的這場風波。</p>
-          <p>爸爸嚴肅地看著你說：「孩子，很多青少年以為網路上匿名就查不到人，或者以為未成年就不用負責。但你記住，<strong>法律上這叫《公然侮辱》和《侵害名譽權》</strong>。要是對方家長提告，哪怕只是在底下起鬨或轉發，父母都得負連帶賠償責任，而且少年法庭是會留下紀錄的。」</p>
+          <p>爸爸嚴肅地看著你說：「網路上言論是有法律責任的，這涉及《公然侮辱》與《名譽侵權》。對方提告的話，父母依法要負連帶賠償責任，少年法庭也會留下紀錄。」</p>
         `,
         options: [
           { id: 'A', text: '主動讓爸媽看群組內容，請爸媽協助聯絡導師，在事情無可挽回前由學校介入處理。', next: 'act4_teacher_intervention' },
@@ -678,11 +684,10 @@
         place: '學務處辦公室',
         title: '律師函與少年隊警官',
         body: `
-          <p>第一節課剛上到一半，學務主任面色鐵青地走進教室，點名你、阿翔等人到學務處。辦公室裡坐著兩位神情嚴肅的警官，以及敏萱和她身旁的律師與父母。</p>
-          <p>長桌上擺放著厚厚一疊公證截圖，上面清楚記錄了昨晚起鬨的每條留言與帳號。敏萱父親沉痛地宣告已向少年警察隊報案提告《公然侮辱》、《加重誹謗》與民事名譽侵害賠償。</p>
+          <p>主任點名你和阿翔到學務處。桌上擺著公證列印的每條留言與截圖，敏萱父親痛心宣告已向少年隊報案提告《公然侮辱》、《加重誹謗》並求償民事賠償！</p>
         `,
         options: [
-          { id: 'A', text: '驚恐中試圖推卸責任：「警察叔叔，照片是阿翔拍的！我只是剛好留言而已，不關我的事！」', next: 'end_legal_catastrophe' },
+          { id: 'A', text: '驚恐中試圖推卸責任：「照片是阿翔拍的！我只是剛好留言而已，不關我的事！」', next: 'end_legal_catastrophe' },
           { id: 'B', text: '腦中一片混亂，當場崩潰低頭痛哭，完全不知該如何應對。', next: 'end_legal_catastrophe' },
           { id: 'C', text: '深吸一口氣，壓下恐懼，主動走上前深深鞠躬：「對不起，我昨晚沒有制止，還跟著起鬨，我願意負所有責任向妳道歉。」', next: 'end_reconcile_redemption' },
           { id: 'D', text: '請求主任讓自己立刻打電話給父母，坦白自己犯下的過錯，讓父母到校陪同面對法律程序。', next: 'end_reconcile_redemption' }
@@ -694,7 +699,7 @@
         place: '段考複習考考場',
         title: '透支的靈魂與失焦的考卷',
         body: `
-          <p>昨晚滑手機到凌晨兩點多的代價，在鐘聲響起的瞬間徹底爆發。太陽穴劇烈抽痛，大腦一片渾濁，試卷上的公式像扭曲的符號完全無法辨認。為了逃避現實中的人際壓力沉溺於螢幕，結果將自己拖入了身心俱疲的深淵……</p>
+          <p>昨晚滑手機到凌晨兩點多的代價爆發，太陽穴劇痛，試卷公式完全無法理解。為了逃避現實沉溺螢幕，終將自己拖入了深淵……</p>
         `,
         options: [
           { id: 'A', text: '實在撐不住，舉手向監考老師報告身體極度不適，被攙扶到健康中心躺下昏睡。', next: 'end_burnout_addiction' },
@@ -709,7 +714,7 @@
         place: '八年二班教室',
         title: '班級的信任崩塌',
         body: `
-          <p>導師站在講台上，嚴肅宣布啟動校園霸凌調查。阿翔的座位空著，據說已被家長帶去警局做筆錄。原本充滿歡笑的班級瞬間人人自危，互相猜忌。沉默的旁觀、隨波逐流的按讚，看似微不足道，卻在此刻顯現出巨大的破壞力……</p>
+          <p>導師宣布啟動霸凌調查，阿翔被帶去警局做筆錄。原本充滿歡笑的班級人人自危，互相猜忌。冷漠與隨波逐流在此刻顯現出巨大的破壞力……</p>
         `,
         options: [
           { id: 'A', text: '在座位上保持沉默，暗自慶幸自己昨天沒有太過張揚，希望風暴趕快過去。', next: 'end_bystander_regret' },
@@ -724,7 +729,7 @@
         place: '早自習前的輔導室',
         title: '早晨的主動通報',
         body: `
-          <p>清晨七點四十五分，你與夥伴主動敲開了輔導室的大門。因為這場及時的介入，校方在事情徹底失控前啟動了危機處理，第一時間保護敏萱並要求阿翔下架惡意帳號，阻止了可能摧毀多個家庭的司法災難。</p>
+          <p>你與夥伴主動敲開了輔導室的大門。因為這場及時的介入，校方迅速啟動保護敏萱並要求下架惡意帳號，阻止了可能摧毀多個家庭的司法災難。</p>
         `,
         options: [
           { id: 'A', text: '在輔導老師的引導下，參與後續的班級「修復式正義對話」，協助班級修補裂痕。', next: 'end_civic_courage' },
@@ -739,7 +744,7 @@
         place: '校門口的林蔭大道',
         title: '晨光下的並肩同行',
         body: `
-          <p>看見敏萱步履沉重地走進校門，你快步穿過人群走上前去，真誠地與她並肩同行走進教室。走廊上原本準備看好戲的幾個人自討沒趣地收起了手機。有時候，驅散陰暗霸凌最鋒利的武器，不是更尖銳的對罵，而是堂堂正正站在陽光下的善意。</p>
+          <p>看見敏萱步履沉重地走進校門，你快步穿過人群走上前去，真誠地與她並肩同行走進教室。驅散霸凌最鋒利的武器，往往是堂堂正正站在陽光下的善意。</p>
         `,
         options: [
           { id: 'A', text: '在教室裡公開大方地與敏萱討論功課，用自然平等的態度打破被孤立的氛圍。', next: 'end_quiet_guardian' },
@@ -754,7 +759,7 @@
         place: '早自習的走廊',
         title: '懸崖邊的警鐘',
         body: `
-          <p>昨晚你在語音裡那句「發隱私影片會觸法」的警告打醒了阿翔。阿翔早自習主動找上你，坦承自己上網查了法規嚇出一身冷汗，已經註銷了帳號。因為你的堅持，嚴重的二次隱私外流在最後一刻被踩住了煞車。</p>
+          <p>你在語音裡那句「發隱私影片會觸法」的警告打醒了阿翔，他一早就註銷了帳號。因為你的堅持，嚴重的二次隱私外流在最後一刻被踩住了煞車。</p>
         `,
         options: [
           { id: 'A', text: '向阿翔建議：「既然帳號刪了，今天中午找個機會，私下親自向敏萱道歉吧，這樣事情才能真正結束。」', next: 'end_reconcile_redemption' },
@@ -769,7 +774,7 @@
         place: '上學途中的公車上',
         title: '文字沉澱出的清晰視角',
         body: `
-          <p>昨夜在備忘錄中寫下的反思，讓你整個人從情緒的泥淖中跳脫了出來。你看清了整起事件的本質：言論自由絕對不包含侵害他人名譽與散播個資的自由。你心中已經有了明確的界線與行動準則。</p>
+          <p>昨夜在備忘錄中寫下的反思，讓你跳脫了情緒泥淖。你看清了整起事件的本質：言論自由絕對不包含侵害他人名譽與散播個資的自由。</p>
         `,
         options: [
           { id: 'A', text: '走進教室後，主動成為敏萱的友善盟友，同時以平靜堅定的態度拒絕再參與任何嘲弄話題。', next: 'end_civic_courage' },
@@ -784,7 +789,7 @@
         place: '電腦教室',
         title: '正式機制的介入',
         body: `
-          <p>你在 iWIN 網路內容防護機構送出的申訴檢舉發揮了迅速的作用，該惡意帳號被官方予以強制停權下架。惡意散播的管道被及時切斷，防止了羞辱性圖文在全網無休止地被備份傳播。</p>
+          <p>你在 iWIN 網路內容防護機構送出的申訴檢舉發揮了迅速的作用，該惡意帳號被官方強制停權下架，防止了羞辱性圖文在全網無休止地被備份傳播。</p>
         `,
         options: [
           { id: 'A', text: '將檢舉成功的好消息私訊敏萱，讓她知道網路世界依然有正義存在。', next: 'end_quiet_guardian' },
@@ -796,7 +801,7 @@
     };
 
     // =========================================================================
-    // STORY 2: 成癮與自律篇《被偷走的深夜光年》 (NEW!)
+    // STORY 2: 成癮與自律篇《被偷走的深夜光年》
     // =========================================================================
     const ADDICTION_STORY_GRAPH = {
       'act1_addiction_start': {
@@ -805,13 +810,12 @@
         place: '自家臥室・書桌前的掙扎',
         title: '倒數 12 小時的賽季結算',
         body: `
-          <p>明天一早就是全校段考的第一天。你攤開了寫滿算式的理化筆記，眼角餘光卻不自覺盯著桌角不斷震動的手機。</p>
-          <p>螢幕上，戰隊群組的語音通話正閃爍著刺眼的綠光。隊長在 Discord 瘋狂標記你：</p>
+          <p>明天一早就是全校段考的第一天。你攤開理化筆記，眼角餘光卻盯著桌角不斷震動的手機。戰隊群組裡，隊長在 Discord 瘋狂標記你：</p>
           <div class="chat-bubble p-3 rounded-xl my-2 text-xs sm:text-sm space-y-1">
-            <div class="text-teal-400 font-bold">戰隊隊長（全校排位第一）：</div>
-            <div class="text-slate-200">「今晚是全服賽季最後結算！全隊就差你一個打手，今晚衝上『傳說宗師』段位，明天大家在學校走路有風！八點準時開黑，敢放鴿子就直接踢出戰隊加封鎖！」</div>
+            <div class="text-teal-400 font-bold">戰隊隊長：</div>
+            <div class="text-slate-200">「今晚是全服賽季最後結算！全隊就差你一個打手，今晚衝上『傳說宗師』段位！八點準時開黑，敢放鴿子就直接踢出戰隊加封鎖！」</div>
           </div>
-          <p>看著這則訊息，你的心跳砰砰狂跳。理化筆記上密密麻麻的浮力與力學公式讓你心煩意亂，而遊戲裡的榮譽、被崇拜的成就感，卻像磁鐵一樣致命地吸引著你……</p>
+          <p>密密麻麻的理化公式讓你心煩意亂，而遊戲裡的榮譽感卻像磁鐵一樣致命地吸引著你……</p>
         `,
         options: [
           { id: 'A', text: '把課本直接推開，心想「段考只是及格與否，排位結算一年才一次！」立刻戴上耳機進語音開練。', next: 'act2_game_streak' },
@@ -820,80 +824,59 @@
           { id: 'D', text: '咬緊牙關在語音裡回覆：「抱歉，我明天理化真的很危險，今晚必須讀書，考完我再陪大家連線。」', next: 'act2_peer_rejection' }
         ]
       },
-
       'act2_game_streak': {
         act: '第二幕：多巴胺的泥淖',
         time: '週二 晚間 21:30',
         place: '遊戲連線頻道',
         title: '連敗的怒火與限時課金誘惑',
         body: `
-          <p>不知不覺已經連續打了四局！然而戰況急轉直下，你們遭遇了強大的對手，連續吞下兩場敗仗，星星瞬間掉光。</p>
-          <p>隊長在語音裡氣得大吼，怪罪你的走位失誤。就在這時，遊戲主畫面上跳出了一個閃爍著炫彩流光的彈窗：<br>
-            <span class="inline-block mt-2 p-2.5 rounded-lg bg-slate-900 border border-teal-500/50 text-amber-300 font-mono text-xs sm:text-sm">
-              🔥 賽季限時突擊包：新英雄「破曉神武」獨家造型 + 全屬性加成卡！限時 2 小時特價 890 元！
-            </span>
-          </p>
-          <p>隊友在語音裡慫恿：「買這個造型！他的技能判定範圍更大，買了一定能翻盤！你手機不是綁定你媽的信用卡帳號嗎？先刷再說啊！」</p>
-          <p class="inner-thought">時鐘顯示九點半。課本一個字都還沒看，手心全都是汗，心臟因為連敗的恥辱感高速跳動。那個購買按鈕只要輕輕一按指紋辨識就能完成……</p>
+          <p>連續打了四局，遭遇強敵連輸兩場，星星掉光。遊戲跳出彈窗：<em>🔥 賽季限時突擊包：新英雄獨家造型 + 全屬性加成卡！限時 2 小時特價 890 元！</em></p>
+          <p>隊友在語音裡慫恿：「買這個造型技能判定更大！你手機不是綁定你媽的信用卡嗎？先刷再說啊！」時鐘顯示九點半，課本一個字都還沒看……</p>
         `,
         options: [
-          { id: 'A', text: '為了證明自己的實力不被隊友看扁，瞞著父母手指一按，偷偷刷下 890 元買下虛擬禮包！', next: 'act3_midnight_guilt' },
-          { id: 'B', text: '雖然沒刷卡，但心中那股「不甘心」的火焰被徹底點燃：「不買造型我也能贏！今晚不打贏絕對不准睡！」', next: 'act3_night_binge' },
-          { id: 'C', text: '看著金額突然被潑了一盆冷水，猛然想起媽媽工作辛苦的身影，斷然拒絕刷卡，並說：「太晚了，我該停手了。」', next: 'act3_breaking_free' },
+          { id: 'A', text: '為了證明實力不被看扁，瞞著父母手指一按，偷偷刷下 890 元買下虛擬禮包！', next: 'act3_midnight_guilt' },
+          { id: 'B', text: '雖然沒刷卡，但心中「不甘心」的火焰被點燃：「不買我也能贏！今晚不打贏絕對不准睡！」', next: 'act3_night_binge' },
+          { id: 'C', text: '看著金額想起媽媽工作辛苦的身影，斷然拒絕刷卡，並說：「太晚了，我該停手了。」', next: 'act3_breaking_free' },
           { id: 'D', text: '被隊友的責怪搞得心態徹底崩潰，憤而摔耳機退出遊戲，躺在床上生悶氣翻來覆去。', next: 'act3_midnight_insomnia' }
         ]
       },
-
       'act2_time_compromise': {
         act: '第二幕：多巴胺的泥淖',
         time: '週二 晚間 22:15',
         place: '電腦桌前',
         title: '「只打一把」的魔咒',
         body: `
-          <p>九點半你如約上線，說好「只打一把」。然而那一場打得異常膠著，整整鏖戰了 35 分鐘，最後以一絲血量之差遺憾落敗！</p>
-          <p>這時已經超過十點十分了。隊友在語音裡急切地喊道：「差一點點就翻盤了！你現在走就是前功盡棄，再排一場，這場一定速推！」</p>
-          <p class="inner-thought">「再一把就好」是所有沉迷者最熟悉的謊言。你的大腦此刻被勝負欲與多巴胺徹底填滿，理化課本靜靜躺在旁邊，彷彿來自另一個遙遠的世界……</p>
+          <p>說好「只打一把」，然而那場打了整整 35 分鐘，以一絲之差落敗！隊友急切喊道：「差一點點就翻盤了！現在走就是前功盡棄，再排一場一定速推！」</p>
         `,
         options: [
           { id: 'A', text: '「好！就真的最後一把！」妥協按下準備鍵，繼續投入下一場對局。', next: 'act3_night_binge' },
-          { id: 'B', text: '雖然退出了遊戲，但覺得剛才輸得太冤枉，開始點開遊戲論壇與攻略影片研究破法，不知不覺看了一小時。', next: 'act3_short_video_trap' },
-          { id: 'C', text: '強壓下心中的衝動，果斷退出語音頻道：「說好一把就是一把，我不能拿明天的考試開玩笑。」', next: 'act3_breaking_free' },
+          { id: 'B', text: '雖然退出了遊戲，但覺得輸得太冤枉，開始點開論壇攻略研究破法，不知不覺看了一小時。', next: 'act3_short_video_trap' },
+          { id: 'C', text: '強壓下衝動，果斷退出頻道：「說好一把就是一把，我不能拿明天的考試開玩笑。」', next: 'act3_breaking_free' },
           { id: 'D', text: '為了擺脫罪惡感，走去廚房狂吃零食泡麵，用食物來填補遊戲沒贏的空虛感。', next: 'act3_midnight_insomnia' }
         ]
       },
-
       'act2_short_video_trap': {
         act: '第二幕：多巴胺的泥淖',
         time: '週二 晚間 22:45',
         place: '床鋪上的螢幕微光',
         title: '演算法無底洞的吞噬',
         body: `
-          <p>你原本真的只打算滑五分鐘短影音「放鬆一下」。</p>
-          <p>但演算法精準捕捉了你的每一個停留：搞笑惡搞、熱血動漫、手遊高光、荒謬挑戰……手指機械式地、一次又一次往上滑動。每則十五秒的影片精準給予微量的多巴胺刺激。</p>
-          <p>當你猛然看了一眼右上角的時間——<strong>22:45</strong>！</p>
-          <p class="inner-thought">你竟然躺在床上一動不動地滑了整整一個半小時！大腦脹痛發麻，眼睛乾澀刺痛，而書包裡的理化考卷依然是一片空白。自責、懊悔與莫名的恐慌瞬間湧上心頭……</p>
+          <p>原本只打算看五分鐘短影音，手指卻機械式地上滑了一小時半。猛然抬頭已經快十一點了，理化考卷依然空白，自責與恐慌瞬間湧上心頭……</p>
         `,
         options: [
           { id: 'A', text: '自暴自棄地想：「反正都這麼晚了，現在讀也來不及了，乾脆滑到睡著吧！」繼續無休止地上滑。', next: 'act3_night_doomscroll' },
           { id: 'B', text: '驚慌失措地從床上跳起來，泡了一杯濃咖啡，想要熬夜通宵把整本理化課本硬背下來。', next: 'act3_midnight_cram' },
-          { id: 'C', text: '對自己的失控感到害怕，立刻開啟手機「螢幕使用時間限制」，並將手機交到客廳父母的房間保管。', next: 'act3_breaking_free' },
+          { id: 'C', text: '對自己的失控感到害怕，立刻開啟手機「螢幕使用時間限制」，並將手機交到客廳父母房間保管。', next: 'act3_breaking_free' },
           { id: 'D', text: '關掉短影音，但心中的焦慮感讓你心悸失眠，躺在漆黑的房間裡胡思亂想。', next: 'act3_midnight_insomnia' }
         ]
       },
-
       'act2_peer_rejection': {
         act: '第二幕：多巴胺的泥淖',
         time: '週二 晚間 20:30',
         place: '書桌前',
         title: '被排擠的孤單冷風',
         body: `
-          <p>你在群組的拒絕，換來的是一片冷嘲熱諷。</p>
-          <div class="chat-bubble p-3 rounded-xl my-2 text-xs sm:text-sm space-y-1">
-            <div class="text-teal-400 font-bold">戰隊群組：</div>
-            <div class="text-slate-200">「笑死，假認真喔？平常段考也沒看你考前三名啊。」<br>「他不來拉倒，找隔壁班小陳替補，以後戰隊開黑都別找他了啦！」</div>
-          </div>
-          <p>緊接著，你被移出了戰隊的核心討論群。你看著螢幕，胸口像被重重捶了一拳，眼眶泛紅。</p>
-          <p class="inner-thought">在國中階段，被同儕的小圈圈排擠彷彿比世界末日還要可怕。你一個人坐在安靜的房間裡，耳邊彷彿不斷迴盪著他們的嘲笑聲……</p>
+          <p>你在群裡的拒絕換來了冷嘲熱諷，並被移出戰隊核心群。胸口像被重重捶了一拳，耳邊彷彿迴盪著大家的譏笑……</p>
         `,
         options: [
           { id: 'A', text: '受不了被排擠的恐慌，連忙在群裡卑微道歉：「對不起我錯了！我現在馬上上線，大家別踢我！」', next: 'act2_game_streak' },
@@ -902,16 +885,13 @@
           { id: 'D', text: '打開通訊錄，私訊班上另一位同樣認真準備段考的好友，互相抽背公式與彼此打氣。', next: 'act3_breaking_free' }
         ]
       },
-
       'act3_night_binge': {
         act: '第三幕：晝夜失序的黑夜',
         time: '週三 凌晨 01:40',
         place: '厚厚棉被覆蓋下的被窩',
         title: '躲在被窩裡的螢幕藍光',
         body: `
-          <p>爸媽在一小時前就已經敲門熄燈，催促你睡覺。然而在漆黑的房間裡，你把頭蒙在被子裡，手機亮度調到最低，激烈的對戰仍在繼續。</p>
-          <p>空氣悶熱稀薄，汗水浸濕了枕頭。你已經打了將近六個小時，整整十二場對戰！雖然終於升上了段位，但你的心臟劇烈跳動，太陽穴突突狂跳，胃部因為熬夜分泌胃酸隱隱作痛。</p>
-          <p class="inner-thought">時鐘無情地指向凌晨一點四十分。距離早晨六點半的鬧鐘，只剩下不到五個小時。你看著天花板，大腦興奮到了極點，神經緊繃得像隨時會斷掉的弦……</p>
+          <p>連續打了六小時十二場，太陽穴狂跳，心臟劇烈搏動。時鐘指向凌晨一點四十分，距離早晨鬧鐘只剩四個多小時，神經緊繃得像隨時會斷掉的弦……</p>
         `,
         options: [
           { id: 'A', text: '反正都熬到這時候了，乾脆戰到天亮直接去學校考試！', next: 'act4_collapse_morning' },
@@ -920,20 +900,13 @@
           { id: 'D', text: '拿起手機發限動炫耀自己終於打上宗師段位，反覆刷新等待別人的回覆。', next: 'act4_collapse_morning' }
         ]
       },
-
       'act3_midnight_guilt': {
         act: '第三幕：晝夜失序的黑夜',
         time: '週三 凌晨 00:20',
         place: '漆黑的書桌前',
         title: '簡訊通知的冰冷震動',
         body: `
-          <p>課金購買的新造型並沒有帶來奇蹟。對局在十分鐘內被對手無情推平，隊友在語音裡互罵後鳥獸散下線。</p>
-          <p>客廳突然傳來父母手機的震動聲——那是信用卡消費通知簡訊！</p>
-          <div class="chat-bubble p-3 rounded-xl my-2 text-xs sm:text-sm space-y-1">
-            <div class="text-rose-400 font-bold">［銀行消費通知］：</div>
-            <div class="text-slate-200">「您尾號 8812 之信用卡於 23:45 消費 NT$ 890 元，商店名稱：App Store / 遊戲點數交易。」</div>
-          </div>
-          <p class="inner-thought">你的血液瞬間涼了半截。媽媽平時省吃儉用，買菜連十塊錢都要精打細算。明天早上這封簡訊一定會被看見。恐懼、罪惡感與羞愧像一隻巨手狠狠掐住了你的喉嚨……</p>
+          <p>客廳突然傳來媽媽手機的信用卡消費簡訊聲！媽媽買菜連十塊錢都要省，這封簡訊明天一定會被看見。恐懼與羞愧像巨手掐住了你的喉嚨……</p>
         `,
         options: [
           { id: 'A', text: '試圖在媽媽手機醒來前，偷偷拿媽媽的手機把銀行簡訊刪除，裝作什麼都不知道。', next: 'act4_collapse_morning' },
@@ -942,17 +915,13 @@
           { id: 'D', text: '把手機鎖進抽屜，流著眼淚開始痛苦地翻開理化課本，想要用考試成績來彌補過錯。', next: 'act4_hangover_exam' }
         ]
       },
-
       'act3_night_doomscroll': {
         act: '第三幕：晝夜失序的黑夜',
         time: '週三 凌晨 02:15',
         place: '被藍光照亮的臉龐',
         title: '大腦褪黑激素的死局',
         body: `
-          <p>短影音的瀑布流彷彿永無止境。你明明已經累得眼皮打架，但大腦卻像被上了發條的木偶，手指機械性地滑動著。</p>
-          <p>螢幕強烈的藍光直接破壞了大腦松果體的褪黑激素分泌。你處在一種「靈魂枯竭、神經亢奮」的詭異殭屍狀態中。</p>
-          <p>突然間，手機從無力的手中滑脫，「啪」的一聲狠狠砸在你的鼻樑上。劇痛讓你眼淚直流，同時也驚醒了你。</p>
-          <p class="inner-thought">時鐘顯示 <strong>02:15</strong>。離天亮只剩四個小時。你為了一堆明天醒來根本不會記住的搞笑影片，賠上了整個夜晚的睡眠與明天最重要的段考……</p>
+          <p>強烈的藍光抑制了褪黑激素分泌。手機從無力的手中滑脫砸在鼻樑上，劇痛驚醒了你。時鐘顯示 02:15，你為了一堆搞笑短片賠上了整個夜晚的睡眠……</p>
         `,
         options: [
           { id: 'A', text: '撿起手機，竟然還想把剛剛沒看完的那則短影片看完再睡。', next: 'act4_collapse_morning' },
@@ -961,16 +930,13 @@
           { id: 'D', text: '驚慌失措地打開檯燈，想趁最後三個小時通宵死記硬背理化公式。', next: 'act4_collapse_morning' }
         ]
       },
-
       'act3_midnight_cram': {
         act: '第三幕：晝夜失序的黑夜',
         time: '週三 凌晨 03:00',
         place: '凌亂的書桌前',
         title: '咖啡因與恐慌的博弈',
         body: `
-          <p>咖啡因在血管裡咆哮，心跳快得像擂鼓。桌上攤開著理化習作，但你的眼睛每一次掃過文字，大腦都無法理解它們的含義。</p>
-          <p>缺乏睡眠的前額葉大腦，工作記憶容量已經下降到了冰點。你背了下一行，上一行就忘得一乾二淨。</p>
-          <p class="inner-thought">這是一場註定失敗的豪賭。用熬夜來彌補前段時間沉迷短影音與手遊的虧欠，結果只是讓身體的透支程度雪上加霜……</p>
+          <p>咖啡因在血管裡咆哮，心跳極快。缺乏睡眠的大腦工作記憶已降至冰點，背了下一行就忘記上一行，身心透支雪上加霜……</p>
         `,
         options: [
           { id: 'A', text: '再喝一罐能量飲料硬撐，誓死不睡，撐到天亮直接上考場。', next: 'act4_collapse_morning' },
@@ -979,16 +945,13 @@
           { id: 'D', text: '因為恐慌而情緒崩潰，在房間裡低聲抽泣。', next: 'act4_hangover_exam' }
         ]
       },
-
       'act3_midnight_insomnia': {
         act: '第三幕：晝夜失序的黑夜',
         time: '週三 凌晨 01:00',
         place: '安靜卻喧囂的黑暗中',
         title: '心靈內耗的漫漫長夜',
         body: `
-          <p>房間裡很黑，但你的腦海裡卻是一片喧囂。同儕的嘲笑、段考的壓力、沒打贏遊戲的空虛感在你的腦海裡反覆交織。</p>
-          <p>你翻身了幾十次，每一次看手機時鐘，時間又過了一小時。失眠本身帶來的焦慮，比失眠的原因更可怕。</p>
-          <p class="inner-thought">你第一次體會到：原來數位娛樂在關掉螢幕後，依然像幽靈一樣霸佔著神經系統。如果沒有學會如何安撫自己的情緒，就算放下手機，心依然在網路裡漂流……</p>
+          <p>腦海中同儕嘲諷與考砸焦慮反覆交織。你翻身了幾十次，體會到如果沒有學會如何安撫情緒，就算關掉手機，心依然在網路裡漂流……</p>
         `,
         options: [
           { id: 'A', text: '忍不住又把手機拿出來滑，心想「反正睡不著不如繼續滑」。', next: 'act3_night_doomscroll' },
@@ -997,16 +960,13 @@
           { id: 'D', text: '拿起耳機播放大自然的白噪音與雨聲，引導自己專注在呼吸上。', next: 'act4_recovering_dawn' }
         ]
       },
-
       'act3_breaking_free': {
         act: '第三幕：奪回主導權之夜',
         time: '週二 晚間 23:00',
         place: '臥室書桌・平靜的燈光',
         title: '物理隔離的自律時刻',
         body: `
-          <p>你做了一個關鍵的決定：把手機關閉靜音，拿到了客廳的鞋櫃上充電，徹底遠離臥室。</p>
-          <p>回到房間後，那種被訊息追著跑的壓迫感突然消失了。雖然剛開始的二十分鐘手指有點不習慣，但你安靜地把理化最後兩個重點章節複習完畢，並在十一點半準時上床就寢。</p>
-          <p class="inner-thought">黑暗中，房間無比平靜。沒有藍光的刺眼刺激，大腦漸漸放鬆，沉入了深沉香甜的夢鄉……</p>
+          <p>你把手機關靜音放到客廳充電。回到房間後，那種被訊息追著跑的壓迫感消失了。你安靜地複習完最後兩個章節，十一點半準時上床就寢，沉入了深層香甜的夢鄉……</p>
         `,
         options: [
           { id: 'A', text: '睡前對自己默念：「我今天戰勝了誘惑，明天的我一定沒問題。」微笑入睡。', next: 'act4_triumphant_morning' },
@@ -1015,17 +975,13 @@
           { id: 'D', text: '安穩入眠，享受高質量的深層睡眠。', next: 'act4_triumphant_morning' }
         ]
       },
-
       'act4_collapse_morning': {
         act: '第四幕：現實的審判',
         time: '週三 上午 08:30',
         place: '段考考場・第一節理化科',
         title: '考場昏睡與崩解的現實',
         body: `
-          <p>通宵與熬夜的惡果在段考鐘聲響起的瞬間將你擊垮。</p>
-          <p>你的眼睛酸澀得幾乎睜不開，試卷上的文字像在跳舞，握筆的手止不住地顫抖。更可怕的是，早晨出門前，媽媽拿著信用卡簡訊在客廳臉色煞白，問你到底刷了什麼……</p>
-          <p>監考老師走過來敲了敲你的桌子：「同學，不能趴在桌上睡覺！」你猛然驚醒，發現自己竟然在作答時間昏睡了二十分鐘，試卷大半空白！</p>
-          <p class="inner-thought">虛擬世界的榮譽在殘酷的現實面前像泡沫一樣粉碎。課金買來的造型無法替你寫出理化答案，戰隊隊友也不會替你的未來負一絲責任……</p>
+          <p>監考老師敲著你的桌子：「同學，不能趴著睡覺！」你猛然驚醒，發現自己在作答時間昏睡了二十分鐘，試卷大半空白！出門前媽媽拿著信用卡簡訊臉色煞白的畫面浮現眼前……</p>
         `,
         options: [
           { id: 'A', text: '在絕望中強行把剩下的選擇題全部猜「C」，考試結束後趴在桌上崩潰痛哭。', next: 'end_addiction_collapse' },
@@ -1034,16 +990,13 @@
           { id: 'D', text: '決定放學回家後，向父母坦承所有的沉迷與刷卡行為，接受一切處分與悔改。', next: 'end_painful_redemption' }
         ]
       },
-
       'act4_hangover_exam': {
         act: '第四幕：現實的審判',
         time: '週三 上午 10:15',
         place: '學校走廊飲水機旁',
         title: '勉強支撐的低谷',
         body: `
-          <p>第一節考完，你的分數注定不盡人意。大腦像被灌了鉛一樣沉重，整個人渾渾噩噩。</p>
-          <p>這時，昨晚在語音裡逼你打遊戲的戰隊隊長走過來，得意地向旁邊的人炫耀：「昨晚最後一把我拿五連殺，太爽了！」而當你看向他的臉龐，同樣掛著濃濃的黑眼圈，第一節理化他也考得一塌糊塗。</p>
-          <p class="inner-thought">為了在虛擬世界裡爭那一口氣，大家都付出了慘痛的代價。你捧起一把冷水潑在自己臉上，冰涼的水滴讓你徹底清醒過來……</p>
+          <p>第一節考完分數注定慘烈。戰隊隊長走過來炫耀昨晚拿五連殺，但他同樣頂著大黑眼圈。為了虛擬排位爭一口氣，大家都付出了慘痛代價。你用冷水潑臉，徹底清醒過來……</p>
         `,
         options: [
           { id: 'A', text: '跟著他們繼續討論昨晚的對局，在互相安慰中試圖減輕考砸的痛苦。', next: 'end_social_fomo_trap' },
@@ -1052,17 +1005,13 @@
           { id: 'D', text: '把昨夜的心情寫成日記，作為自己青春期最深刻的一記教訓。', next: 'end_painful_redemption' }
         ]
       },
-
       'act4_recovering_dawn': {
         act: '第四幕：現實的審判',
         time: '週三 早晨 06:45',
         place: '臥室窗前・晨曦初露',
         title: '晨光中的及時停損',
         body: `
-          <p>雖然昨夜有些輾轉反側，但因為你及時放下了手機，後半夜得到了寶貴的深層休息。</p>
-          <p>鬧鐘響起時，你雖然略感疲倦，但大腦思緒清晰。早餐時，陽光照進客廳，你跟父母道了一句早安，精神飽滿地背上書包出門。</p>
-          <p>考場上，昨晚複習的浮力與力學公式清晰地浮現在腦海中。你冷靜地答完了每一道題目。</p>
-          <p class="inner-thought">你第一次體會到：<strong>「及時煞車」是多麼偉大的一種能力</strong>。在慾望的懸崖邊停下腳步，生活就完全是另一種模樣……</p>
+          <p>因為及時放下手機，後半夜得到了深層休息。理化考卷發下時公式清晰浮現。你第一次體會到：「及時煞車」是多麼偉大的一種能力，在慾望懸崖邊停下腳步，生活是完全不同的模樣。</p>
         `,
         options: [
           { id: 'A', text: '考完試後，主動約朋友去籃球場打一場暢快淋漓的球，享受現實世界的汗水與陽光。', next: 'end_master_of_autonomy' },
@@ -1071,17 +1020,13 @@
           { id: 'D', text: '體會到了掌控自己生活的充實感，對未來的挑戰充滿信心。', next: 'end_master_of_autonomy' }
         ]
       },
-
       'act4_triumphant_morning': {
         act: '第四幕：現實的審判',
         time: '週三 早晨 07:15',
         place: '晨光灑落的校園大道',
         title: '自信從容的主控者',
         body: `
-          <p>充足的 7.5 小時高質量睡眠，讓你的每一步都輕盈無比。</p>
-          <p>走進教室時，大部分同學都癱在桌上哈欠連天。你拿出複習重點，氣定神閒地做最後瀏覽。理化考卷發下來時，你的筆尖如行雲流水，所有的付出都得到了最好的回報。</p>
-          <p>更棒的是，下午考完後，你可以在陽光下毫無罪惡感地跟朋友打手遊放鬆，享受真正的遊戲樂趣，而不是被遊戲所奴役！</p>
-          <p class="inner-thought">你不再是科技的奴隸，而是科技的主人。你掌握了世界上最強大的超能力——<strong>自我主宰的力量</strong>！</p>
+          <p>充沛的睡眠讓你的腳步無比輕盈。答題時行雲流水，下午考完後你可以在陽光下毫無罪惡感地跟朋友玩遊戲放鬆。你掌握了世界上最強大的超能力——自我主宰的力量！</p>
         `,
         options: [
           { id: 'A', text: '考完後開心地與朋友連線一小時，時間一到準時下線，享受均衡健全的青春生活！', next: 'end_master_of_autonomy' },
@@ -1093,7 +1038,187 @@
     };
 
     // =========================================================================
-    // ENDINGS FOR BOTH STORIES
+    // STORY 3: 誘騙與隱私篇《螢幕對面的「完美朋友」》 (NEW!)
+    // =========================================================================
+    const GROOMING_STORY_GRAPH = {
+      'act1_grooming_start': {
+        act: '第一幕：特別的知己',
+        time: '週五 晚間 20:30',
+        place: '自家臥室・遊戲通訊群組',
+        title: '深夜傳來的私訊與贈禮',
+        body: `
+          <p>這週你在學校過得很不順心。段考退步被父母訓斥，班上分組又沒跟要好的朋友分在一組，心裡憋了一肚子的委屈與孤單。</p>
+          <p>晚上你在常玩的連線遊戲 Discord 頻道發了一句：「唉，生活好累，根本沒人懂我。」</p>
+          <p>不到五分鐘，伺服器裡排行第一的榮譽玩家<strong>「晨曦」</strong>突然敲了你的私人訊息：</p>
+          <div class="chat-bubble p-3 rounded-xl my-2 text-xs sm:text-sm space-y-1">
+            <div class="text-rose-400 font-bold">晨曦（大四大學生・遊戲大神）：</div>
+            <div class="text-slate-200">「怎麼啦小可愛？我看你最近遊戲打得心不在焉的。大人說的話聽聽就好啦，你已經比同齡人懂事太多了。對了，看你一直想要這季的典藏造型，送你當開心的禮物吧！［禮物代碼］」</div>
+          </div>
+          <p>你看著價值將近千元的限定造型兌換碼，又看著他充滿體貼、溫柔的安慰字句，孤單的心防悄悄被打開了一條縫隙……</p>
+        `,
+        options: [
+          { id: 'A', text: '興奮地收下禮物並熱情回覆：「天啊謝謝晨曦哥！你人太好了吧，你是世界上唯一懂我的人！」把學校和家裡的煩惱全盤傾訴。', next: 'act2_grooming_trap' },
+          { id: 'B', text: '收下禮物並禮貌道謝，但心裡保持一絲界線，只跟他聊遊戲上的打法與排位攻略，不聊私生活。', next: 'act2_cautious_friend' },
+          { id: 'C', text: '婉拒禮物：「謝謝你的安慰，但這個禮物太貴重了，我們只是網友我不能收。」', next: 'act2_boundary_firm' },
+          { id: 'D', text: '覺得一個不認識的成年人突然對自己這麼好有點莫名其妙，已讀後沒有回覆，關閉對話視窗。', next: 'act2_boundary_firm' }
+        ]
+      },
+
+      'act2_grooming_trap': {
+        act: '第二幕：溫柔的陷阱',
+        time: '兩週後 週六 深夜 23:45',
+        place: '暗室中的手機螢幕',
+        title: '真心話與越界的試探',
+        body: `
+          <p>這兩個星期以來，晨曦每天都會跟你早安晚安，聽你抱怨老師、聊同學八卦。他甚至叮囑你：「這些心事是我們兩個人的秘密小天地喔，不要告訴你爸媽，他們老一輩的不會懂我們的。」</p>
+          <p>接近午夜，晨曦傳來了一條語氣低落的訊息：「我今天跟家裡吵架心情好糟……現在世界上只有你是我最信任的依靠了。」</p>
+          <p>緊接著，他傳來一張模模糊糊的自拍照，照片裡他剛洗完澡圍著浴巾，露出上半身：「我們交換真心話吧！我把我最真實的一面給你看，你能不能也拍一張換衣服時的照片給我？證明你也是全心信任我的……」</p>
+          <p class="inner-thought">看著螢幕，你的心臟狂跳。雖然內心深處警鈴大作，但耳邊彷彿迴盪著他這兩週的溫柔陪伴。如果你拒絕他，他會不會覺得你背叛了他，再也不理你了？</p>
+        `,
+        options: [
+          { id: 'A', text: '害怕失去這個唯一懂自己的溫柔知己，咬著牙在被窩裡脫下睡衣，拍了一張私密身體照片傳了過去……', next: 'act3_blackmail_strike' },
+          { id: 'B', text: '覺得很不妥當，委婉推託：「我真的不習慣拍這種照片，而且我媽隨時會進來，我們用語音聊別的好不好？」', next: 'act3_emotional_guilt' },
+          { id: 'C', text: '渾身起雞皮疙瘩，立刻清醒：「這太奇怪了！學校宣導過不能向任何人傳送身體私密照，請你不要這樣！」', next: 'act3_defensive_alert' },
+          { id: 'D', text: '嚇得手心冒冷汗，沒有回訊，立刻截圖對話紀錄後把手機塞到枕頭底下，整夜心神不寧。', next: 'act3_defensive_alert' }
+        ]
+      },
+
+      'act2_cautious_friend': {
+        act: '第二幕：溫柔的陷阱',
+        time: '一週後 週日 下午 16:20',
+        place: '自家客廳',
+        title: '步步進逼的底線刺探',
+        body: `
+          <p>儘管你只聊遊戲，晨曦卻開始越來越頻繁地探聽你的私人生活：「你讀哪所國中啊？平常放學都走哪條路？要不要跟我互追私人 IG 小帳？」</p>
+          <p>今天下午，他甚至在遊戲語音裡半開玩笑地說：「大家都互換過生活照了，只有你一直神秘兮兮的。傳一張你穿便服露鎖骨的自拍照來看看嘛，不然我就要退隊友囉。」</p>
+          <p class="inner-thought">原本正常的隊友交流，開始充滿了壓迫感。你敏銳地感覺到，對方的友善背後似乎帶有一種有目的性的索求……</p>
+        `,
+        options: [
+          { id: 'A', text: '為了維持隊伍和諧，隨手挑了一張穿背心的自拍照發過去。', next: 'act3_blackmail_strike' },
+          { id: 'B', text: '嚴肅拒絕：「我不想透露現實個資和照片，如果一定要這樣才能打遊戲，那我退出戰隊好了。」', next: 'act3_defensive_alert' },
+          { id: 'C', text: '含糊其辭轉移話題，但在 Discord 上將他的私人訊息直接設定為「拒收陌生人私訊」。', next: 'act3_defensive_alert' },
+          { id: 'D', text: '把這段對話拿給班上要好的死黨看，問他們：「這個網友是不是有點怪怪的？」', next: 'act3_defensive_alert' }
+        ]
+      },
+
+      'act2_boundary_firm': {
+        act: '第二幕：溫柔的陷阱',
+        time: '隔天 晚間 20:00',
+        place: '書桌前',
+        title: '惱羞成怒的原形畢露',
+        body: `
+          <p>因為你的拒絕與冷淡，晨曦原本溫柔體貼的語氣突然一百八十度大轉變。</p>
+          <p>他在 Discord 私訊裡傳來冷嘲熱諷：「裝什麼清高啊？送你禮物你還擺臉色，浪費我時間！」</p>
+          <p>更過分的是，他隨後把你在語音頻道裡偶爾提到過的話斷章取義，在伺服器公頻造謠說你「白嫖別人禮物不認人」。</p>
+          <p class="inner-thought">你看著螢幕，背後竄起一陣寒意。幸好當初沒有把更多個人秘密與照片交給這個人，否則現在會被拿來如何威脅自己，後果不堪設想……</p>
+        `,
+        options: [
+          { id: 'A', text: '氣不過跟他在公頻公開對罵，把戰火越燒越大。', next: 'act3_defensive_alert' },
+          { id: 'B', text: '保留當初拒絕禮物的完整截圖，向伺服器管理員與平台官方提出惡意騷擾檢舉，並徹底封鎖他。', next: 'act4_decisive_triumph' },
+          { id: 'C', text: '默默退出這個伺服器，提醒身邊同樣在這個群裡的朋友注意這個人。', next: 'act4_decisive_triumph' },
+          { id: 'D', text: '感到害怕被公審，卑微地把當初的禮物等值金額轉帳退給他，希望息事寧人。', next: 'act3_emotional_guilt' }
+        ]
+      },
+
+      'act3_blackmail_strike': {
+        act: '第三幕：面具下的獠牙',
+        time: '週日 早晨 08:30',
+        place: '臥室床上・冰冷的早晨',
+        title: '瞬間變臉的數位勒索',
+        body: `
+          <p>照片剛送出不到十分鐘，昨晚晨曦所有的溫柔與體貼瞬間消失得無影無蹤！</p>
+          <p>早晨你一醒來，手機跳出晨曦發來的幾張可怕截圖：一張是你昨晚傳的私密裸露照片，另一張是他肉搜出來的、你學校的公開 IG 告白牆與你導師的名字！</p>
+          <div class="chat-bubble p-3 rounded-xl my-2 text-xs sm:text-sm space-y-1">
+            <div class="text-rose-400 font-bold">晨曦（勒索者）：</div>
+            <div class="text-slate-200">「身材不錯嘛。今天中午前，再拍一段三十秒全身無遮擋的影片給我，否則我就把這張照片傳給你學校校長、發到你們全校匿名版！讓大家都看看你的真面目！」</div>
+          </div>
+          <p class="inner-thought">你的血液瞬間凝固，胃部劇烈翻攪想吐，眼淚止不住地湧出。你掉進了最深、最可怕的<strong>「數位性勒索（Sextortion）」</strong>深淵！客廳傳來父母準備早餐的笑聲，你覺得自己的人生徹底完了……</p>
+        `,
+        options: [
+          { id: 'A', text: '恐懼到精神崩潰，以為「只要再順從他一次他就會放過我」，哭著打開相機準備再拍影片。', next: 'end_abyss_nightmare' },
+          { id: 'B', text: '向對方苦苦哀求，並拿出自己壓歲錢的戶頭：「我把我所有的零用錢 3000 元都轉給你，求求你把照片刪掉好不好？」', next: 'end_blackmail_slave' },
+          { id: 'C', text: '雖然手抖得像觸電，但突然想起輔導課老師說的「絕對不要順從威脅」，立刻忍住眼淚長截圖對話存證。', next: 'act4_rescue_crossroad' },
+          { id: 'D', text: '把心一橫，抱著就算被爸媽打死罵慘也認了的決心，衝出房間把手機塞給媽媽：「媽……請妳救救我！」', next: 'end_courage_family_shield' }
+        ]
+      },
+
+      'act3_emotional_guilt': {
+        act: '第三幕：面具下的獠牙',
+        time: '週日 上午 10:00',
+        place: '自家客廳',
+        title: '步步進逼的情緒勒索',
+        body: `
+          <p>你昨夜的推託，換來的是晨曦長篇大論的羞辱與情勒：</p>
+          <div class="chat-bubble p-3 rounded-xl my-2 text-xs sm:text-sm space-y-1">
+            <div class="text-rose-400 font-bold">晨曦：</div>
+            <div class="text-slate-200">「我為了你付出這麼多時間跟金錢，你連一張照片都不肯傳？你真的很虛偽、很自私。你信不信我去你們學校宣傳你的真面目，說你騙我感情跟錢？」</div>
+          </div>
+          <p class="inner-thought">雖然你沒有傳照片，但對方的恐嚇與扭曲事實讓你背脊發涼。你開始陷入深深的自我懷疑：是不是真的是自己的錯？</p>
+        `,
+        options: [
+          { id: 'A', text: '被罪惡感壓倒，為了平息他的憤怒，妥協傳了一張較清涼的居家照片過去……', next: 'act3_blackmail_strike' },
+          { id: 'B', text: '意識到這完全是典型的「恐怖情人情勒與控制」，堅決打字回覆：「你這是恐嚇罪，我現在就截圖去報警！」隨後封鎖。', next: 'act4_rescue_crossroad' },
+          { id: 'C', text: '默默忍受委屈，把整件事情藏在心裡，退出所有社交軟體，整整一週食不下嚥。', next: 'end_close_call_survivor' },
+          { id: 'D', text: '主動找學校輔導老師傾訴這段經歷，尋求心理支持與應對方式。', next: 'end_professional_rescue' }
+        ]
+      },
+
+      'act3_defensive_alert': {
+        act: '第三幕：面具下的獠牙',
+        time: '週日 下午 14:00',
+        place: '臥室書桌前',
+        title: '築起資安的鋼鐵防線',
+        body: `
+          <p>看著對方的糾纏與越界索求，你意識到這絕非普通的網友交流，而是典型針對青少年的<strong>「線上誘騙（Grooming）」</strong>！</p>
+          <p>你立刻打開電腦，將自己所有社群平台（IG、FB、Discord）的個人資料設為高度隱私，隱藏了真實姓名、就讀學校與生活動態，切斷了對方可能的肉搜管道。</p>
+          <p class="inner-thought">那一刻你深刻體會到：網路上的溫柔人設往往只是誘捕獵物的蜜糖。在螢幕背後，我們永遠不知道敲鍵盤的人藏著怎樣的獠牙……</p>
+        `,
+        options: [
+          { id: 'A', text: '將對方的帳號與對話完整截圖，向教育部 iWIN 網路內容防護機構提出線上申訴檢舉。', next: 'act4_decisive_triumph' },
+          { id: 'B', text: '在學校班會課的防範犯罪宣導時間，主動向老師分享這段識破誘騙的經歷，提醒全班同學。', next: 'end_master_digital_defender' },
+          { id: 'C', text: '慶幸自己守住了底線，徹底封鎖該帳號，回歸平靜專注的現實生活。', next: 'end_close_call_survivor' },
+          { id: 'D', text: '與家人討論這起事件，跟父母一起建立健康的網路交友共識。', next: 'end_courage_family_shield' }
+        ]
+      },
+
+      'act4_rescue_crossroad': {
+        act: '第四幕：破網與求助',
+        time: '週日 中午 11:45',
+        place: '緊閉房門的臥室',
+        title: '決定命運的最後十字路口',
+        body: `
+          <p>時間一分一秒流逝，晨曦發來的倒數計時像絞索一樣步步逼近。</p>
+          <p>桌面上攤開著存滿截圖的手機。你站在房間門口，深知這一步將決定你未來的走向：是任由恐懼將自己吞噬，還是借助現實法律與保護機制的力量，把這個黑手斬斷！</p>
+          <p class="inner-thought">大人也許會震驚、也許會責備，但比起照片真正外流後無止境的折磨，尋求信任大人的庇護是唯一能打破黑暗的光芒……</p>
+        `,
+        options: [
+          { id: 'A', text: '撥打 iWIN 網路內容防護專線（02-2577-5118），在專業社工的指導下啟動性影像阻斷下架機制。', next: 'end_professional_rescue' },
+          { id: 'B', text: '鼓起平生最大的勇氣，走向客廳跟父母坦白一切，由父母陪同前往少年警察隊正式報案。', next: 'end_courage_family_shield' },
+          { id: 'C', text: '因為恐懼被責備而退縮，默默關機躲進被窩裡哭泣，任由時間流逝。', next: 'end_abyss_nightmare' },
+          { id: 'D', text: '私訊向最信任的學校班導師或輔導主任求助，請老師協助協調家長與警方。', next: 'end_professional_rescue' }
+        ]
+      },
+
+      'act4_decisive_triumph': {
+        act: '第四幕：破網與求助',
+        time: '週日 傍晚 17:00',
+        place: '客廳電腦前',
+        title: '正義機制的反擊',
+        body: `
+          <p>你的檢舉迅速獲得了回應。遊戲伺服器管理員核對截圖後，證實該帳號涉及對多名未成年玩家進行誘騙索照，立即將該帳號永封並提交電磁紀錄給警方網絡犯罪調查科。</p>
+          <p>看著官方發來的封鎖致謝通知，你長舒了一口氣。你的冷靜與勇敢，不僅保護了自己，更阻止了下一個無辜同學受害！</p>
+        `,
+        options: [
+          { id: 'A', text: '把整個誘騙過程整理成反思日記，提醒自己永遠保持清醒的數位界線。', next: 'end_master_digital_defender' },
+          { id: 'B', text: '在班級群組裡分享 iWIN 網站的兒少防誘騙宣導懶人包。', next: 'end_master_digital_defender' },
+          { id: 'C', text: '安心回到自己的真實生活中，享受陽光下健康溫暖的校園人際。', next: 'end_close_call_survivor' },
+          { id: 'D', text: '向學校輔導老師建議舉辦一場「網路交友陷阱與防範」主題講座。', next: 'end_master_digital_defender' }
+        ]
+      }
+    };
+
+    // =========================================================================
+    // ENDINGS FOR ALL THREE STORIES
     // =========================================================================
     const ALL_ENDINGS = {
       // Speech Story Endings
@@ -1102,17 +1227,8 @@
         badge: '震撼教育結局',
         badgeClass: 'bg-rose-950 text-rose-300 border border-rose-800',
         title: '少年法庭的傳票與家庭風暴',
-        desc: '因為公開起鬨、轉發改圖與涉嫌妨害名譽，全案正式進入司法偵辦程序。父母被迫請假陪同你出庭接受少年調查官訊問，除了面臨民事連帶賠償數萬元精神撫慰金外，你也被裁定保護管束處分。你終於明白，螢幕上的「開玩笑」，在現實法律天平上有著沉重的刑事與民事代價。',
-        analysis: `
-          <div class="space-y-3">
-            <p><strong>📌 核心法治剖析：</strong></p>
-            <ul class="list-disc list-inside space-y-1 text-slate-300">
-              <li><strong>刑法第 309 條【公然侮辱罪】與第 310 條【誹謗罪】</strong>：在多數人可見的公開帳號或群組中，使用侮辱性字眼或散布貶損他人名譽之圖文，皆屬違法犯罪。即使只是轉發或跟風改圖，依然構成共同侵權。</li>
-              <li><strong>民法第 187 條【父母連帶賠償】</strong>：限制行為能力人（滿 7 歲未滿 18 歲）不法侵害他人名譽或隱私權時，其法定代理人（父母）必須負連帶損害賠償責任，實務判決動輒數萬至數十萬元賠償。</li>
-              <li><strong>少年事件處理法</strong>：青少年觸犯刑法並非「沒事」，會由少年法院進行調查，留下司法人格檔案，付出慘痛的人生代價。</li>
-            </ul>
-          </div>
-        `,
+        desc: '全案正式進入司法偵辦程序。父母被迫請假陪同出庭，除了面臨民事連帶賠償數萬元精神撫慰金外，你也遭裁定保護管束處分。你終於明白，螢幕上的「開玩笑」，在現實法律天平上有著沉重的代價。',
+        analysis: `<p><strong>📌 核心法治剖析：</strong>刑法公然侮辱罪、加重誹謗與民法第187條法定代理人家長連帶賠償。青少年並非免責，少年法庭會留下司法人格檔案。</p>`,
         certTitle: '法律思辨重修者'
       },
       'end_bystander_regret': {
@@ -1120,16 +1236,8 @@
         badge: '遺憾反思結局',
         badgeClass: 'bg-slate-800 text-slate-300 border border-slate-700',
         title: '旁觀者的長夜與難言的愧疚',
-        desc: '雖然法律的利刃沒有直接砍向你，但看著敏萱受創的背影、看著全班互不信任的冷漠氣氛，你心中留下了一根拔不掉的刺。你明白了什麼是「旁觀者的沉默」——當所有人都以為「不關我的事」時，冷漠本身就成了惡意最大的推手。',
-        analysis: `
-          <div class="space-y-3">
-            <p><strong>📌 社會心理學剖析：</strong></p>
-            <ul class="list-disc list-inside space-y-1 text-slate-300">
-              <li><strong>旁觀者效應（Bystander Effect）與責任分散</strong>：在群體網路霸凌中，多數人並非真正具有惡意，而是誤以為「別人會出面」、「大家都沒說話應該還好」。</li>
-              <li><strong>沉默的代價</strong>：研究指出，校園霸凌的旁觀者在事後往往會承受長期的內疚與道德自我貶抑。學會打破冷漠，是成長中最艱難卻最重要的一堂課。</li>
-            </ul>
-          </div>
-        `,
+        desc: '雖然法律的利刃沒有直接砍向你，但看著敏萱受創的背影與班級的冷漠氣氛，心中留下難言的愧疚。你明白了：當所有人都以為「不關我的事」時，冷漠本身就成了惡意最大的推手。',
+        analysis: `<p><strong>📌 旁觀者效應（Bystander Effect）：</strong>在群體網路霸凌中，多數人的沉默會被解讀為默許。打破冷漠、發出理性聲音，是成長中極為關鍵的品格。</p>`,
         certTitle: '道德勇氣沉思者'
       },
       'end_reconcile_redemption': {
@@ -1137,16 +1245,8 @@
         badge: '勇氣擔當結局',
         badgeClass: 'bg-blue-950 text-blue-300 border border-blue-800',
         title: '勇敢認錯的真誠和解',
-        desc: '面對危機與過錯，你沒有選擇狡辯與推託，而是勇敢地面對自己脆弱與隨波逐流的一面，主動承擔責任向受傷的同學深深道歉。這份勇氣為你贏得了敏萱與家長的諒解，也化解了一場原本可能摧毀多個家庭的司法訴訟。你學會了為自己的每一個言行負責。',
-        analysis: `
-          <div class="space-y-3">
-            <p><strong>📌 修復式正義（Restorative Justice）價值：</strong></p>
-            <ul class="list-disc list-inside space-y-1 text-slate-300">
-              <li><strong>承擔的勇氣</strong>：人人都可能在青少年時期犯錯或迷惘，但真正的成熟在於事後的「真誠面對」與「積極修復」。</li>
-              <li><strong>司法實務考量</strong>：在少事法與民事侵權案件中，行為人是否具備真誠悔意、是否主動道歉並消除不良影響，是決定法官是否裁定不付審理或和解撤告的關鍵分水嶺。</li>
-            </ul>
-          </div>
-        `,
+        desc: '你沒有選擇狡辯與推託，而是勇敢地面對過錯，主動向受傷的同學深深道歉。這份勇氣為你贏得了敏萱與家長的諒解，也化解了一場原本可能摧毀多個家庭的司法訴訟。',
+        analysis: `<p><strong>📌 修復式正義（Restorative Justice）：</strong>在青少年司法實務中，事後的真誠悔意與積極補救，是獲取受害者諒解與減免法律處分的最關鍵因素。</p>`,
         certTitle: '真誠擔當實踐者'
       },
       'end_quiet_guardian': {
@@ -1154,16 +1254,8 @@
         badge: '溫暖守護結局',
         badgeClass: 'bg-emerald-950 text-emerald-300 border border-emerald-800',
         title: '安靜的守護者・風暴中的避風港',
-        desc: '你沒有用尖銳的對立去對罵，而是用最溫柔、堅定的同理心，在受害者最無助的時刻陪伴在她身邊。你的一條訊息、早晨校門口的一同前行，成功把一個差點被惡意吞噬的靈魂拉回了岸邊。你證明了：善良從不需要大聲喧嘩，它是黑暗中最溫暖的微光。',
-        analysis: `
-          <div class="space-y-3">
-            <p><strong>📌 數位同理心（Digital Empathy）的力量：</strong></p>
-            <ul class="list-disc list-inside space-y-1 text-slate-300">
-              <li><strong>打破受害者的孤立感</strong>：霸凌最可怕的不是言語本身，而是讓受害者產生「全世界都在嘲笑我、沒有人會幫我」的滅頂絕望。只要有一位同學伸出援手，受害者的創傷後壓力發生率就會驟降 60% 以上。</li>
-              <li><strong>同理心即力量</strong>：螢幕遮蔽了對方的眼淚，但有素養的數位公民能夠穿透冷冰冰的螢幕，看見對面跳動的心。</li>
-            </ul>
-          </div>
-        `,
+        desc: '你用最溫柔、堅定的同理心，在受害者最無助的時刻陪伴在她身邊。你證明了：善良從不需要大聲喧嘩，它是黑暗中最溫暖的微光。',
+        analysis: `<p><strong>📌 數位同理心（Digital Empathy）：</strong>只要有一位同學伸出援手陪伴，受害者的創傷後壓力發生率就會驟降 60% 以上。</p>`,
         certTitle: '守護善意天使'
       },
       'end_civic_courage': {
@@ -1171,37 +1263,19 @@
         badge: '卓越公民結局',
         badgeClass: 'bg-gradient-to-r from-indigo-950 via-blue-950 to-slate-900 text-indigo-300 border border-indigo-700',
         title: '破局的勇氣・卓越數位公民',
-        desc: '在盲從起鬨與威脅沉默的洪流中，你展現了令人肅然起敬的思辨深度與道德勇氣！你不僅堅守法律與自律的底線，更用智慧引導同儕走出迷失，化解了一場致命的集體霸凌危機。你成為了班級中最值得信賴的基石，是未來數位社會中最不可或缺的堅定公民！',
-        analysis: `
-          <div class="space-y-3">
-            <p><strong>📌 現代成熟數位公民的三大支柱：</strong></p>
-            <ul class="list-disc list-inside space-y-1 text-slate-300">
-              <li><strong>獨立思辨（Critical Thinking）</strong>：不被群體的笑鬧或同儕壓力裹挾，永遠保留「這真的妥當嗎？」的內在審問。</li>
-              <li><strong>法治智慧（Legal Literacy）</strong>：清楚了解《個資法》、《刑法名譽罪章》與自保途徑（截圖存證、尋求師長與 iWIN 通報），善用制度解決問題。</li>
-              <li><strong>正義勇氣（Moral Courage）</strong>：在別人不敢發言時站出來踩下煞車，用溫和而堅定的力量引導社群走向良善。</li>
-            </ul>
-          </div>
-        `,
+        desc: '在盲從起鬨與威脅沉默的洪流中，你展現了令人肅然起敬的思辨深度與道德勇氣！你化解了一場致命的集體霸凌危機，成為班級中最值得信賴的基石。',
+        analysis: `<p><strong>📌 卓越數位公民三大支柱：</strong>批判性獨立思考、善用法治與校園保護制度、敢於在關鍵時刻堅守正義。</p>`,
         certTitle: '卓越數位公民楷模'
       },
 
-      // Addiction Story Endings (NEW!)
+      // Addiction Story Endings
       'end_addiction_collapse': {
         symbol: '💥',
         badge: '身心崩解結局',
         badgeClass: 'bg-rose-950 text-rose-300 border border-rose-800',
         title: '失控的代價・信任破產與考場崩潰',
-        desc: '在虛擬世界的段位狂歡與課金誘惑中，你徹底丟失了生活的煞車皮。段考試卷大半空白、未經同意偷刷信用卡的家庭風暴爆發，手機被全面沒收，親子信任降至冰點。你深刻體會到：多巴胺的狂歡是短暫的，但現實世界的透支與裂痕，卻需要數個月甚至數年才能慢慢修補。',
-        analysis: `
-          <div class="space-y-3">
-            <p><strong>📌 心理學剖析：成癮的三大特徵</strong></p>
-            <ul class="list-disc list-inside space-y-1 text-slate-300">
-              <li><strong>耐受性（Tolerance）</strong>：需要花越來越長的時間、追求更刺激的勝負或課金，才能獲得同樣的滿足感。</li>
-              <li><strong>戒斷反應（Withdrawal）</strong>：放下手機就心慌、坐立難安、暴躁易怒。</li>
-              <li><strong>強迫性使用（Compulsion）</strong>：明知道明天考試重要、明知道偷刷卡不對，理智卻無法阻止手指的操作。當出現這三點時，請勇於向輔導老師或心理專業人員求助。</li>
-            </ul>
-          </div>
-        `,
+        desc: '段考空白、未經同意偷刷卡的家庭風暴爆發，手機被全面沒收。多巴胺的狂歡是短暫的，但現實世界的透支與裂痕，需要數倍時間才能修補。',
+        analysis: `<p><strong>📌 成癮三大特徵：</strong>耐受性提高、戒斷焦慮、強迫性使用。大腦神經迴路被劫持時，單靠意志力往往無效，應主動向輔導專業求助。</p>`,
         certTitle: '重生覺察者'
       },
       'end_social_fomo_trap': {
@@ -1209,16 +1283,8 @@
         badge: '社交枷鎖結局',
         badgeClass: 'bg-amber-950 text-amber-300 border border-amber-800',
         title: '被同儕焦慮綁架的空虛贏家',
-        desc: '你為了「不被戰隊踢出」而犧牲了睡眠與學業。然而當你拿到那個虛擬段位後，內心卻只有無盡的空虛。在現實中，你的精神渙散、身體發炎、與家人的關係緊張。你意識到：真正的朋友不會拿排位賽來勒索你的健康，你不過是成為了群體焦慮的替死鬼。',
-        analysis: `
-          <div class="space-y-3">
-            <p><strong>📌 什麼是 FOMO（Fear of Missing Out，錯失恐懼症）？</strong></p>
-            <ul class="list-disc list-inside space-y-1 text-slate-300">
-              <li>青少年極度渴望群體歸屬感，害怕「只要我一天沒跟上話題/排位，我就會被世界拋棄」。</li>
-              <li>這種焦慮會讓人不斷出讓自己的健康底線與原則。學習建立「健康的社交界線」，懂得適時對朋友說「今天不行」，是迈向成熟最關鍵的一步。</li>
-            </ul>
-          </div>
-        `,
+        desc: '為了「不被戰隊踢出」而犧牲睡眠學業，段位到手後內心卻只有無盡的空虛。真正的朋友不會拿遊戲段位勒索你的健康，你不過成了同儕焦慮的囚徒。',
+        analysis: `<p><strong>📌 破除 FOMO（錯失恐懼症）：</strong>學習建立健康的社交界線，懂得適時對朋友說「今天不行」，是迈向成熟最關鍵的一步。</p>`,
         certTitle: '邊界覺醒探險家'
       },
       'end_seeking_help': {
@@ -1226,16 +1292,8 @@
         badge: '勇敢求助結局',
         badgeClass: 'bg-blue-950 text-blue-300 border border-blue-800',
         title: '承認脆弱的勇氣・向陽的第一步',
-        desc: '雖然這次段考遭遇了挫折，但你做出了極其勇敢的決定——你沒有繼續說謊掩飾，而是主動敲開輔導室的門，承認自己的成癮與失控。在輔導老師與家長的理解陪伴下，你開始接受專業的時間管理與數位行為矯正。跌倒不可恥，懂得伸出手求助的人，最值得敬佩。',
-        analysis: `
-          <div class="space-y-3">
-            <p><strong>📌 求助是智慧，不是軟弱：</strong></p>
-            <ul class="list-disc list-inside space-y-1 text-slate-300">
-              <li>成癮本質上是大腦獎勵神經迴路被劫持的生理現象，單靠未成年人的「意志力」往往極難單打獨鬥。</li>
-              <li>主動向信任的大人（師長、輔導室、醫師）坦白，建立外部支持系統（如螢幕時間管理、現實運動興趣代償），是打破成癮循環最科學有效的方法。</li>
-            </ul>
-          </div>
-        `,
+        desc: '你做出了極其勇敢的決定——沒有繼續說謊掩飾，而是主動向輔導老師與家長坦白求助，開始科學的時間管理與數位行為調適。懂得求助的人最值得敬佩。',
+        analysis: `<p><strong>📌 求助是智慧，不是軟弱：</strong>藉由建立外部支持系統（如螢幕時間限制、實體運動興趣替代），是打破成癮循環最科學有效的方法。</p>`,
         certTitle: '勇氣求助先鋒'
       },
       'end_painful_redemption': {
@@ -1243,16 +1301,8 @@
         badge: '痛定思痛結局',
         badgeClass: 'bg-teal-950 text-teal-300 border border-teal-800',
         title: '及時停損的成長痛・生命的煞車皮',
-        desc: '雖然考試成績受到了影響，但你及時在懸崖邊踩下了煞車，沒有讓情況演變成偷刷卡或全面崩盤。你主動刪除了耗費過多時間的 App，向父母誠懇道歉並制定了新的時間表。這場痛楚成為你青春期最棒的疫苗，讓你提早學會了自我節制的分寸。',
-        analysis: `
-          <div class="space-y-3">
-            <p><strong>📌 及時停損的心理學意義：</strong></p>
-            <ul class="list-disc list-inside space-y-1 text-slate-300">
-              <li>在投資與行為決策中，能夠放棄已經投入的「沉沒成本」（例如：已經打了兩小時，不差再打一小時的念頭），是極高階的理性能力。</li>
-              <li>承認錯誤、及時止損，是保護人生長遠資產（健康、信任、學業）的最重要技能。</li>
-            </ul>
-          </div>
-        `,
+        desc: '及時在懸崖邊踩下了煞車，沒有讓情況演變成偷刷卡或全面崩盤。這場痛楚成為你青春期最棒的疫苗，讓你提早學會了自我節制的分寸。',
+        analysis: `<p><strong>📌 及時停損的心理學意義：</strong>能夠放棄已經投入的「沉沒成本」（不甘心的心理），是保護人生長遠資產（健康、信任、學業）的最重要技能。</p>`,
         certTitle: '自律反思先鋒'
       },
       'end_digital_detox': {
@@ -1260,17 +1310,8 @@
         badge: '數位自律結局',
         badgeClass: 'bg-emerald-950 text-emerald-300 border border-emerald-800',
         title: '數位斷捨離・奪回大腦主導權',
-        desc: '你識破了短影音與手遊背後的演算法陷阱！你開始嚴格執行「臥室無手機原則」，用實體鬧鐘取代手機，把被藍光偷走的深夜光年重新奪了回來。你的精神大幅改善，思緒清明敏捷，真實世界的友誼與興趣開始綻放光彩。你成為了科技的主人，而非科技的奴隸！',
-        analysis: `
-          <div class="space-y-3">
-            <p><strong>📌 實用「數位斷捨離」三法則：</strong></p>
-            <ul class="list-disc list-inside space-y-1 text-slate-300">
-              <li><strong>環境實體隔離</strong>：睡前 30 分鐘，將手機充電座移出臥室，切斷隨手可及的誘惑。</li>
-              <li><strong>延遲多巴胺</strong>：在打開娛樂 App 前，強制自己深呼吸三次，或設定 20 分鐘番茄鐘先完成手頭任務。</li>
-              <li><strong>實體興趣替代</strong>：培養運動、閱讀、樂器或桌遊等能帶來「心流（Flow）」的實體愛好，取代廉價的螢幕多巴胺。</li>
-            </ul>
-          </div>
-        `,
+        desc: '識破了短影音背後的多巴胺陷阱！嚴格執行「臥室無手機原則」，用實體鬧鐘取代手機，把被偷走的深夜光年奪了回來。你成為了科技的主人，而非科技的奴隸！',
+        analysis: `<p><strong>📌 數位斷捨離三法則：</strong>環境實體隔離、延遲多巴胺滿足、實體深層愛好替代。</p>`,
         certTitle: '生活自主大師'
       },
       'end_master_of_autonomy': {
@@ -1278,27 +1319,124 @@
         badge: '全能主宰結局',
         badgeClass: 'bg-gradient-to-r from-teal-950 via-indigo-950 to-slate-900 text-teal-300 border border-teal-600',
         title: '從容的掌控者・卓越身心靈主宰',
-        desc: '你展現了令人驚嘆的自控力與智慧！你既享受了適度的娛樂與同儕友誼，又堅決守護了自己的睡眠、健康與責任底線。在考場上你從容自信，在生活中你神清氣爽。你不僅掌握了科技，更掌握了人生的方向盤，是現代數位浪潮中最成熟耀眼的卓越典範！',
+        desc: '你既享受了適度的娛樂與友誼，又堅決守護了自己的睡眠與責任底線。在考場上從容自信，在生活中神清氣爽，掌握了人生的方向盤！',
+        analysis: `<p><strong>📌 數位健康（Digital Wellness）：</strong>數位素養不是完全不碰科技，而是具備自由「切換開關」的能力，想玩時放鬆，該專注時毫不留戀。</p>`,
+        certTitle: '全能數位卓越楷模'
+      },
+
+      // Grooming Story Endings (NEW!)
+      'end_abyss_nightmare': {
+        symbol: '🕳️',
+        badge: '深淵噩夢結局',
+        badgeClass: 'bg-rose-950 text-rose-300 border border-rose-800',
+        title: '深淵的無底洞・恐懼與屈服的惡果',
+        desc: '因為誤以為「只要再順從一次對方就會收手」，你落入了更可怕的連環勒索。對方要求更多的影片與金錢，甚至威脅要與你現實見面。最後照片依然遭到外流，身心遭受了毀滅性的重創。你深刻體會到：對勒索者的每一次妥協，都只是在為自己挖掘更深的墳墓。',
         analysis: `
           <div class="space-y-3">
-            <p><strong>📌 真正的數位健康（Digital Wellness）：</strong></p>
+            <p><strong>📌 致命迷思：勒索者「絕對不會」因為你妥協而停手！</strong></p>
             <ul class="list-disc list-inside space-y-1 text-slate-300">
-              <li>數位素養從來不是「完全不碰手機」，而是具備<strong>自由「切換開關」的能力</strong>。想玩時盡情放鬆，該專注時毫不留戀地收心。</li>
-              <li>當你能夠駕馭科技而不是被演算法牽著鼻子走時，你便擁有了通往未來世界最強大的超能力！</li>
+              <li><strong>犯罪心理學真相</strong>：數位性勒索者的目的就是榨取受害者的價值（更多影像、金錢或現實控制）。只要你配合一次，對方就會確認「恐嚇對你有效」，進而將威脅加碼十倍。</li>
+              <li><strong>打破沉默是唯一生路</strong>：哪怕再羞恥、再害怕，第一時間向家長、師長坦白並向警方與 iWIN 報案，是唯一能阻止傷害擴大的破局之法！</li>
             </ul>
           </div>
         `,
-        certTitle: '全能數位卓越楷模'
+        certTitle: '警惕重生探索者'
+      },
+      'end_blackmail_slave': {
+        symbol: '💸',
+        badge: '人財兩失結局',
+        badgeClass: 'bg-amber-950 text-amber-300 border border-amber-800',
+        title: '被敲詐的羔羊・散盡零用錢的自欺',
+        desc: '你把所有的積蓄與零用錢都轉帳給了對方，然而不到三天，對方又開口索要五千元！你成了犯罪者源源不絕的提款機。直到帳戶見底、無力支付時，真相依然不得不被揭開。金錢換不來安全，唯有法律才能制裁惡魔。',
+        analysis: `
+          <div class="space-y-3">
+            <p><strong>📌 法律分析：恐嚇取財罪與性剝削併罰</strong></p>
+            <ul class="list-disc list-inside space-y-1 text-slate-300">
+              <li>對方以散布私密照片相威脅要求交付金錢，涉犯《刑法第 346 條 恐嚇取財罪》與《兒少性剝削防制條例》，兩者均屬極重的刑事犯罪。</li>
+              <li>私下匯款不僅無法消除威脅，反而讓對方留下你的金融帳戶與更多個資，落入被反覆吸血的循環。</li>
+            </ul>
+          </div>
+        `,
+        certTitle: '迷途覺醒學員'
+      },
+      'end_courage_family_shield': {
+        symbol: '🛡️',
+        badge: '正義破局結局',
+        badgeClass: 'bg-gradient-to-r from-blue-950 via-indigo-950 to-slate-900 text-blue-300 border border-blue-700',
+        title: '家庭的堅盾・斬斷黑手的勇氣之光',
+        desc: '你做出了無比正確且勇敢的抉擇——你敲開了客廳的門，選擇相信愛你的家人！父母雖然心痛震撼，但在第一時間緊緊擁抱住了你。在少年警察隊與科技犯罪偵查隊的介入下，警方迅速鎖定 IP 逮捕了這名誘騙多名青少年的慣犯，並查扣所有硬碟徹底銷毀。你不僅拯救了自己，更解救了無數可能受害的孩子！',
+        analysis: `
+          <div class="space-y-3">
+            <p><strong>📌 家人是永不倒塌的避風港：</strong></p>
+            <ul class="list-disc list-inside space-y-1 text-slate-300">
+              <li>犯罪者最常用的手段就是「分離受害者與家庭」，洗腦孩子說「你爸媽會打死你、他們不會原諒你」。</li>
+              <li>事實證明，在生死存亡的危機面前，父母永遠是保護孩子最強大的盾牌。勇於承認受害並不可恥，那是無與倫比的勇氣！</li>
+            </ul>
+          </div>
+        `,
+        certTitle: '勇敢破局先鋒'
+      },
+      'end_professional_rescue': {
+        symbol: '🕊️',
+        badge: '專業防護結局',
+        badgeClass: 'bg-emerald-950 text-emerald-300 border border-emerald-800',
+        title: '專業防護網・破網而出的重生',
+        desc: '你及時聯絡了 iWIN 網路內容防護機構與學校輔導室。專業社工接手後，迅速啟動「StopNCII / 性影像數位指紋封鎖技術」，在各大社群與論壇全面攔截該照片的傳播途徑。在心理師的陪伴與輔導下，你走出了恐懼的陰影，重新在陽光下昂首生活。',
+        analysis: `
+          <div class="space-y-3">
+            <p><strong>📌 什麼是「性影像防護下架機制」？</strong></p>
+            <ul class="list-disc list-inside space-y-1 text-slate-300">
+              <li>衛福部與 iWIN 機構具備專業技術，可將受害影像提取特徵碼（Hash 值），同步至 Meta（IG/FB）、Google、X 等各大平台進行「預先攔截」，只要有人上傳系統會自動辨識並強制下架銷毀。</li>
+              <li>遇到危機，請牢記撥打 <strong>iWIN 專線：02-2577-5118</strong> 或 <strong>113 保護專線</strong>。</li>
+            </ul>
+          </div>
+        `,
+        certTitle: '自保韌性守護者'
+      },
+      'end_close_call_survivor': {
+        symbol: '⚠️',
+        badge: '警醒自保結局',
+        badgeClass: 'bg-teal-950 text-teal-300 border border-teal-800',
+        title: '警鐘長鳴・幸免於難的智慧底線',
+        desc: '因為你堅守住了身體與個資的底線，沒有傳出任何照片，成功讓對方的誘騙計劃撲了個空！這場驚險的遭遇成為你人生中最深刻的警鐘。你明白了：在虛擬世界中，保護自己的身體界線，是永遠不容退讓的鋼鐵原則。',
+        analysis: `
+          <div class="space-y-3">
+            <p><strong>📌 識破「線上誘騙（Grooming）」的警訊：</strong></p>
+            <ul class="list-disc list-inside space-y-1 text-slate-300">
+              <li>突然贈送昂貴虛寶或金錢。</li>
+              <li>要求「這是我們兩個人的秘密，不能告訴父母」。</li>
+              <li>過度刺探私生活、要求提供生活照或身體照片。只要出現任何一個警訊，請立刻拉響警報！</li>
+            </ul>
+          </div>
+        `,
+        certTitle: '智慧防禦觀察家'
+      },
+      'end_master_digital_defender': {
+        symbol: '👑',
+        badge: '全能防衛結局',
+        badgeClass: 'bg-gradient-to-r from-rose-950 via-indigo-950 to-slate-900 text-rose-300 border border-rose-600',
+        title: '明鏡之心・校園數位安全防禦使',
+        desc: '你不僅有超凡的警覺性識破了誘騙套路，更懂得留存證據、主動檢舉，並將這份寶貴的防護知識分享給身邊同學與師長！你成為了校園裡最敏銳的防護哨兵，用你的智慧與影響力，為無數同儕點亮了穿越網路迷霧的明燈！',
+        analysis: `
+          <div class="space-y-3">
+            <p><strong>📌 成為網路安全防護使的實戰力：</strong></p>
+            <ul class="list-disc list-inside space-y-1 text-slate-300">
+              <li>具備「零信任」的數位隱私意識，懂得隱藏個資與管理權限。</li>
+              <li>深諳《兒少性剝削防制條例》與通報管道，能在同儕受害時給予最正確的引導與救援。</li>
+            </ul>
+          </div>
+        `,
+        certTitle: '全能數位安全防禦使'
       }
     };
   </script>
 
   <!-- Game Engine Implementation -->
   <script>
-    class DualStoryEngine {
+    class TriStoryEngine {
       constructor() {
         this.sound = new SoundFX();
-        this.currentStoryId = 'speech'; // 'speech' or 'addiction'
+        this.currentStoryId = 'speech'; // 'speech', 'addiction', or 'grooming'
         this.currentNodeKey = null;
         this.history = [];
         this.pathLog = [];
@@ -1335,7 +1473,10 @@
         this.history = [];
         this.pathLog = [];
 
-        const startNode = (storyId === 'addiction') ? 'act1_addiction_start' : 'act1_start';
+        let startNode = 'act1_start';
+        if (storyId === 'addiction') startNode = 'act1_addiction_start';
+        else if (storyId === 'grooming') startNode = 'act1_grooming_start';
+
         this.currentNodeKey = startNode;
 
         document.getElementById('screenHome').classList.add('hidden');
@@ -1350,7 +1491,9 @@
       }
 
       getCurrentGraph() {
-        return (this.currentStoryId === 'addiction') ? ADDICTION_STORY_GRAPH : SPEECH_STORY_GRAPH;
+        if (this.currentStoryId === 'addiction') return ADDICTION_STORY_GRAPH;
+        if (this.currentStoryId === 'grooming') return GROOMING_STORY_GRAPH;
+        return SPEECH_STORY_GRAPH;
       }
 
       renderNode(nodeKey) {
@@ -1433,10 +1576,16 @@
         const ending = ALL_ENDINGS[endingKey];
         if (!ending) return;
 
-        if (endingKey === 'end_civic_courage' || endingKey === 'end_quiet_guardian' || endingKey === 'end_master_of_autonomy' || endingKey === 'end_digital_detox') {
+        const victorious = [
+          'end_civic_courage', 'end_quiet_guardian',
+          'end_master_of_autonomy', 'end_digital_detox',
+          'end_courage_family_shield', 'end_master_digital_defender', 'end_professional_rescue'
+        ];
+
+        if (victorious.includes(endingKey)) {
           this.sound.resolve();
           if (typeof confetti === 'function') {
-            confetti({ particleCount: 95, spread: 70, origin: { y: 0.6 } });
+            confetti({ particleCount: 100, spread: 75, origin: { y: 0.6 } });
           }
         } else {
           this.sound.tension();
@@ -1504,7 +1653,7 @@
       }
     }
 
-    const game = new DualStoryEngine();
+    const game = new TriStoryEngine();
     window.addEventListener('DOMContentLoaded', () => {
       game.init();
     });
