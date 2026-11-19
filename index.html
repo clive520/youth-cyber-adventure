@@ -113,7 +113,7 @@
       <div class="text-center space-y-3">
         <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700 text-indigo-300 text-xs tracking-wider">
           <i data-lucide="sparkles" class="w-3.5 h-3.5 text-indigo-400"></i>
-          三大主題・無劇透・多幕遞進・深度心理分支
+          四大主題・無劇透・多幕遞進・深度心理分支
         </div>
         <h2 class="text-2xl sm:text-4xl font-serif font-black text-white leading-tight">
           在誘惑與風暴前，看清真實的自己
@@ -124,8 +124,8 @@
         </p>
       </div>
 
-      <!-- Three Story Selection Cards Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 pt-1">
+      <!-- Four Story Selection Cards Grid (2x2) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 pt-1">
         <!-- Story Card 1: Speech & Law -->
         <div class="novel-card rounded-2xl p-5 border-slate-700/80 hover:border-indigo-500/50 flex flex-col justify-between transition group">
           <div>
@@ -174,7 +174,7 @@
           </button>
         </div>
 
-        <!-- Story Card 3: Online Grooming & Privacy (NEW!) -->
+        <!-- Story Card 3: Online Grooming & Privacy -->
         <div class="novel-card rounded-2xl p-5 border-slate-700/80 hover:border-rose-500/50 flex flex-col justify-between transition group">
           <div>
             <div class="flex items-center justify-between mb-3">
@@ -185,7 +185,7 @@
               🎭 螢幕對面的「完美朋友」
             </h3>
             <p class="text-slate-300 text-xs leading-relaxed mb-4">
-              遊戲裡認識了溫柔又送禮物的高手大哥哥。當他提出「拍張私密照證明真心」，溫柔的面具瞬間化作恐嚇外流的無底黑洞……
+              遊戲裡認識了溫柔又送禮物的大神。當他提出「拍張私密照證明真心」，溫柔的面具瞬間化作恐嚇外流的無底黑洞……
             </p>
             <div class="space-y-1 text-[11px] text-slate-400 border-t border-slate-800/80 pt-3">
               <p>🎯 核心考驗：網路誘騙（Grooming）、私密照勒索、兒少性剝削防制與求助</p>
@@ -193,6 +193,30 @@
             </div>
           </div>
           <button onclick="game.startStory('grooming')" class="mt-5 w-full py-2.5 px-3 rounded-xl font-bold text-white bg-rose-600 hover:bg-rose-500 shadow-md shadow-rose-950 flex items-center justify-center gap-1.5 transition text-xs sm:text-sm">
+            <span>翻開此篇章</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+
+        <!-- Story Card 4: Scams, Phishing & Account Safety (NEW!) -->
+        <div class="novel-card rounded-2xl p-5 border-slate-700/80 hover:border-amber-500/50 flex flex-col justify-between transition group">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="px-2 py-0.5 rounded bg-amber-950 text-amber-300 border border-amber-900 text-[11px] font-medium">主題四：詐騙與金錢</span>
+              <span class="text-xs text-slate-400 flex items-center gap-1"><i data-lucide="clock" class="w-3 h-3"></i> 約 7 分鐘</span>
+            </div>
+            <h3 class="text-base sm:text-lg font-serif font-bold text-white mb-2 group-hover:text-amber-300 transition leading-snug">
+              🪙 免費代幣的代價
+            </h3>
+            <p class="text-slate-300 text-xs leading-relaxed mb-4">
+              YouTube 影片宣稱有「免費領 10,000 點券漏洞」，只要輸入簡訊驗證碼！隨後帳號被盜、電信扣款暴增，甚至被要求借出郵局帳戶代收……
+            </p>
+            <div class="space-y-1 text-[11px] text-slate-400 border-t border-slate-800/80 pt-3">
+              <p>🎯 核心考驗：釣魚網站、OTP 盜刷、帳號買賣詐欺、警示帳戶與人頭洗錢罪責</p>
+              <p>🏁 分支結局：6 種人生收束</p>
+            </div>
+          </div>
+          <button onclick="game.startStory('scam')" class="mt-5 w-full py-2.5 px-3 rounded-xl font-bold text-white bg-amber-600 hover:bg-amber-500 shadow-md shadow-amber-950 flex items-center justify-center gap-1.5 transition text-xs sm:text-sm">
             <span>翻開此篇章</span>
             <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </button>
@@ -211,7 +235,7 @@
         </div>
         <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
           <div class="text-indigo-300 font-bold mb-1">深度心理複盤</div>
-          <div class="text-slate-400">剖析誘騙、多巴胺、同儕壓力與法律代價</div>
+          <div class="text-slate-400">剖析詐騙、誘騙、成癮與法治代價</div>
         </div>
       </div>
     </section>
@@ -303,12 +327,12 @@
         <div class="bg-slate-900/80 rounded-xl p-4 border border-slate-800 mt-4 text-xs space-y-2">
           <div class="font-bold text-slate-200 flex items-center gap-2">
             <i data-lucide="life-buoy" class="w-4 h-4 text-rose-400"></i>
-            真實世界中的求助防護網（若你或身邊同學正面臨沉迷、勒索或霸凌危機）：
+            真實世界中的求助防護網（若你或身邊同學正面臨詐騙、勒索或沉迷危機）：
           </div>
           <div class="grid sm:grid-cols-3 gap-2 text-slate-400 pt-1">
-            <div>📞 <strong>教育部反霸凌專線</strong>：1953（24小時）</div>
+            <div>📞 <strong>警政署反詐騙諮詢專線</strong>：165（24小時）</div>
             <div>🛡️ <strong>iWIN 網路內容防護機構</strong>：02-2577-5118</div>
-            <div>🤝 <strong>兒福聯盟哎喲喂呀專線</strong>：0800-003-123</div>
+            <div>🤝 <strong>教育部反霸凌專線</strong>：1953</div>
           </div>
         </div>
       </div>
@@ -357,32 +381,28 @@
 
         <div class="space-y-4 text-xs sm:text-sm text-slate-300 leading-relaxed">
           <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+            <h5 class="font-bold text-amber-400 text-sm mb-1">🪙 為什麼「簡訊驗證碼（OTP）」絕對不能給任何人？</h5>
+            <p>簡訊驗證碼相當於數位簽名！詐騙集團常藉由「免費送遊戲點數、幫忙認證好友」等藉口，誘騙青少年輸入手機門號與 OTP 簡訊碼。一旦交出，電信小額付款或遊戲商城就會直接從帳單扣款數千至數萬元！</p>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
+            <h5 class="font-bold text-amber-400 text-sm mb-1">⚖️ 借出帳戶、代收款項會觸犯什麼法律？【洗錢防制法與詐欺共犯】</h5>
+            <p>天下沒有白賺的零用錢！如果為了幾百元報酬，將自己的郵局帳戶、金融卡密碼借給網友「代收貨款」或「幫忙領錢」，在法律上會直接成為詐騙集團洗錢的<strong>共同正犯或幫助犯</strong>。帳戶將被列為「警示帳戶」永久凍結，還需負擔民事連帶賠償被害人損失！</p>
+          </div>
+
+          <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
             <h5 class="font-bold text-rose-400 text-sm mb-1">🚨 兒童及少年性剝削防制條例（紅線絕對不能踩！）</h5>
             <p>拍攝、製造、散布、持有、使兒少交付私密照片或影片，依台灣現行法律屬於<strong>非告訴乃論之公訴重罪</strong>（最輕本刑一年以上起跳）。就算是情侶交往、自願互傳或被誘騙，警方一旦接獲通報均須立案偵辦，切勿心存僥倖！</p>
           </div>
 
           <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
-            <h5 class="font-bold text-rose-400 text-sm mb-1">🛡️ 遭遇網路私密照勒索（Sextortion）的黃金處理四原則</h5>
-            <p>1. <strong>絕對不順從</strong>：千萬不要傳第二張！妥協只會招來更多無底洞般的威脅。<br>
-               2. <strong>絕對不刪除</strong>：將對方的帳號、通訊對話、個人首頁、威脅字句進行長截圖存證。<br>
-               3. <strong>立刻向大人求助</strong>：告訴家長、導師或輔導室，或直接聯絡 <strong>iWIN 網路內容防護機構（02-2577-5118）</strong> 啟動「StopNCII / 性影像移除防護機制」，由專業人員協助在各大平台下架攔截。<br>
-               4. <strong>立即報警封鎖</strong>：向少年警察隊報案，並將對方帳號封鎖檢舉。
-            </p>
-          </div>
-
-          <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
             <h5 class="font-bold text-teal-300 text-sm mb-1">🧠 什麼是「演算法多巴胺劫持」？</h5>
-            <p>短影音（TikTok / Reels / Shorts）與抽卡手遊利用心理學上的「變動比率增強」，每隔 15~30 秒給予大腦微量多巴胺刺激。這種廉價快感會逐漸麻痺前額葉皮質（負責自制力與長遠規劃），讓人陷入「明明很累卻停不下來」的病態循環。</p>
+            <p>短影音與抽卡手遊利用心理學上的「變動比率增強」，每隔 15~30 秒給予大腦微量多巴胺刺激。這種廉價快感會逐漸麻痺前額葉皮質（負責自制力與長遠規劃），讓人陷入「明明很累卻停不下來」的病態循環。</p>
           </div>
 
           <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
             <h5 class="font-bold text-indigo-300 text-sm mb-1">⚖️ 刑法第 309 條【公然侮辱罪】與群組發言</h5>
             <p>只要是在多數人所在的群組（如三人以上的班級無老師私群），使用侮辱性、嘲弄性字眼或發布改圖貶低他人社會評價，即符合「公然」要件，依法可處拘役或罰金。</p>
-          </div>
-
-          <div class="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800">
-            <h5 class="font-bold text-indigo-300 text-sm mb-1">⚖️ 民法第 187 條【法定代理人家長連帶賠償】</h5>
-            <p>未成年人侵害他人名譽、隱私權或未經同意散布照片，依民法規定，父母必須負連帶損害賠償責任。在法院判例中，民事精神撫慰金賠償常高達數萬至數十萬元。</p>
           </div>
         </div>
 
@@ -411,7 +431,7 @@
           <div id="certStudentClass" class="text-xs text-slate-400 mb-4">班級座號</div>
 
           <p class="text-slate-300 text-xs sm:text-sm leading-relaxed px-2 text-left sm:text-center">
-            於「微光與暗潮」多分支情境思辨歷程中，完成了校園社群人際、言論邊界、成癮自律、防範誘騙與生活掌控之多重難題考驗，展現出高度的自主反思與數位公民素養。
+            於「微光與暗潮」多分支情境思辨歷程中，完成了校園社群人際、言論邊界、成癮自律、防範誘騙與防詐金錢安全之多重難題考驗，展現出高度的自主反思與數位公民素養。
           </p>
 
           <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-500 px-2">
@@ -511,7 +531,7 @@
     }
   </script>
 
-  <!-- Complete Narrative Graph Data for All Three Stories -->
+  <!-- Complete Narrative Graph Data for All Four Stories -->
   <script>
     // =========================================================================
     // STORY 1: 言論與法治篇《那一張沒有人刪除的照片》
@@ -546,9 +566,7 @@
         place: '放學路上的公車站牌',
         title: '逐漸失控的狂歡',
         body: `
-          <p>你的笑哭貼圖混在一大串嘲弄的訊息裡，迅速被淹沒。但這股取笑的狂歡並沒有在放學時停止。</p>
-          <p>到了傍晚，阿翔和幾位常常一起打手遊的同學，乾脆開了一個公開的 IG 匿名帳號<strong>「202 黑歷史收容所」</strong>，把敏萱跌倒的照片裁切成迷因哏圖，甚至加上了豬頭特效和侮辱性的粗體大字：「<em>泥巴怪現身，求好心人領養</em>」。</p>
-          <p>短短兩小時內，那個帳號在年級的群體裡傳開，追蹤數迅速破了兩百，底下留言全是各班學生的嬉笑與標記。</p>
+          <p>你的笑哭貼圖混在一大串嘲弄的訊息裡，迅速被淹沒。到了傍晚，阿翔和幾位同學開了一個公開的 IG 匿名帳號<strong>「202 黑歷史收容所」</strong>，把敏萱的照片做成迷因哏圖，加上了「<em>泥巴怪現身，求好心人領養</em>」的侮辱字眼，追蹤數迅速破了兩百。</p>
         `,
         options: [
           { id: 'A', text: '追蹤那個帳號並在底下按了愛心，心想「反正大家都在看，不差我這一個」。', next: 'act3_night_drift' },
@@ -563,8 +581,7 @@
         place: '下課後的走廊轉角',
         title: '未讀與冷嘲',
         body: `
-          <p>你的私訊送出後，阿翔過了二十分鐘都沒有已讀。第四節下課時，大群組裡突然跳出阿翔發的新訊息：「笑死，班上居然有人當正義魔人，私下叫我收回照片耶。大家鬧著玩而已，開不起玩笑就別待在群組啊。」</p>
-          <p>底下立刻有人起鬨：「誰啊？誰那麼掃興？」、「自以為聖人喔。」阿翔跟旁邊幾個男生眼神時不時朝你身上飄過來……</p>
+          <p>阿翔大群組發新訊息嘲弄：「笑死，班上居然有人當正義魔人，私下叫我收回照片耶。大家鬧著玩而已，開不起玩笑就別待在群組啊。」周圍同學眼神時不時朝你身上飄來……</p>
         `,
         options: [
           { id: 'A', text: '急忙在大群組打圓場：「哈哈沒有啦，大家開心就好，我剛剛只是隨口說說。」立刻退縮示弱。', next: 'act3_night_drift' },
@@ -579,7 +596,7 @@
         place: '放學後的便利商店',
         title: '外洩的耳語',
         body: `
-          <p>你在死黨小群的發問，被截圖轉發給了阿翔那群人！在便利商店買飲料時，同班的體育股長冷冷地拍了拍你的肩膀：「聽說你在背後碎嘴翔哥喔？有話不會當面講，在背後搞小圈圈講壞話很光彩嗎？」</p>
+          <p>死黨小群的對話被截圖轉發給了阿翔！體育股長拍著你的肩膀冷笑：「聽說你在背後碎嘴翔哥喔？背地裡搞小動作很光彩嗎？」</p>
         `,
         options: [
           { id: 'A', text: '連忙辯解：「不是我！一定是別人亂傳的，我跟阿翔感情那麼好怎麼可能說他壞話！」', next: 'act3_night_drift' },
@@ -594,7 +611,7 @@
         place: '自家客廳的沙發上',
         title: '沉默之牆後的發酵',
         body: `
-          <p>敏萱在下午最後一節下課時，因為受不了走廊上同學的指指點點，在廁所崩潰過度換氣被送進了健康中心。群組裡的嘲弄並沒有因此停下，反而有人傳了一句：「抗壓性這麼低喔？摔個泥巴就哭到進健康中心，演給誰看啊。」</p>
+          <p>敏萱因受不了走廊指點在廁所崩潰過度換氣送健康中心。群組裡有人嘲諷她演戲。你的沉默沒讓風暴停息，反而成了惡意蔓延的溫床……</p>
         `,
         options: [
           { id: 'A', text: '心想「反正我也沒笑她、也沒發照片，事情再鬧大也怪不到我頭上」，繼續滑手遊放鬆。', next: 'act3_night_drift' },
@@ -609,7 +626,7 @@
         place: '只開著床頭小燈的臥室',
         title: '排位賽與黑歷史帳號',
         body: `
-          <p>接近午夜，手遊語音頻道裡阿翔興奮地說有人投稿了敏萱國小換牙醜照與小時候吵架影片，打算一點準時發出來衝五百追蹤！明天是段考複習考，你知道這已經徹底越過了底線……</p>
+          <p>阿翔在語音裡揚言要發敏萱國小換牙醜照與私密爭吵影片衝五百追蹤。明天有考試，這已經徹底越過了底線……</p>
         `,
         options: [
           { id: 'A', text: '在語音裡跟著附和：「太誇張了吧哈哈，發出來記得 tag 我看一下。」繼續連線打下一場排位。', next: 'act4_legal_abyss' },
@@ -624,7 +641,7 @@
         place: '漆黑的房間・螢幕的微光',
         title: '逃避現實的無底黑洞',
         body: `
-          <p>為了逃避白天的窒息感，你的手指在短影音平台上無休止地上滑。每滑過一則影片大腦得到短暫麻痺，但只要螢幕一暗，恐懼與罪惡感便排山倒海而來……</p>
+          <p>為了逃避白天的窒息感，你的手指在短影音平台上無休止地上滑。大腦短暫麻痺，但只要螢幕一暗，恐懼與罪惡感便排山倒海而來……</p>
         `,
         options: [
           { id: 'A', text: '繼續漫無目的地滑下去，直到大腦徹底放空、手機從無力的手中滑落砸在臉上昏睡。', next: 'act4_morning_hangover' },
@@ -639,7 +656,7 @@
         place: '自家書房',
         title: '孤立的代價與考驗',
         body: `
-          <p>你被踢出了遊戲群，班群裡也充滿針對你的諷刺迷因。這時，副班長傳來私訊：「你今天很勇敢。其實很多人都覺得阿翔太過分了，只是大家都不敢得罪他。你還好嗎？」</p>
+          <p>你被踢出群組，副班長傳訊打氣：「你今天很勇敢。其實很多人都覺得阿翔太過分了，只是大家都不敢得罪他。」孤獨中你看見了微光……</p>
         `,
         options: [
           { id: 'A', text: '向副班長吐露委屈：「謝謝你，但我現在好像成了全班的公敵，我不知道明天該怎麼面對大家。」', next: 'act4_alliance' },
@@ -654,7 +671,7 @@
         place: '臥室書桌前',
         title: '黑暗中接住的一雙手',
         body: `
-          <p>敏萱回訊：「看到你的訊息我哭了好久。今天一整天大家都在看著手機笑，我真的好害怕去學校……」文字背後是一個活生生受傷的心靈，這不是按個讚就算了的遊戲。</p>
+          <p>敏萱回訊感謝你的關心。文字背後是活生生受傷的心靈，這不是按個讚就算了的兒戲……</p>
         `,
         options: [
           { id: 'A', text: '鼓勵敏萱：「這絕對不是妳的錯！妳要把事情完整告訴媽媽，大人才能幫妳爭取公道。」', next: 'act4_morning_storm' },
@@ -669,7 +686,7 @@
         place: '家中客廳沙發',
         title: '與家長的深夜對話',
         body: `
-          <p>爸爸嚴肅地看著你說：「網路上言論是有法律責任的，這涉及《公然侮辱》與《名譽侵權》。對方提告的話，父母依法要負連帶賠償責任，少年法庭也會留下紀錄。」</p>
+          <p>爸爸嚴肅告誡：「網路言論有法治責任，公然侮辱與侵權父母依法要連帶賠償，少年法庭也會留下司法人格檔案。」</p>
         `,
         options: [
           { id: 'A', text: '主動讓爸媽看群組內容，請爸媽協助聯絡導師，在事情無可挽回前由學校介入處理。', next: 'act4_teacher_intervention' },
@@ -699,7 +716,7 @@
         place: '段考複習考考場',
         title: '透支的靈魂與失焦的考卷',
         body: `
-          <p>昨晚滑手機到凌晨兩點多的代價爆發，太陽穴劇痛，試卷公式完全無法理解。為了逃避現實沉溺螢幕，終將自己拖入了深淵……</p>
+          <p>滑手機熬夜的代價爆發，考場上大腦空白。為了逃避現實沉溺螢幕，終將自己拖入了深淵……</p>
         `,
         options: [
           { id: 'A', text: '實在撐不住，舉手向監考老師報告身體極度不適，被攙扶到健康中心躺下昏睡。', next: 'end_burnout_addiction' },
@@ -714,7 +731,7 @@
         place: '八年二班教室',
         title: '班級的信任崩塌',
         body: `
-          <p>導師宣布啟動霸凌調查，阿翔被帶去警局做筆錄。原本充滿歡笑的班級人人自危，互相猜忌。冷漠與隨波逐流在此刻顯現出巨大的破壞力……</p>
+          <p>導師宣布啟動霸凌調查，阿翔被帶去警局做筆錄。原本充滿歡笑的班級人人自危，互相猜忌……</p>
         `,
         options: [
           { id: 'A', text: '在座位上保持沉默，暗自慶幸自己昨天沒有太過張揚，希望風暴趕快過去。', next: 'end_bystander_regret' },
@@ -729,7 +746,7 @@
         place: '早自習前的輔導室',
         title: '早晨的主動通報',
         body: `
-          <p>你與夥伴主動敲開了輔導室的大門。因為這場及時的介入，校方迅速啟動保護敏萱並要求下架惡意帳號，阻止了可能摧毀多個家庭的司法災難。</p>
+          <p>及時主動通報輔導室，校方迅速啟動保護敏萱並要求下架惡意帳號，阻止了可能摧毀多個家庭的司法災難。</p>
         `,
         options: [
           { id: 'A', text: '在輔導老師的引導下，參與後續的班級「修復式正義對話」，協助班級修補裂痕。', next: 'end_civic_courage' },
@@ -744,7 +761,7 @@
         place: '校門口的林蔭大道',
         title: '晨光下的並肩同行',
         body: `
-          <p>看見敏萱步履沉重地走進校門，你快步穿過人群走上前去，真誠地與她並肩同行走進教室。驅散霸凌最鋒利的武器，往往是堂堂正正站在陽光下的善意。</p>
+          <p>看見敏萱步履沉重地走進校門，你快步穿過人群走上前去真誠陪伴。驅散霸凌最鋒利的武器，往往是堂堂正正站在陽光下的善意。</p>
         `,
         options: [
           { id: 'A', text: '在教室裡公開大方地與敏萱討論功課，用自然平等的態度打破被孤立的氛圍。', next: 'end_quiet_guardian' },
@@ -1038,7 +1055,7 @@
     };
 
     // =========================================================================
-    // STORY 3: 誘騙與隱私篇《螢幕對面的「完美朋友」》 (NEW!)
+    // STORY 3: 誘騙與隱私篇《螢幕對面的「完美朋友」》
     // =========================================================================
     const GROOMING_STORY_GRAPH = {
       'act1_grooming_start': {
@@ -1047,33 +1064,22 @@
         place: '自家臥室・遊戲通訊群組',
         title: '深夜傳來的私訊與贈禮',
         body: `
-          <p>這週你在學校過得很不順心。段考退步被父母訓斥，班上分組又沒跟要好的朋友分在一組，心裡憋了一肚子的委屈與孤單。</p>
-          <p>晚上你在常玩的連線遊戲 Discord 頻道發了一句：「唉，生活好累，根本沒人懂我。」</p>
-          <p>不到五分鐘，伺服器裡排行第一的榮譽玩家<strong>「晨曦」</strong>突然敲了你的私人訊息：</p>
-          <div class="chat-bubble p-3 rounded-xl my-2 text-xs sm:text-sm space-y-1">
-            <div class="text-rose-400 font-bold">晨曦（大四大學生・遊戲大神）：</div>
-            <div class="text-slate-200">「怎麼啦小可愛？我看你最近遊戲打得心不在焉的。大人說的話聽聽就好啦，你已經比同齡人懂事太多了。對了，看你一直想要這季的典藏造型，送你當開心的禮物吧！［禮物代碼］」</div>
-          </div>
-          <p>你看著價值將近千元的限定造型兌換碼，又看著他充滿體貼、溫柔的安慰字句，孤單的心防悄悄被打開了一條縫隙……</p>
+          <p>這週你在學校過得很不順心，考試退步又被排擠。在 Discord 遊戲伺服器裡，榜首玩家<strong>「晨曦」</strong>突然敲你私訊，溫柔傾聽你的煩惱，並主動贈送了近千元的限定造型代碼。</p>
         `,
         options: [
-          { id: 'A', text: '興奮地收下禮物並熱情回覆：「天啊謝謝晨曦哥！你人太好了吧，你是世界上唯一懂我的人！」把學校和家裡的煩惱全盤傾訴。', next: 'act2_grooming_trap' },
-          { id: 'B', text: '收下禮物並禮貌道謝，但心裡保持一絲界線，只跟他聊遊戲上的打法與排位攻略，不聊私生活。', next: 'act2_cautious_friend' },
+          { id: 'A', text: '興奮地收下禮物並熱情回覆：「謝謝晨曦哥！你是世界上唯一懂我的人！」把煩惱全盤傾訴。', next: 'act2_grooming_trap' },
+          { id: 'B', text: '收下禮物並禮貌道謝，但心裡保持界線，只跟他聊遊戲攻略，不聊私生活。', next: 'act2_cautious_friend' },
           { id: 'C', text: '婉拒禮物：「謝謝你的安慰，但這個禮物太貴重了，我們只是網友我不能收。」', next: 'act2_boundary_firm' },
           { id: 'D', text: '覺得一個不認識的成年人突然對自己這麼好有點莫名其妙，已讀後沒有回覆，關閉對話視窗。', next: 'act2_boundary_firm' }
         ]
       },
-
       'act2_grooming_trap': {
         act: '第二幕：溫柔的陷阱',
         time: '兩週後 週六 深夜 23:45',
         place: '暗室中的手機螢幕',
         title: '真心話與越界的試探',
         body: `
-          <p>這兩個星期以來，晨曦每天都會跟你早安晚安，聽你抱怨老師、聊同學八卦。他甚至叮囑你：「這些心事是我們兩個人的秘密小天地喔，不要告訴你爸媽，他們老一輩的不會懂我們的。」</p>
-          <p>接近午夜，晨曦傳來了一條語氣低落的訊息：「我今天跟家裡吵架心情好糟……現在世界上只有你是我最信任的依靠了。」</p>
-          <p>緊接著，他傳來一張模模糊糊的自拍照，照片裡他剛洗完澡圍著浴巾，露出上半身：「我們交換真心話吧！我把我最真實的一面給你看，你能不能也拍一張換衣服時的照片給我？證明你也是全心信任我的……」</p>
-          <p class="inner-thought">看著螢幕，你的心臟狂跳。雖然內心深處警鈴大作，但耳邊彷彿迴盪著他這兩週的溫柔陪伴。如果你拒絕他，他會不會覺得你背叛了他，再也不理你了？</p>
+          <p>晨曦每天噓寒問暖，要求「這是我們兩個人的秘密，別告訴父母」。深夜，他傳來一張自己剛洗完澡的露骨自拍，要求你：「我們交換秘密吧，你能不能也拍一張換衣服時的照片給我，證明你的信任……」</p>
         `,
         options: [
           { id: 'A', text: '害怕失去這個唯一懂自己的溫柔知己，咬著牙在被窩裡脫下睡衣，拍了一張私密身體照片傳了過去……', next: 'act3_blackmail_strike' },
@@ -1082,16 +1088,13 @@
           { id: 'D', text: '嚇得手心冒冷汗，沒有回訊，立刻截圖對話紀錄後把手機塞到枕頭底下，整夜心神不寧。', next: 'act3_defensive_alert' }
         ]
       },
-
       'act2_cautious_friend': {
         act: '第二幕：溫柔的陷阱',
         time: '一週後 週日 下午 16:20',
         place: '自家客廳',
         title: '步步進逼的底線刺探',
         body: `
-          <p>儘管你只聊遊戲，晨曦卻開始越來越頻繁地探聽你的私人生活：「你讀哪所國中啊？平常放學都走哪條路？要不要跟我互追私人 IG 小帳？」</p>
-          <p>今天下午，他甚至在遊戲語音裡半開玩笑地說：「大家都互換過生活照了，只有你一直神秘兮兮的。傳一張你穿便服露鎖骨的自拍照來看看嘛，不然我就要退隊友囉。」</p>
-          <p class="inner-thought">原本正常的隊友交流，開始充滿了壓迫感。你敏銳地感覺到，對方的友善背後似乎帶有一種有目的性的索求……</p>
+          <p>晨曦頻繁刺探你的真實姓名與學校，甚至要求：「大家都互換過生活照了，傳一張你露鎖骨的自拍來看看嘛，不然我就退隊喔。」友善背後帶有強烈索求的壓迫感……</p>
         `,
         options: [
           { id: 'A', text: '為了維持隊伍和諧，隨手挑了一張穿背心的自拍照發過去。', next: 'act3_blackmail_strike' },
@@ -1100,17 +1103,13 @@
           { id: 'D', text: '把這段對話拿給班上要好的死黨看，問他們：「這個網友是不是有點怪怪的？」', next: 'act3_defensive_alert' }
         ]
       },
-
       'act2_boundary_firm': {
         act: '第二幕：溫柔的陷阱',
         time: '隔天 晚間 20:00',
         place: '書桌前',
         title: '惱羞成怒的原形畢露',
         body: `
-          <p>因為你的拒絕與冷淡，晨曦原本溫柔體貼的語氣突然一百八十度大轉變。</p>
-          <p>他在 Discord 私訊裡傳來冷嘲熱諷：「裝什麼清高啊？送你禮物你還擺臉色，浪費我時間！」</p>
-          <p>更過分的是，他隨後把你在語音頻道裡偶爾提到過的話斷章取義，在伺服器公頻造謠說你「白嫖別人禮物不認人」。</p>
-          <p class="inner-thought">你看著螢幕，背後竄起一陣寒意。幸好當初沒有把更多個人秘密與照片交給這個人，否則現在會被拿來如何威脅自己，後果不堪設想……</p>
+          <p>晨曦原形畢露，私訊謾罵你浪費他時間，甚至在伺服器公頻造謠。看著螢幕背後一陣寒意，慶幸當初沒有把個資交給這個人……</p>
         `,
         options: [
           { id: 'A', text: '氣不過跟他在公頻公開對罵，把戰火越燒越大。', next: 'act3_defensive_alert' },
@@ -1119,59 +1118,43 @@
           { id: 'D', text: '感到害怕被公審，卑微地把當初的禮物等值金額轉帳退給他，希望息事寧人。', next: 'act3_emotional_guilt' }
         ]
       },
-
       'act3_blackmail_strike': {
         act: '第三幕：面具下的獠牙',
         time: '週日 早晨 08:30',
         place: '臥室床上・冰冷的早晨',
         title: '瞬間變臉的數位勒索',
         body: `
-          <p>照片剛送出不到十分鐘，昨晚晨曦所有的溫柔與體貼瞬間消失得無影無蹤！</p>
-          <p>早晨你一醒來，手機跳出晨曦發來的幾張可怕截圖：一張是你昨晚傳的私密裸露照片，另一張是他肉搜出來的、你學校的公開 IG 告白牆與你導師的名字！</p>
-          <div class="chat-bubble p-3 rounded-xl my-2 text-xs sm:text-sm space-y-1">
-            <div class="text-rose-400 font-bold">晨曦（勒索者）：</div>
-            <div class="text-slate-200">「身材不錯嘛。今天中午前，再拍一段三十秒全身無遮擋的影片給我，否則我就把這張照片傳給你學校校長、發到你們全校匿名版！讓大家都看看你的真面目！」</div>
-          </div>
-          <p class="inner-thought">你的血液瞬間凝固，胃部劇烈翻攪想吐，眼淚止不住地湧出。你掉進了最深、最可怕的<strong>「數位性勒索（Sextortion）」</strong>深淵！客廳傳來父母準備早餐的笑聲，你覺得自己的人生徹底完了……</p>
+          <p>晨曦拿到照片瞬間變臉！傳來肉搜出的你學校 IG 告白牆與導師名字：「今天中午前再拍三十秒露骨影片給我，否則我就把照片發到你們全校匿名版讓大家看！」你掉進了最可怕的數位性勒索深淵！</p>
         `,
         options: [
           { id: 'A', text: '恐懼到精神崩潰，以為「只要再順從他一次他就會放過我」，哭著打開相機準備再拍影片。', next: 'end_abyss_nightmare' },
-          { id: 'B', text: '向對方苦苦哀求，並拿出自己壓歲錢的戶頭：「我把我所有的零用錢 3000 元都轉給你，求求你把照片刪掉好不好？」', next: 'end_blackmail_slave' },
-          { id: 'C', text: '雖然手抖得像觸電，但突然想起輔導課老師說的「絕對不要順從威脅」，立刻忍住眼淚長截圖對話存證。', next: 'act4_rescue_crossroad' },
-          { id: 'D', text: '把心一橫，抱著就算被爸媽打死罵慘也認了的決心，衝出房間把手機塞給媽媽：「媽……請妳救救我！」', next: 'end_courage_family_shield' }
+          { id: 'B', text: '向對方苦苦哀求：「我把所有的零用錢 3000 元都轉給你，求求你把照片刪掉好不好？」', next: 'end_blackmail_slave' },
+          { id: 'C', text: '想起輔導老師說的「絕對不能順從威脅」，立刻忍住眼淚將所有威脅對話長截圖存證。', next: 'act4_rescue_crossroad' },
+          { id: 'D', text: '把心一橫，抱著就算被罵慘也認了的決心，衝出房間把手機塞給媽媽：「媽……請妳救救我！」', next: 'end_courage_family_shield' }
         ]
       },
-
       'act3_emotional_guilt': {
         act: '第三幕：面具下的獠牙',
         time: '週日 上午 10:00',
         place: '自家客廳',
         title: '步步進逼的情緒勒索',
         body: `
-          <p>你昨夜的推託，換來的是晨曦長篇大論的羞辱與情勒：</p>
-          <div class="chat-bubble p-3 rounded-xl my-2 text-xs sm:text-sm space-y-1">
-            <div class="text-rose-400 font-bold">晨曦：</div>
-            <div class="text-slate-200">「我為了你付出這麼多時間跟金錢，你連一張照片都不肯傳？你真的很虛偽、很自私。你信不信我去你們學校宣傳你的真面目，說你騙我感情跟錢？」</div>
-          </div>
-          <p class="inner-thought">雖然你沒有傳照片，但對方的恐嚇與扭曲事實讓你背脊發涼。你開始陷入深深的自我懷疑：是不是真的是自己的錯？</p>
+          <p>晨曦長篇大論情勒：「我為你付出那麼多，你連一張照片都不肯傳？信不信我去你們學校宣傳你的真面目？」</p>
         `,
         options: [
           { id: 'A', text: '被罪惡感壓倒，為了平息他的憤怒，妥協傳了一張較清涼的居家照片過去……', next: 'act3_blackmail_strike' },
-          { id: 'B', text: '意識到這完全是典型的「恐怖情人情勒與控制」，堅決打字回覆：「你這是恐嚇罪，我現在就截圖去報警！」隨後封鎖。', next: 'act4_rescue_crossroad' },
+          { id: 'B', text: '意識到這是典型的恐怖情人情勒：「你這是恐嚇罪，我現在就截圖報警！」隨後封鎖。', next: 'act4_rescue_crossroad' },
           { id: 'C', text: '默默忍受委屈，把整件事情藏在心裡，退出所有社交軟體，整整一週食不下嚥。', next: 'end_close_call_survivor' },
           { id: 'D', text: '主動找學校輔導老師傾訴這段經歷，尋求心理支持與應對方式。', next: 'end_professional_rescue' }
         ]
       },
-
       'act3_defensive_alert': {
         act: '第三幕：面具下的獠牙',
         time: '週日 下午 14:00',
         place: '臥室書桌前',
         title: '築起資安的鋼鐵防線',
         body: `
-          <p>看著對方的糾纏與越界索求，你意識到這絕非普通的網友交流，而是典型針對青少年的<strong>「線上誘騙（Grooming）」</strong>！</p>
-          <p>你立刻打開電腦，將自己所有社群平台（IG、FB、Discord）的個人資料設為高度隱私，隱藏了真實姓名、就讀學校與生活動態，切斷了對方可能的肉搜管道。</p>
-          <p class="inner-thought">那一刻你深刻體會到：網路上的溫柔人設往往只是誘捕獵物的蜜糖。在螢幕背後，我們永遠不知道敲鍵盤的人藏著怎樣的獠牙……</p>
+          <p>你意識到這是典型的「線上誘騙（Grooming）」！立刻將所有社群帳號設為高度私密，切斷對方肉搜管道。</p>
         `,
         options: [
           { id: 'A', text: '將對方的帳號與對話完整截圖，向教育部 iWIN 網路內容防護機構提出線上申訴檢舉。', next: 'act4_decisive_triumph' },
@@ -1180,33 +1163,28 @@
           { id: 'D', text: '與家人討論這起事件，跟父母一起建立健康的網路交友共識。', next: 'end_courage_family_shield' }
         ]
       },
-
       'act4_rescue_crossroad': {
         act: '第四幕：破網與求助',
         time: '週日 中午 11:45',
         place: '緊閉房門的臥室',
         title: '決定命運的最後十字路口',
         body: `
-          <p>時間一分一秒流逝，晨曦發來的倒數計時像絞索一樣步步逼近。</p>
-          <p>桌面上攤開著存滿截圖的手機。你站在房間門口，深知這一步將決定你未來的走向：是任由恐懼將自己吞噬，還是借助現實法律與保護機制的力量，把這個黑手斬斷！</p>
-          <p class="inner-thought">大人也許會震驚、也許會責備，但比起照片真正外流後無止境的折磨，尋求信任大人的庇護是唯一能打破黑暗的光芒……</p>
+          <p>倒數計時步步逼近。是任由恐懼吞噬自己，還是尋求現實法律與專業防護網的庇護，把這隻黑手徹底斬斷？</p>
         `,
         options: [
-          { id: 'A', text: '撥打 iWIN 網路內容防護專線（02-2577-5118），在專業社工的指導下啟動性影像阻斷下架機制。', next: 'end_professional_rescue' },
-          { id: 'B', text: '鼓起平生最大的勇氣，走向客廳跟父母坦白一切，由父母陪同前往少年警察隊正式報案。', next: 'end_courage_family_shield' },
+          { id: 'A', text: '撥打 iWIN 網路內容防護專線（02-2577-5118），在專業社工指導下啟動性影像阻斷下架機制。', next: 'end_professional_rescue' },
+          { id: 'B', text: '鼓起平生最大勇氣向父母坦白一切，由父母陪同前往少年警察隊正式報案。', next: 'end_courage_family_shield' },
           { id: 'C', text: '因為恐懼被責備而退縮，默默關機躲進被窩裡哭泣，任由時間流逝。', next: 'end_abyss_nightmare' },
           { id: 'D', text: '私訊向最信任的學校班導師或輔導主任求助，請老師協助協調家長與警方。', next: 'end_professional_rescue' }
         ]
       },
-
       'act4_decisive_triumph': {
         act: '第四幕：破網與求助',
         time: '週日 傍晚 17:00',
         place: '客廳電腦前',
         title: '正義機制的反擊',
         body: `
-          <p>你的檢舉迅速獲得了回應。遊戲伺服器管理員核對截圖後，證實該帳號涉及對多名未成年玩家進行誘騙索照，立即將該帳號永封並提交電磁紀錄給警方網絡犯罪調查科。</p>
-          <p>看著官方發來的封鎖致謝通知，你長舒了一口氣。你的冷靜與勇敢，不僅保護了自己，更阻止了下一個無辜同學受害！</p>
+          <p>檢舉獲得了回應，該帳號被永封並移送警方網絡犯罪科。你的冷靜勇敢不僅保護了自己，更阻止了下一個受害者！</p>
         `,
         options: [
           { id: 'A', text: '把整個誘騙過程整理成反思日記，提醒自己永遠保持清醒的數位界線。', next: 'end_master_digital_defender' },
@@ -1218,7 +1196,214 @@
     };
 
     // =========================================================================
-    // ENDINGS FOR ALL THREE STORIES
+    // STORY 4: 詐騙與金錢篇《免費代幣的代價》 (NEW!)
+    // =========================================================================
+    const SCAM_STORY_GRAPH = {
+      'act1_scam_start': {
+        act: '第一幕：天上掉下來的寶藏',
+        time: '週六 下午 14:30',
+        place: '自家客廳・滑手機的午後',
+        title: '抖音影片上的「官方內部漏洞」',
+        body: `
+          <p>週六下午，你正在刷 YouTube Shorts 與抖音。一則點讚數破萬的遊戲短影片吸引了你的目光：</p>
+          <div class="chat-bubble p-3 rounded-xl my-2 text-xs sm:text-sm space-y-1">
+            <div class="text-amber-400 font-bold">熱門影片標題：</div>
+            <div class="text-slate-200">「🔥 官方 10 週年漏洞緊急瘋傳！點擊資訊欄活動專區，輸入手機立即領取 10,000 點券與絕版限定外觀！每人限領一次，今晚 18:00 截止！」</div>
+          </div>
+          <p>底下留言區一片熱烈歡呼：「真的領到了太神啦！」、「感謝樓主，本來以為是騙人的沒想到秒到帳！」</p>
+          <p class="inner-thought">那個限定外觀平時在遊戲商城要賣台幣 1200 元，你夢寐以求了好久。資訊欄附帶了一個看起來很逼真的「遊戲官方活動登入頁面」連結。班上幾個同學也在聊天群轉發問：「有人領過這個嗎？」</p>
+        `,
+        options: [
+          { id: 'A', text: '興奮地點擊連結進入網頁，依指示輸入自己的遊戲帳號、登入密碼與手機號碼準備領獎。', next: 'act2_scam_otp_trap' },
+          { id: 'B', text: '心存一點懷疑，但抱著「就算被騙也沒差」的僥倖心態，拿平時沒在儲值的小帳帳密去登入測試。', next: 'act2_scam_account_loss' },
+          { id: 'C', text: '在班級群組提醒大家：「官方官網根本沒這活動，這網址怪怪的，大家先不要點。」', next: 'act2_scam_skeptical' },
+          { id: 'D', text: '想起學校防詐宣導說過「天下沒有白吃的午餐」，直接在平台上按下「檢舉詐騙廣告」。', next: 'act2_scam_skeptical' }
+        ]
+      },
+
+      'act2_scam_otp_trap': {
+        act: '第二幕：連環套的索求',
+        time: '週六 下午 14:40',
+        place: '客廳沙發上',
+        title: '關鍵的「6位數驗證碼」',
+        body: `
+          <p>你輸入帳號密碼後，網頁畫面轉出一個精美的旋轉進度條，顯示：「認證成功！恭喜獲得 10,000 點券大禮包！」</p>
+          <p>隨後畫面彈出一個醒目的輸入框：<br>
+            <span class="inline-block mt-2 p-2 rounded bg-slate-900 border border-amber-500/50 text-amber-300 font-mono text-xs sm:text-sm">
+              ［最後一步］為防止外掛大量洗幣，請輸入剛發送至您手機的 6 位數簡訊認證碼以確認領取！
+            </span>
+          </p>
+          <p>就在此時，手機上方「叮咚」一聲跳出了一則電信公司的簡訊通知：</p>
+          <div class="chat-bubble p-3 rounded-xl my-2 text-xs sm:text-sm space-y-1">
+            <div class="text-rose-400 font-bold">［電信小額付款驗證］：</div>
+            <div class="text-slate-200">「您正在使用手機小額付費購買遊戲點數 NT$ 1,999 元，本次驗證碼為【748291】。切勿將驗證碼交予他人，避免受騙！」</div>
+          </div>
+          <p class="inner-thought">簡訊上赫然寫著「消費 1,999 元」！但網頁上卻寫著「這只是免費領取的身分核對，不會扣除任何費用」。你的手指懸在鍵盤上，心裡開始隱隱發慌……</p>
+        `,
+        options: [
+          { id: 'A', text: '相信網頁說的「只是防外掛核對」，毫不猶豫把簡訊裡的【748291】輸入到了網頁輸入框裡。', next: 'act3_scam_bill_shock' },
+          { id: 'B', text: '心生疑惑，點開網頁上的「在線客服」詢問，客服保證：「親愛的玩家，這是系統預設文字，扣款為 0 元，請放心輸入領取喔！」於是放心地輸入了。', next: 'act3_scam_bill_shock' },
+          { id: 'C', text: '看見「付款 NT$ 1,999」字樣嚇出了一身冷汗，想起這支門號是媽媽的名字，立刻關閉網頁並將簡訊刪除。', next: 'act3_scam_escaped' },
+          { id: 'D', text: '警覺到這是標準的電信釣魚盜刷！立刻拿著手機跑去問客廳的媽媽：「媽，這個簡訊是不是詐騙？」', next: 'act3_scam_mom_alert' }
+        ]
+      },
+
+      'act2_scam_account_loss': {
+        act: '第二幕：連環套的索求',
+        time: '週六 下午 15:15',
+        place: '臥室書桌前',
+        title: '消失的登入權限與好友私訊',
+        body: `
+          <p>你用小帳登入後，點券根本沒有到帳。更可怕的是，五分鐘後你的遊戲畫面突然被強制踢下線，顯示：<strong>「該帳號已在其他裝置登入，密碼已被修改！」</strong></p>
+          <p>緊接著，你的 LINE 被班上同學狂敲私訊：「欸，你剛剛怎麼在群組發奇怪的連結叫大家點？那是你的帳號嗎？」</p>
+          <p class="inner-thought">你的帳號被駭客盜用了！詐騙集團利用你的帳號名義，正在你的所有好友名單中瘋狂群發釣魚連結與借錢訊息……</p>
+        `,
+        options: [
+          { id: 'A', text: '在社群上病急亂投醫，搜尋到一個聲稱「收費 500 元保證 10 分鐘幫忙黑客追回帳號」的宣傳，轉帳給對方。', next: 'end_scam_double_loss' },
+          { id: 'B', text: '立刻在班級大群組大喊：「大家不要點！我的遊戲帳號被盜了，發的訊息都不是我發的！」並向官方客服提出被盜申訴。', next: 'act3_scam_damage_control' },
+          { id: 'C', text: '害怕被同學責怪，默默把遊戲 App 刪除，假裝這件事跟自己無關。', next: 'end_scam_double_loss' },
+          { id: 'D', text: '私訊那個在遊戲裡發詐騙連結的人對罵，要求對方還帳號。', next: 'act3_scam_damage_control' }
+        ]
+      },
+
+      'act2_scam_skeptical': {
+        act: '第二幕：連環套的索求',
+        time: '週六 下午 15:00',
+        place: 'Discord 討論區',
+        title: '「兼職賺零用錢」的誘餌',
+        body: `
+          <p>你及時避開了釣魚連結，但這時遊戲群裡一個平常眼熟的網友私訊你：</p>
+          <div class="chat-bubble p-3 rounded-xl my-2 text-xs sm:text-sm space-y-1">
+            <div class="text-amber-400 font-bold">網友「阿豪」：</div>
+            <div class="text-slate-200">「兄弟，看你沒領到點券很可惜吧？我這裡有個輕鬆賺外快的方法：我哥是做網拍的，營業額太大帳戶滿了。你只要把你的郵局提款卡借我們代收一筆貨款，轉帳完當場送你 1000 元零用錢加買點券，不用出門躺著賺！」</div>
+          </div>
+          <p class="inner-thought">借個戶頭幫忙收個錢，就能拿到一千元零用錢？你正好有一張過年開立的郵局學生帳戶，裡面只有兩百元餘額……</p>
+        `,
+        options: [
+          { id: 'A', text: '覺得帳戶裡本來就沒錢怕什麼，答應把自己的郵局帳號提供給對方幫忙「代收貨款」。', next: 'act3_scam_bank_warning' },
+          { id: 'B', text: '要求對方先轉 1000 元訂金，收到錢再考慮借不借。', next: 'act3_scam_bank_warning' },
+          { id: 'C', text: '想起新聞講過「借帳戶會變人頭戶洗錢」，立刻嚴正拒絕：「這是違法洗錢行為，我不會借的！」', next: 'act4_scam_heroic' },
+          { id: 'D', text: '不予理會，將對話截圖向 165 反詐騙專線諮詢。', next: 'act4_scam_heroic' }
+        ]
+      },
+
+      'act3_scam_bill_shock': {
+        act: '第三幕：帳單與凍結的警訊',
+        time: '下個月 初 電信帳單寄達日',
+        place: '自家客廳',
+        title: '震驚全家的破萬帳單',
+        body: `
+          <p>你輸入驗證碼後，點券始終沒有到帳，你以為只是系統出錯就拋在了腦後。</p>
+          <p>直到今天晚上，爸爸手裡拿著這個月的電信帳單，臉色鐵青地拍在桌上——原本每個月只有 599 元的手機通話費，這個月竟然高達 <strong>NT$ 11,595 元</strong>！帳單明細上滿滿的「小額付費遊戲代碼消費」！</p>
+          <p>父母不敢置信地看著你。詐騙集團利用你交出的驗證碼，在短短二十分鐘內連續盜刷了五筆小額儲值！</p>
+          <p class="inner-thought">家裡原本準備換新冰箱的預算，因為你隨手填入的一個六位數驗證碼，瞬間蒸發。面對父母震驚失望的目光，你渾身冰冷……</p>
+        `,
+        options: [
+          { id: 'A', text: '慌亂中撒謊：「不是我！一定是手機中病毒被黑客盜刷了，我什麼都沒做！」', next: 'end_scam_family_distrust' },
+          { id: 'B', text: '眼淚潰堤，跪在父母面前坦白自己為了免費點券輸入驗證碼的經過，並主動提出交出壓歲錢全額賠償。', next: 'end_scam_painful_lesson' },
+          { id: 'C', text: '在父母陪同下，立刻前往電信公司門市調閱消費紀錄，並向 165 反詐騙專線報案提出「爭議款項申訴」。', next: 'end_scam_painful_lesson' },
+          { id: 'D', text: '自暴自棄地大吼：「我也被騙了啊！你們為什麼只怪我！」衝回房間鎖門。', next: 'end_scam_family_distrust' }
+        ]
+      },
+
+      'act3_scam_bank_warning': {
+        act: '第三幕：帳單與凍結的警訊',
+        time: '週三 下午 16:30',
+        place: '學校放學後 郵局提款機前',
+        title: '被凍結的警示帳戶',
+        body: `
+          <p>你把帳戶借出去兩天後，對方確實匯入了三萬元，並催促你領出來交給指定的人。</p>
+          <p>然而當你拿著提款卡插入 ATM 時，螢幕突然跳出刺眼的紅色警語：<br>
+            <span class="inline-block mt-2 p-2 rounded bg-rose-950 border border-rose-500 text-rose-300 font-mono text-xs sm:text-sm">
+              ［交易失敗］本帳戶已被金融機構列為【警示帳戶】，交易功能全面凍結！
+            </span>
+          </p>
+          <p>隨後，媽媽打來了帶著哭腔的電話：警察剛剛打到家裡，說你的帳戶剛剛收到了一筆詐騙被害人的血汗錢，你已經被列為《詐欺罪》與《洗錢防制法》的涉案嫌疑人，要求立刻由法定代理人陪同到警局說明！</p>
+          <p class="inner-thought">那一千元的零用錢像沾滿劇毒的糖衣。你以為的「幫忙代收」，在法律上是詐騙集團專門找未成年當替死鬼的「人頭帳戶」……</p>
+        `,
+        options: [
+          { id: 'A', text: '嚇得拔腿想跑，試圖把提款卡丟進水溝滅證。', next: 'end_scam_legal_nightmare' },
+          { id: 'B', text: '在提款機旁放聲大哭，立刻打電話跟媽媽說出實情，配合警方到案說明。', next: 'end_scam_legal_nightmare' },
+          { id: 'C', text: '保留與「阿豪」的所有對話紀錄、對方的聯絡方式與匯款資訊，全力協助警方追查幕後集團。', next: 'end_scam_legal_nightmare' },
+          { id: 'D', text: '向阿豪質問，結果發現自己早就被對方封鎖刪除。', next: 'end_scam_legal_nightmare' }
+        ]
+      },
+
+      'act3_scam_escaped': {
+        act: '第三幕：帳單與凍結的警訊',
+        time: '週六 傍晚 17:30',
+        place: '自家客廳',
+        title: '懸崖勒馬的虛驚一場',
+        body: `
+          <p>因為你最後看見「小額付費」及時關閉了網頁，帳單沒有產生任何扣款。</p>
+          <p>隔天到了學校，班上有兩位同學哭喪著臉說他們被那個抖音影片騙了，家裡手機被盜刷了三千多塊，被父母罵得狗血淋頭。</p>
+          <p class="inner-thought">你看著自己的手機，長長呼出了一口氣。原來危險跟自己擦肩而過只有幾公分的距離。在網路上，「貪圖免費」往往是所有陷阱的起點……</p>
+        `,
+        options: [
+          { id: 'A', text: '慶幸自己運氣好，回座位認真上課，不再理會網路上的任何好康資訊。', next: 'end_scam_vigilant_survivor' },
+          { id: 'B', text: '主動向那兩位被騙的同學分享如何向電信公司申訴、申請調降小額付費額度的方法。', next: 'act4_scam_heroic' },
+          { id: 'C', text: '請父母把自己的手機門號「小額付費功能」直接向電信公司申請永久關閉。', next: 'end_scam_vigilant_survivor' },
+          { id: 'D', text: '向學校資訊老師反映這個抖音詐騙手法，讓學校進行反詐宣導。', next: 'act4_scam_heroic' }
+        ]
+      },
+
+      'act3_scam_mom_alert': {
+        act: '第三幕：帳單與凍結的警訊',
+        time: '週六 下午 14:45',
+        place: '客廳媽媽身旁',
+        title: '第一時間的主動查證',
+        body: `
+          <p>媽媽看完簡訊後臉色一沉，立刻拿過手機按下截圖，並打開 165 全民防騙網查詢。果然，畫面上正列著這週最新的「假官方送點券、盜取小額付費 OTP 簡訊」案例！</p>
+          <p>媽媽摸了摸你的頭：「幸好你沒有隨便把驗證碼給別人！很多小孩怕被罵不敢問，結果家裡被盜刷幾萬塊。」隨後媽媽當場帶你打電話給電信客服，直接將門號的小額付費功能關閉。</p>
+          <p class="inner-thought">主動詢問信任的大人，看似需要一點勇氣，但它能瞬間化解一場可能摧毀家庭信任的危機……</p>
+        `,
+        options: [
+          { id: 'A', text: '把這次經歷記在心裡，未來遇到任何要驗證碼的網站一律拒絕。', next: 'end_scam_vigilant_survivor' },
+          { id: 'B', text: '將 165 防詐騙官網的宣導圖文轉發到班級群組，提醒大家注意。', next: 'act4_scam_heroic' },
+          { id: 'C', text: '向班導師提議在下週的班會課舉辦一次「我遇過的網路詐騙」經驗分享。', next: 'act4_scam_heroic' },
+          { id: 'D', text: '感謝媽媽的理解，增進了親子間的信任。', next: 'end_scam_vigilant_survivor' }
+        ]
+      },
+
+      'act3_scam_damage_control': {
+        act: '第三幕：帳單與凍結的警訊',
+        time: '週六 晚間 18:00',
+        place: '電腦前',
+        title: '及時停損的帳號救援',
+        body: `
+          <p>因為你第一時間在大群組發出預警，沒有任何好友點擊你的被盜連結而受害。</p>
+          <p>隨後你在父母的協助下，提供了原始註冊信箱與儲值發票紀錄給官方客服。經過嚴謹的審核，遊戲公司在 48 小時後成功幫你重置密碼、追回了帳號！</p>
+          <p class="inner-thought">誠實與及時的止血，讓你守住了朋友的信任，也奪回了自己的數位資產……</p>
+        `,
+        options: [
+          { id: 'A', text: '立刻開啟遊戲帳號的「兩步驟驗證（2FA）」，大幅提升安全防護。', next: 'end_scam_master_defender' },
+          { id: 'B', text: '在群組感謝大家幫忙檢舉，並分享防盜經驗。', next: 'act4_scam_heroic' },
+          { id: 'C', text: '安心回到遊戲，徹底遠離任何非官方的第三方活動。', next: 'end_scam_vigilant_survivor' },
+          { id: 'D', text: '提醒身邊每一個朋友切勿使用容易被猜中的簡單密碼。', next: 'end_scam_master_defender' }
+        ]
+      },
+
+      'act4_scam_heroic': {
+        act: '第四幕：法網與破局抉擇',
+        time: '下週 班會課',
+        place: '教室講台前',
+        title: '校園反詐防火牆',
+        body: `
+          <p>你的敏銳警覺與主動通報，在校園裡掀起了一場正面效應。學校教官在朝會上特別肯定了你及時拆穿「免費送點券詐騙」與「人頭戶代收陷阱」的敏銳度。</p>
+          <p>全班在你的經驗分享中，學會了如何辨識釣魚網址、保護簡訊 OTP 驗證碼，以及拒絕任何形式的帳戶出借。</p>
+          <p class="inner-thought">智慧不是從來不遇到誘惑，而是在誘惑來臨時，懂得用知識與警惕守護自己的界線……</p>
+        `,
+        options: [
+          { id: 'A', text: '把 165 反詐騙原則融入自己的日常生活，成為同學眼中最可靠的資安達人。', next: 'end_scam_master_defender' },
+          { id: 'B', text: '在學校網站投稿一篇「中小學生不可不知的遊戲詐騙防身術」。', next: 'end_scam_master_defender' },
+          { id: 'C', text: '持續關注最新詐騙手法，保護自己也保護家人。', next: 'end_scam_master_defender' },
+          { id: 'D', text: '安穩享受健康正常的校園數位生活。', next: 'end_scam_master_defender' }
+        ]
+      }
+    };
+
+    // =========================================================================
+    // ENDINGS FOR ALL FOUR STORIES
     // =========================================================================
     const ALL_ENDINGS = {
       // Speech Story Endings
@@ -1324,22 +1509,14 @@
         certTitle: '全能數位卓越楷模'
       },
 
-      // Grooming Story Endings (NEW!)
+      // Grooming Story Endings
       'end_abyss_nightmare': {
         symbol: '🕳️',
         badge: '深淵噩夢結局',
         badgeClass: 'bg-rose-950 text-rose-300 border border-rose-800',
         title: '深淵的無底洞・恐懼與屈服的惡果',
-        desc: '因為誤以為「只要再順從一次對方就會收手」，你落入了更可怕的連環勒索。對方要求更多的影片與金錢，甚至威脅要與你現實見面。最後照片依然遭到外流，身心遭受了毀滅性的重創。你深刻體會到：對勒索者的每一次妥協，都只是在為自己挖掘更深的墳墓。',
-        analysis: `
-          <div class="space-y-3">
-            <p><strong>📌 致命迷思：勒索者「絕對不會」因為你妥協而停手！</strong></p>
-            <ul class="list-disc list-inside space-y-1 text-slate-300">
-              <li><strong>犯罪心理學真相</strong>：數位性勒索者的目的就是榨取受害者的價值（更多影像、金錢或現實控制）。只要你配合一次，對方就會確認「恐嚇對你有效」，進而將威脅加碼十倍。</li>
-              <li><strong>打破沉默是唯一生路</strong>：哪怕再羞恥、再害怕，第一時間向家長、師長坦白並向警方與 iWIN 報案，是唯一能阻止傷害擴大的破局之法！</li>
-            </ul>
-          </div>
-        `,
+        desc: '因為誤以為「順從一次對方就會收手」，你落入了更可怕的連環勒索。照片最終依然遭到外流，身心遭受毀滅性重創。妥協只會挖掘更深的墳墓。',
+        analysis: `<p><strong>📌 勒索者絕不罷休：</strong>犯罪者一旦確認恐嚇有效便會加碼十倍。打破沉默第一時間向家長報警通報 iWIN，是唯一生路！</p>`,
         certTitle: '警惕重生探索者'
       },
       'end_blackmail_slave': {
@@ -1347,16 +1524,8 @@
         badge: '人財兩失結局',
         badgeClass: 'bg-amber-950 text-amber-300 border border-amber-800',
         title: '被敲詐的羔羊・散盡零用錢的自欺',
-        desc: '你把所有的積蓄與零用錢都轉帳給了對方，然而不到三天，對方又開口索要五千元！你成了犯罪者源源不絕的提款機。直到帳戶見底、無力支付時，真相依然不得不被揭開。金錢換不來安全，唯有法律才能制裁惡魔。',
-        analysis: `
-          <div class="space-y-3">
-            <p><strong>📌 法律分析：恐嚇取財罪與性剝削併罰</strong></p>
-            <ul class="list-disc list-inside space-y-1 text-slate-300">
-              <li>對方以散布私密照片相威脅要求交付金錢，涉犯《刑法第 346 條 恐嚇取財罪》與《兒少性剝削防制條例》，兩者均屬極重的刑事犯罪。</li>
-              <li>私下匯款不僅無法消除威脅，反而讓對方留下你的金融帳戶與更多個資，落入被反覆吸血的循環。</li>
-            </ul>
-          </div>
-        `,
+        desc: '交出全部積蓄後，對方又開口索要五千元！金錢換不來安全，反而成為犯罪者反覆吸血的提款機。唯有法律才能制裁惡魔。',
+        analysis: `<p><strong>📌 刑法第346條恐嚇取財罪：</strong>以散布私密影像相威脅索財觸犯重罪。私下給錢無法解決問題，應保留紀錄立刻報警。</p>`,
         certTitle: '迷途覺醒學員'
       },
       'end_courage_family_shield': {
@@ -1364,16 +1533,8 @@
         badge: '正義破局結局',
         badgeClass: 'bg-gradient-to-r from-blue-950 via-indigo-950 to-slate-900 text-blue-300 border border-blue-700',
         title: '家庭的堅盾・斬斷黑手的勇氣之光',
-        desc: '你做出了無比正確且勇敢的抉擇——你敲開了客廳的門，選擇相信愛你的家人！父母雖然心痛震撼，但在第一時間緊緊擁抱住了你。在少年警察隊與科技犯罪偵查隊的介入下，警方迅速鎖定 IP 逮捕了這名誘騙多名青少年的慣犯，並查扣所有硬碟徹底銷毀。你不僅拯救了自己，更解救了無數可能受害的孩子！',
-        analysis: `
-          <div class="space-y-3">
-            <p><strong>📌 家人是永不倒塌的避風港：</strong></p>
-            <ul class="list-disc list-inside space-y-1 text-slate-300">
-              <li>犯罪者最常用的手段就是「分離受害者與家庭」，洗腦孩子說「你爸媽會打死你、他們不會原諒你」。</li>
-              <li>事實證明，在生死存亡的危機面前，父母永遠是保護孩子最強大的盾牌。勇於承認受害並不可恥，那是無與倫比的勇氣！</li>
-            </ul>
-          </div>
-        `,
+        desc: '你選擇相信愛你的家人！父母緊緊擁抱了你，少年隊與科偵隊迅速鎖定 IP 逮捕慣犯徹底銷毀檔案。你拯救了自己，也解救了無數孩子！',
+        analysis: `<p><strong>📌 家人是最強大的避風港：</strong>犯罪者最愛用「爸媽會怪你」隔離受害者。勇於向父母坦白是無與倫比的勇氣！</p>`,
         certTitle: '勇敢破局先鋒'
       },
       'end_professional_rescue': {
@@ -1381,16 +1542,8 @@
         badge: '專業防護結局',
         badgeClass: 'bg-emerald-950 text-emerald-300 border border-emerald-800',
         title: '專業防護網・破網而出的重生',
-        desc: '你及時聯絡了 iWIN 網路內容防護機構與學校輔導室。專業社工接手後，迅速啟動「StopNCII / 性影像數位指紋封鎖技術」，在各大社群與論壇全面攔截該照片的傳播途徑。在心理師的陪伴與輔導下，你走出了恐懼的陰影，重新在陽光下昂首生活。',
-        analysis: `
-          <div class="space-y-3">
-            <p><strong>📌 什麼是「性影像防護下架機制」？</strong></p>
-            <ul class="list-disc list-inside space-y-1 text-slate-300">
-              <li>衛福部與 iWIN 機構具備專業技術，可將受害影像提取特徵碼（Hash 值），同步至 Meta（IG/FB）、Google、X 等各大平台進行「預先攔截」，只要有人上傳系統會自動辨識並強制下架銷毀。</li>
-              <li>遇到危機，請牢記撥打 <strong>iWIN 專線：02-2577-5118</strong> 或 <strong>113 保護專線</strong>。</li>
-            </ul>
-          </div>
-        `,
+        desc: '聯絡 iWIN 與輔導室，專業社工啟動「性影像數位指紋封鎖技術」，在各大平台全面攔截下架。在心理師陪伴下，你重獲新生昂首生活。',
+        analysis: `<p><strong>📌 iWIN 專線 02-2577-5118：</strong>衛福部與 iWIN 可提取特徵碼同步至各大平台進行預先攔截下架，是受害者的堅強後盾。</p>`,
         certTitle: '自保韌性守護者'
       },
       'end_close_call_survivor': {
@@ -1398,17 +1551,8 @@
         badge: '警醒自保結局',
         badgeClass: 'bg-teal-950 text-teal-300 border border-teal-800',
         title: '警鐘長鳴・幸免於難的智慧底線',
-        desc: '因為你堅守住了身體與個資的底線，沒有傳出任何照片，成功讓對方的誘騙計劃撲了個空！這場驚險的遭遇成為你人生中最深刻的警鐘。你明白了：在虛擬世界中，保護自己的身體界線，是永遠不容退讓的鋼鐵原則。',
-        analysis: `
-          <div class="space-y-3">
-            <p><strong>📌 識破「線上誘騙（Grooming）」的警訊：</strong></p>
-            <ul class="list-disc list-inside space-y-1 text-slate-300">
-              <li>突然贈送昂貴虛寶或金錢。</li>
-              <li>要求「這是我們兩個人的秘密，不能告訴父母」。</li>
-              <li>過度刺探私生活、要求提供生活照或身體照片。只要出現任何一個警訊，請立刻拉響警報！</li>
-            </ul>
-          </div>
-        `,
+        desc: '堅守身體與個資底線，成功讓對方的誘騙計劃撲空！保護自己的身體界線，是虛擬世界永遠不容退讓的鋼鐵原則。',
+        analysis: `<p><strong>📌 識破誘騙三訊號：</strong>突送昂貴大禮、要求秘密不能告訴父母、過度索要私密生活照。出現一項立刻拉響警報！</p>`,
         certTitle: '智慧防禦觀察家'
       },
       'end_master_digital_defender': {
@@ -1416,27 +1560,124 @@
         badge: '全能防衛結局',
         badgeClass: 'bg-gradient-to-r from-rose-950 via-indigo-950 to-slate-900 text-rose-300 border border-rose-600',
         title: '明鏡之心・校園數位安全防禦使',
-        desc: '你不僅有超凡的警覺性識破了誘騙套路，更懂得留存證據、主動檢舉，並將這份寶貴的防護知識分享給身邊同學與師長！你成為了校園裡最敏銳的防護哨兵，用你的智慧與影響力，為無數同儕點亮了穿越網路迷霧的明燈！',
+        desc: '識破誘騙、留存證據、主動檢舉，並將防護知識分享給身邊同學師長！你成為了校園裡最敏銳的防護哨兵與正義守護者！',
+        analysis: `<p><strong>📌 零信任數位意識：</strong>深諳《兒少性剝削防制條例》與通報管道，能在同儕受害時給予最正確的引導與救援。</p>`,
+        certTitle: '全能數位安全防禦使'
+      },
+
+      // Scam Story Endings (NEW!)
+      'end_scam_double_loss': {
+        symbol: '💸',
+        badge: '人財兩失結局',
+        badgeClass: 'bg-rose-950 text-rose-300 border border-rose-800',
+        title: '貪念的代價・連環被詐與帳號永失',
+        desc: '為了免費點券交出帳號密碼，帳號被盜後又輕信網路上「收費幫忙追回」的假黑客，結果二次被騙走零用錢！帳號永久遺失，同學也因為被你的帳號詐騙而對你失去信任。你終於明白：網路上標榜「免費」與「代打黑客」的背後，往往全是精密計算的陷阱。',
         analysis: `
           <div class="space-y-3">
-            <p><strong>📌 成為網路安全防護使的實戰力：</strong></p>
+            <p><strong>📌 核心反詐警示：二次詐騙（Secondary Scam）</strong></p>
             <ul class="list-disc list-inside space-y-1 text-slate-300">
-              <li>具備「零信任」的數位隱私意識，懂得隱藏個資與管理權限。</li>
-              <li>深諳《兒少性剝削防制條例》與通報管道，能在同儕受害時給予最正確的引導與救援。</li>
+              <li><strong>假客服與假追回黑客</strong>：許多人在帳號被盜或被騙後，慌亂中在網路搜尋「專業追回」，結果遇到二次詐騙。任何要求預先付款的第三方追回服務 100% 是詐騙！</li>
+              <li>唯一能處理帳號問題的，只有<strong>遊戲官方客服中心</strong>，請透過官方管道提供儲值發票申訴。</li>
             </ul>
           </div>
         `,
-        certTitle: '全能數位安全防禦使'
+        certTitle: '防詐深思探索者'
+      },
+      'end_scam_legal_nightmare': {
+        symbol: '🚨',
+        badge: '涉法危機結局',
+        badgeClass: 'bg-rose-950 text-rose-300 border border-rose-800',
+        title: '警示帳戶的陰影・淪為洗錢人頭戶',
+        desc: '為了區區一千元外快把郵局帳戶借給網友代收，結果帳戶成了詐騙集團洗錢的中轉站！帳戶被警方通報凍結為「警示帳戶」，名下所有銀行功能全數停擺。你和父母必須一次次請假前往地檢署與少年法庭接受洗錢調查，並面臨被害人的民事連帶賠償官司。',
+        analysis: `
+          <div class="space-y-3">
+            <p><strong>📌 重大法律責任：洗錢防制法與詐欺罪共同正犯</strong></p>
+            <ul class="list-disc list-inside space-y-1 text-slate-300">
+              <li><strong>提供帳戶即觸法</strong>：依《洗錢防制法》修正案，無正當理由將金融帳戶、提款卡密碼交付他人使用，將面臨刑事處分！</li>
+              <li><strong>警示帳戶連鎖效應</strong>：一旦被列為警示帳戶，名下所有銀行開戶、信用卡、網路轉帳功能將被全面凍結長達數年，對個人信用留下巨大汙點。</li>
+            </ul>
+          </div>
+        `,
+        certTitle: '法律震撼重修者'
+      },
+      'end_scam_family_distrust': {
+        symbol: '💔',
+        badge: '信任破產結局',
+        badgeClass: 'bg-amber-950 text-amber-300 border border-amber-800',
+        title: '破萬帳單的震盪・家庭信任的裂痕',
+        desc: '因為交出 6 位數簡訊驗證碼，電信帳單被盜刷上萬元。更嚴重的是，面對父母的質問時你選擇了撒謊推託，謊言被電信紀錄無情戳破後，父母眼中充滿了心痛與失望。金錢的損失可以慢慢賺，但被謊言撕裂的家庭信任，卻需要漫長的時間才能修補。',
+        analysis: `
+          <div class="space-y-3">
+            <p><strong>📌 心理學剖析：逃避認錯的代價比損失更慘痛</strong></p>
+            <ul class="list-disc list-inside space-y-1 text-slate-300">
+              <li>青少年犯錯後常因恐懼被責怪而編造謊言（例如稱「手機中毒」）。但在數位通訊紀錄面前，謊言極易被識破。</li>
+              <li>犯錯後的「第一時間誠實坦白」，是止血與爭取父母共同面對爭議款項申訴的最關鍵一步。</li>
+            </ul>
+          </div>
+        `,
+        certTitle: '誠實修復學員'
+      },
+      'end_scam_painful_lesson': {
+        symbol: '🩹',
+        badge: '誠實止血結局',
+        badgeClass: 'bg-blue-950 text-blue-300 border border-blue-800',
+        title: '痛定思痛的學費・誠實擔當的勇氣',
+        desc: '雖然遭遇了盜刷，但你鼓起勇氣向父母全盤托出、真誠認錯，並主動拿出壓歲錢承擔損失。在父母與電信公司的協助下，及時向 165 報案並提出未成年人爭議款項審查，成功追回了部分損失。這場昂貴的教訓讓你徹底明白了：天下絕無白吃的午餐！',
+        analysis: `
+          <div class="space-y-3">
+            <p><strong>📌 遇到電信小額付款盜刷的救濟管道：</strong></p>
+            <ul class="list-disc list-inside space-y-1 text-slate-300">
+              <li><strong>立即停用小額付費</strong>：打電話給電信客服，要求關閉小額付款功能。</li>
+              <li><strong>報案取得報案三聯單</strong>：撥打 165 並至派出所報案，取得受害證明向電信業者與遊戲平台申請爭議款項調查。</li>
+            </ul>
+          </div>
+        `,
+        certTitle: '誠信擔當實踐者'
+      },
+      'end_scam_vigilant_survivor': {
+        symbol: '⚠️',
+        badge: '警覺自保結局',
+        badgeClass: 'bg-teal-950 text-teal-300 border border-teal-800',
+        title: '止步懸崖・警覺自保的智慧清醒者',
+        desc: '在看見「付款 1,999 元」簡訊的那一刻，你的理性戰勝了貪念，及時關閉網頁踩下煞車！你守住了零用錢，也保護了父母的帳單。你看著身邊因貪小便宜而受騙的同學，深刻體會到：在充斥著假訊息的網路世界裡，「保持懷疑」是最好的防彈衣。',
+        analysis: `
+          <div class="space-y-3">
+            <p><strong>📌 辨識釣魚網站的黃金三大原則：</strong></p>
+            <ul class="list-disc list-inside space-y-1 text-slate-300">
+              <li><strong>看網址網域（Domain）</strong>：官方網址通常結構完整（如 .com / .tw），釣魚網站常夾雜奇怪英文字母或非官方後綴。</li>
+              <li><strong>查核官方粉絲頁</strong>：所有正式回饋活動，官方社群一定會有同步公告。</li>
+              <li><strong>簡訊驗證碼絕不外流</strong>：任何向你索取「OTP 簡訊碼」的活動，99.9% 是盜刷詐騙！</li>
+            </ul>
+          </div>
+        `,
+        certTitle: '敏銳資安觀察家'
+      },
+      'end_scam_master_defender': {
+        symbol: '👑',
+        badge: '卓越防詐結局',
+        badgeClass: 'bg-gradient-to-r from-amber-950 via-indigo-950 to-slate-900 text-amber-300 border border-amber-600',
+        title: '火眼金睛・校園反詐與資安卓越使',
+        desc: '你不僅有超凡的警覺性識破了釣魚網站與人頭戶陷阱，更在第一時間向全班發出預警、通報官方與師長，成功阻止了一場可能席捲多名同學的集體詐騙風暴！你成為了全校師生心目中最值得信賴的「反詐小偵探」，用知識構築了最堅不可摧的安全防火牆！',
+        analysis: `
+          <div class="space-y-3">
+            <p><strong>📌 現代數位公民的資安防禦力：</strong></p>
+            <ul class="list-disc list-inside space-y-1 text-slate-300">
+              <li><strong>啟用雙重身分驗證（2FA）</strong>：保護所有遊戲與社群帳號。</li>
+              <li><strong>牢記 165 反詐三步驟</strong>：【一聽】聽清對方是否要求個資與點數；【二掛】立刻掛斷通話或關閉網頁；【三查證】撥打 165 反詐騙專線求證！</li>
+            </ul>
+          </div>
+        `,
+        certTitle: '校園反詐資安卓越使'
       }
     };
   </script>
 
   <!-- Game Engine Implementation -->
   <script>
-    class TriStoryEngine {
+    class QuadStoryEngine {
       constructor() {
         this.sound = new SoundFX();
-        this.currentStoryId = 'speech'; // 'speech', 'addiction', or 'grooming'
+        this.currentStoryId = 'speech'; // 'speech', 'addiction', 'grooming', or 'scam'
         this.currentNodeKey = null;
         this.history = [];
         this.pathLog = [];
@@ -1476,6 +1717,7 @@
         let startNode = 'act1_start';
         if (storyId === 'addiction') startNode = 'act1_addiction_start';
         else if (storyId === 'grooming') startNode = 'act1_grooming_start';
+        else if (storyId === 'scam') startNode = 'act1_scam_start';
 
         this.currentNodeKey = startNode;
 
@@ -1493,6 +1735,7 @@
       getCurrentGraph() {
         if (this.currentStoryId === 'addiction') return ADDICTION_STORY_GRAPH;
         if (this.currentStoryId === 'grooming') return GROOMING_STORY_GRAPH;
+        if (this.currentStoryId === 'scam') return SCAM_STORY_GRAPH;
         return SPEECH_STORY_GRAPH;
       }
 
@@ -1579,7 +1822,8 @@
         const victorious = [
           'end_civic_courage', 'end_quiet_guardian',
           'end_master_of_autonomy', 'end_digital_detox',
-          'end_courage_family_shield', 'end_master_digital_defender', 'end_professional_rescue'
+          'end_courage_family_shield', 'end_master_digital_defender', 'end_professional_rescue',
+          'end_scam_master_defender', 'end_scam_vigilant_survivor'
         ];
 
         if (victorious.includes(endingKey)) {
@@ -1653,7 +1897,7 @@
       }
     }
 
-    const game = new TriStoryEngine();
+    const game = new QuadStoryEngine();
     window.addEventListener('DOMContentLoaded', () => {
       game.init();
     });
