@@ -73,6 +73,91 @@
       from { opacity: 0; transform: translateY(6px); }
       to { opacity: 1; transform: translateY(0); }
     }
+  
+    /* WARM CREAM READING MODE */
+    body.theme-cream {
+      background: #FDFBF7 !important;
+      color: #1c1917 !important;
+    }
+    body.theme-cream .novel-card {
+      background: #ffffff !important;
+      border-color: #e7e2d9 !important;
+      box-shadow: 0 4px 20px -2px rgba(44, 38, 30, 0.06) !important;
+    }
+    body.theme-cream .choice-card {
+      background: #faf7f2 !important;
+      border-color: #e5ded2 !important;
+      color: #1c1917 !important;
+    }
+    body.theme-cream .choice-card:hover {
+      background: #f2ebe0 !important;
+      border-color: #6366f1 !important;
+      box-shadow: 0 8px 20px -4px rgba(99, 102, 241, 0.15) !important;
+    }
+    body.theme-cream .chat-bubble {
+      background: #f3ece1 !important;
+      border-left: 3px solid #4f46e5 !important;
+      color: #1c1917 !important;
+    }
+    body.theme-cream .inner-thought {
+      background: #fbf8f3 !important;
+      color: #44403c !important;
+      border-left-color: #a8a29e !important;
+    }
+    body.theme-cream .text-white {
+      color: #1c1917 !important;
+    }
+    body.theme-cream .text-slate-100 {
+      color: #1c1917 !important;
+    }
+    body.theme-cream .text-slate-200 {
+      color: #292524 !important;
+    }
+    body.theme-cream .text-slate-300 {
+      color: #44403c !important;
+    }
+    body.theme-cream .text-slate-400 {
+      color: #64748b !important;
+    }
+    body.theme-cream .bg-slate-800, 
+    body.theme-cream .bg-slate-800\/80, 
+    body.theme-cream .bg-slate-900,
+    body.theme-cream .bg-slate-900\/50,
+    body.theme-cream .bg-slate-900\/60,
+    body.theme-cream .bg-slate-900\/80,
+    body.theme-cream .bg-slate-900\/90,
+    body.theme-cream .bg-slate-950,
+    body.theme-cream .bg-slate-950\/80 {
+      background-color: #f7f4ed !important;
+      border-color: #e2d8c7 !important;
+      color: #1c1917 !important;
+    }
+    body.theme-cream .border-slate-800, 
+    body.theme-cream .border-slate-700,
+    body.theme-cream .border-slate-700\/80 {
+      border-color: #e2d8c7 !important;
+    }
+    body.theme-cream header {
+      background-color: rgba(253, 251, 247, 0.95) !important;
+      border-bottom-color: #e7e2d9 !important;
+    }
+    body.theme-cream #certificateModal .bg-slate-900 {
+      background-color: #fefdfb !important;
+      border-color: #e7e2d9 !important;
+    }
+    body.theme-cream #certificateBox {
+      background-color: #faf7f2 !important;
+      border-color: #d6cbba !important;
+      color: #1c1917 !important;
+    }
+    body.theme-cream #certificateBox .text-slate-200,
+    body.theme-cream #certificateBox .text-slate-300 {
+      color: #292524 !important;
+    }
+    body.theme-cream #certificateBox .text-slate-400 {
+      color: #57534e !important;
+    }
+
   </style>
 </head>
 <body class="font-sans antialiased flex flex-col justify-between selection:bg-indigo-600 selection:text-white min-h-screen">
@@ -93,13 +178,34 @@
         </div>
       </div>
 
-      <div class="flex items-center space-x-2">
+      <div class="flex items-center flex-wrap gap-1.5 sm:gap-2">
+        <!-- Endings Guide Link -->
+        <a href="endings.html" class="px-2.5 py-1.5 rounded-lg bg-slate-800/90 border border-slate-700 text-slate-300 hover:text-amber-300 hover:border-amber-500/50 text-xs font-medium flex items-center gap-1.5 transition" title="查看 5 大故事全部 30 種結局深度解析">
+          <i data-lucide="book-open-check" class="w-3.5 h-3.5 text-amber-400"></i>
+          <span data-i18n="nav_endings_guide">故事結局全覽</span>
+        </a>
+
+        <!-- Reading Mode Toggle (Dark vs Warm Cream) -->
+        <button id="themeToggleBtn" onclick="game.toggleTheme()" class="px-2.5 py-1.5 rounded-lg bg-slate-800/90 border border-slate-700 text-slate-300 hover:text-amber-300 hover:border-amber-500/50 text-xs font-medium flex items-center gap-1.5 transition" title="切換閱讀模式 (深邃夜讀 / 溫潤米白)">
+          <i data-lucide="sun" id="themeIcon" class="w-3.5 h-3.5 text-amber-400"></i>
+          <span id="themeText">溫潤米白</span>
+        </button>
+
+        <!-- Language Toggle (ZH vs EN) -->
+        <button id="langToggleBtn" onclick="game.toggleLanguage()" class="px-2.5 py-1.5 rounded-lg bg-slate-800/90 border border-slate-700 text-slate-300 hover:text-emerald-300 hover:border-emerald-500/50 text-xs font-medium flex items-center gap-1.5 transition" title="Switch Language / 切換語言">
+          <i data-lucide="languages" class="w-3.5 h-3.5 text-emerald-400"></i>
+          <span id="langText">English</span>
+        </button>
+
+        <!-- Sound Toggle -->
         <button id="soundToggle" onclick="game.toggleSound()" class="p-2 rounded-lg bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700 transition" title="開關音效">
           <i data-lucide="volume-2" id="soundIcon" class="w-4 h-4"></i>
         </button>
-        <button onclick="game.showLawBook()" class="px-2.5 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 hover:text-indigo-300 hover:border-indigo-500/50 text-xs font-medium flex items-center gap-1.5 transition">
+
+        <!-- Law Book -->
+        <button onclick="game.showLawBook()" class="hidden md:flex px-2.5 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 hover:text-indigo-300 hover:border-indigo-500/50 text-xs font-medium items-center gap-1.5 transition">
           <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
-          <span>法治與自保百科</span>
+          <span data-i18n="nav_law_encyclopedia">法治自保百科</span>
         </button>
       </div>
     </div>
@@ -113,10 +219,10 @@
       <div class="text-center space-y-3">
         <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700 text-indigo-300 text-xs tracking-wider">
           <i data-lucide="sparkles" class="w-3.5 h-3.5 text-indigo-400"></i>
-          五大主題・無劇透・多幕遞進・深度心理分支
+          <span data-i18n="hero_tag">五大主題・無劇透・多幕遞進・深度心理分支</span>
         </div>
         <h2 class="text-2xl sm:text-4xl font-serif font-black text-white leading-tight">
-          在誘惑與風暴前，看清真實的自己
+          <span data-i18n="hero_title">在誘惑與風暴前，看清真實的自己</span>
         </h2>
         <p class="max-w-2xl mx-auto text-slate-300 text-sm leading-relaxed">
           這裡沒有預告好壞的「提示標籤」，也沒有非黑即白的簡單說教。<br>
@@ -145,7 +251,7 @@
             </div>
           </div>
           <button onclick="game.startStory('speech')" class="mt-5 w-full py-2.5 px-3 rounded-xl font-bold text-white bg-indigo-600 hover:bg-indigo-500 shadow-md shadow-indigo-950 flex items-center justify-center gap-1.5 transition text-xs sm:text-sm">
-            <span>翻開此篇章</span>
+            <span data-i18n="btn_open_chapter">翻開此篇章</span>
             <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </button>
         </div>
@@ -169,7 +275,7 @@
             </div>
           </div>
           <button onclick="game.startStory('addiction')" class="mt-5 w-full py-2.5 px-3 rounded-xl font-bold text-white bg-teal-600 hover:bg-teal-500 shadow-md shadow-teal-950 flex items-center justify-center gap-1.5 transition text-xs sm:text-sm">
-            <span>翻開此篇章</span>
+            <span data-i18n="btn_open_chapter">翻開此篇章</span>
             <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </button>
         </div>
@@ -193,7 +299,7 @@
             </div>
           </div>
           <button onclick="game.startStory('grooming')" class="mt-5 w-full py-2.5 px-3 rounded-xl font-bold text-white bg-rose-600 hover:bg-rose-500 shadow-md shadow-rose-950 flex items-center justify-center gap-1.5 transition text-xs sm:text-sm">
-            <span>翻開此篇章</span>
+            <span data-i18n="btn_open_chapter">翻開此篇章</span>
             <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </button>
         </div>
@@ -217,7 +323,7 @@
             </div>
           </div>
           <button onclick="game.startStory('scam')" class="mt-5 w-full py-2.5 px-3 rounded-xl font-bold text-white bg-amber-600 hover:bg-amber-500 shadow-md shadow-amber-950 flex items-center justify-center gap-1.5 transition text-xs sm:text-sm">
-            <span>翻開此篇章</span>
+            <span data-i18n="btn_open_chapter">翻開此篇章</span>
             <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </button>
         </div>
@@ -241,7 +347,7 @@
             </div>
           </div>
           <button onclick="game.startStory('ai')" class="mt-5 w-full py-2.5 px-3 rounded-xl font-bold text-white bg-purple-600 hover:bg-purple-500 shadow-md shadow-purple-950 flex items-center justify-center gap-1.5 transition text-xs sm:text-sm">
-            <span>翻開此篇章</span>
+            <span data-i18n="btn_open_chapter">翻開此篇章</span>
             <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </button>
         </div>
@@ -746,10 +852,10 @@
           <p>滑手機熬夜的代價爆發，考場上大腦空白。為了逃避現實沉溺螢幕，終將自己拖入了深淵……</p>
         `,
         options: [
-          { id: 'A', text: '實在撐不住，舉手向監考老師報告身體極度不適，被攙扶到健康中心躺下昏睡。', next: 'end_burnout_addiction' },
+          { id: 'A', text: '實在撐不住，舉手向監考老師報告身體極度不適，被攙扶到健康中心躺下昏睡。', next: 'end_cyberbullying_complicity' },
           { id: 'B', text: '強撐著意志力胡亂把答案卡塗滿，交卷後趴在桌上深深反省昨夜的失控行徑。', next: 'end_bystander_regret' },
           { id: 'C', text: '中午下課時，主動走向健康中心去探望同樣在那裡的敏萱，向她表達真切的關懷。', next: 'end_quiet_guardian' },
-          { id: 'D', text: '決定今天放學回家後，把手機的娛樂 App 全數刪除，為自己設定嚴格的數位排毒計畫。', next: 'end_burnout_addiction' }
+          { id: 'D', text: '決定今天放學回家後，把手機的娛樂 App 全數刪除，為自己設定嚴格的數位排毒計畫。', next: 'end_reconcile_redemption' }
         ]
       },
       'act4_morning_storm': {
@@ -894,7 +1000,7 @@
         `,
         options: [
           { id: 'A', text: '「好！就真的最後一把！」妥協按下準備鍵，繼續投入下一場對局。', next: 'act3_night_binge' },
-          { id: 'B', text: '雖然退出了遊戲，但覺得輸得太冤枉，開始點開論壇攻略研究破法，不知不覺看了一小時。', next: 'act3_short_video_trap' },
+          { id: 'B', text: '雖然退出了遊戲，但覺得輸得太冤枉，開始點開論壇攻略研究破法，不知不覺看了一小時。', next: 'act3_night_doomscroll' },
           { id: 'C', text: '強壓下衝動，果斷退出頻道：「說好一把就是一把，我不能拿明天的考試開玩笑。」', next: 'act3_breaking_free' },
           { id: 'D', text: '為了擺脫罪惡感，走去廚房狂吃零食泡麵，用食物來填補遊戲沒贏的空虛感。', next: 'act3_midnight_insomnia' }
         ]
@@ -1474,7 +1580,7 @@
         options: [
           { id: 'A', text: '慶幸自己昨天沒有盲目跟風轉發，體會到「不盲從、不隨波逐流」是多麼重要的品格。', next: 'end_ai_sober_observer' },
           { id: 'B', text: '主動發起全班為老林老師集氣祈福與手寫慰問卡片，化解班級的對立與愧疚。', next: 'act3_ai_teacher_support' },
-          { id: 'C', text: '在班會課主動提議全班一起學習「如何辨識 AI 假訊息」，防範悲劇重演。', next: 'end_ai_media_literacy_pioneer' },
+          { id: 'C', text: '在班會課主動提議全班一起學習「如何辨識 AI 假訊息」，防範悲劇重演。', next: 'end_ai_master_factchecker' },
           { id: 'D', text: '默默把這份震撼記在心裡，終生不忘盲目正義的可怕代價。', next: 'end_ai_sober_observer' }
         ]
       },
@@ -1508,10 +1614,10 @@
           <p class="inner-thought">犯錯需要承認的勇氣，而及時阻止錯誤擴散，更是成熟公民無可替代的擔當……</p>
         `,
         options: [
-          { id: 'A', text: '協助校方發布正式的澄清事實查核報告，還原整起事件原貌。', next: 'end_ai_media_literacy_pioneer' },
+          { id: 'A', text: '協助校方發布正式的澄清事實查核報告，還原整起事件原貌。', next: 'end_ai_master_factchecker' },
           { id: 'B', text: '親自前往醫院探望老林老師，向他當面表達歉意與說明及時澄清的經過。', next: 'end_ai_sincere_apology' },
           { id: 'C', text: '在反思中體會到自媒體發言的分寸與重量，告別盲目跟風。', next: 'end_ai_sober_observer' },
-          { id: 'D', text: '與資訊老師合作，在學校網站開設專欄教導大家如何辨識 AI 生成假影音。', next: 'end_ai_media_literacy_pioneer' }
+          { id: 'D', text: '與資訊老師合作，在學校網站開設專欄教導大家如何辨識 AI 生成假影音。', next: 'end_ai_master_factchecker' }
         ]
       },
 
@@ -1546,7 +1652,7 @@
         options: [
           { id: 'A', text: '陪同阿凱一起向老林老師真誠致歉，展現年輕人改過自新的承擔。', next: 'end_ai_sincere_apology' },
           { id: 'B', text: '在班上分享這次險些鑄成大錯的深刻教訓，成為大家心中的清醒守護者。', next: 'end_ai_sober_observer' },
-          { id: 'C', text: '發起「AI 科技倫理」討論會，探討工具背後的道德責任。', next: 'end_ai_media_literacy_pioneer' },
+          { id: 'C', text: '發起「AI 科技倫理」討論會，探討工具背後的道德責任。', next: 'end_ai_master_factchecker' },
           { id: 'D', text: '以平和的心態面對校園風波，深知實話與誠實是唯一的救贖。', next: 'end_ai_sincere_apology' }
         ]
       },
@@ -1563,7 +1669,7 @@
         `,
         options: [
           { id: 'A', text: '深刻體會到科技倫理的重要性，立志永遠不以鍵盤作傷人的利器。', next: 'end_ai_master_factchecker' },
-          { id: 'B', text: '在學校推廣「向網路霸凌說不、向假訊息查核」的校園文化。', next: 'end_ai_media_literacy_pioneer' },
+          { id: 'B', text: '在學校推廣「向網路霸凌說不、向假訊息查核」的校園文化。', next: 'end_ai_master_factchecker' },
           { id: 'C', text: '與老林老師建立起深厚互信的師生情誼，成為校園佳話。', next: 'end_ai_master_factchecker' },
           { id: 'D', text: '安穩回到學業，帶著這份成熟的心靈走向未來。', next: 'end_ai_sober_observer' }
         ]
@@ -1575,6 +1681,15 @@
     // =========================================================================
     const ALL_ENDINGS = {
       // Speech Story Endings
+      'end_cyberbullying_complicity': {
+        symbol: '🌪️',
+        badge: '霸凌共犯結局',
+        badgeClass: 'bg-rose-950/80 text-rose-300 border border-rose-800',
+        title: '迷因狂歡的代價・霸凌同謀的烙印',
+        desc: '你在群組中跟風轉傳甚至製作二創迷因，雖然不是最初的拍照者，但這份「湊熱鬧」的惡意在同儕圈急速發酵。敏萱承受不住排山倒海的嘲諷，在教室情緒崩潰。學務處與校園霸凌防制委員會正式立案調查，你的名字被列入轉傳名單，面對記過處分與受害者家長的嚴正指責，你才驚覺「隨手轉發」也是一把傷人入骨的刀。',
+        analysis: '《校園霸凌防制準則》明確定義網路言語與圖文散布亦屬霸凌範疇。心理學上的「責任分散（Diffusion of Responsibility）」常讓人誤以為「大家都傳了，又不是只有我」，然而每一位轉傳者都是推波助瀾的共同加害人。未成年人若涉及散布足以毀損名譽之圖文，亦需承擔法律與校規懲處。',
+        certTitle: '同理復甦與責任擔當之星'
+      },
       'end_legal_catastrophe': {
         symbol: '⚖️',
         badge: '震撼教育結局',
@@ -1902,7 +2017,9 @@
     class PentaStoryEngine {
       constructor() {
         this.sound = new SoundFX();
-        this.currentStoryId = 'speech'; // 'speech', 'addiction', 'grooming', 'scam', or 'ai'
+        this.currentStoryId = 'speech';
+        this.theme = localStorage.getItem('cyber_reading_theme') || 'dark'; // 'dark' or 'cream'
+        this.lang = localStorage.getItem('cyber_lang') || 'zh'; // 'zh' or 'en' // 'speech', 'addiction', 'grooming', 'scam', or 'ai'
         this.currentNodeKey = null;
         this.history = [];
         this.pathLog = [];

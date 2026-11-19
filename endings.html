@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>微光與暗潮：五大主題故事結局全覽與教學指南 | The Unseen Currents: Endings & Pedagogical Guide</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;900&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Noto Sans TC"', '"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            serif: ['"Noto Serif TC"', 'Georgia', 'serif']
+          },
+          colors: {
+            cream: {
+              50: '#FDFBF7',
+              100: '#F8F5EE',
+              200: '#EFE9DE',
+              300: '#E2D8C7',
+              400: '#C8BAA3',
+              500: '#AD9D83',
+              800: '#3D362C',
+              900: '#231E18'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Theme Transition */
+    body {
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Dark Mode (Default) */
+    html.dark body {
+      background-color: #030712;
+      color: #f3f4f6;
+    }
+    html.dark .card-surface {
+      background-color: #0b1120;
+      border-color: #1e293b;
+    }
+    html.dark .card-subsurface {
+      background-color: #0f172a;
+      border-color: #1e293b;
+    }
+    html.dark .text-muted {
+      color: #94a3b8;
+    }
+    html.dark .text-subhead {
+      color: #cbd5e1;
+    }
+
+    /* Warm Cream Mode */
+    html.cream body {
+      background-color: #FDFBF7;
+      color: #1c1917;
+    }
+    html.cream .card-surface {
+      background-color: #ffffff;
+      border-color: #e7e2d9;
+      box-shadow: 0 4px 20px -2px rgba(44, 38, 30, 0.05);
+    }
+    html.cream .card-subsurface {
+      background-color: #f7f4ee;
+      border-color: #e5dfd3;
+    }
+    html.cream .text-muted {
+      color: #64748b;
+    }
+    html.cream .text-subhead {
+      color: #334155;
+    }
+    html.cream .bg-slate-900\/50, html.cream .bg-slate-900\/80 {
+      background-color: #f8f5ee;
+      border-color: #e2d8c7;
+    }
+    html.cream .header-nav {
+      background-color: rgba(253, 251, 247, 0.88);
+      border-color: #e7e2d9;
+    }
+
+    /* Print Optimization */
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white !important; color: black !important; font-size: 11pt; }
+      .card-surface { border: 1px solid #ccc !important; box-shadow: none !important; break-inside: avoid; margin-bottom: 1.5rem; }
+    }
+  </style>
+</head>
+<body class="font-sans antialiased min-h-screen selection:bg-indigo-500 selection:text-white">
+
+  <!-- TOP STICKY NAV -->
+  <header class="header-nav sticky top-0 z-50 backdrop-blur-md border-b px-4 py-3 sm:px-6 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      
+      <!-- Brand & Title -->
+      <a href="index.html" class="flex items-center gap-2.5 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-amber-400 flex items-center justify-center text-white shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform">
+          <i data-lucide="compass" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <div class="text-xs font-bold tracking-wider uppercase text-indigo-500 flex items-center gap-1.5">
+            <span class="inline-block w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span>
+            <span data-i18n="nav_pedagogy">教育者與學生解析手冊</span>
+          </div>
+          <div class="font-serif font-black text-base sm:text-lg tracking-tight group-hover:text-indigo-400 transition-colors">
+            <span data-i18n="nav_title">微光與暗潮・全故事結局指南</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Controls & Actions -->
+      <div class="flex items-center flex-wrap gap-2">
+        <!-- Return to Game -->
+        <a href="index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-bold rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white shadow-sm transition-all hover:shadow-indigo-500/25">
+          <i data-lucide="gamepad-2" class="w-4 h-4"></i>
+          <span data-i18n="btn_play_game">回到情境抉擇遊戲</span>
+        </a>
+
+        <!-- Reading Mode Switcher -->
+        <button id="themeToggleBtn" onclick="toggleReadingTheme()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-medium rounded-lg border card-subsurface hover:border-indigo-400 transition-colors" title="切換閱讀模式 (深邃夜讀 / 溫潤米白)">
+          <i id="themeIcon" data-lucide="sun" class="w-4 h-4 text-amber-400"></i>
+          <span id="themeText">溫潤米白</span>
+        </button>
+
+        <!-- Language Switcher -->
+        <button id="langToggleBtn" onclick="toggleLanguage()" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-medium rounded-lg border card-subsurface hover:border-indigo-400 transition-colors" title="Switch Language / 切換語言">
+          <i data-lucide="languages" class="w-4 h-4 text-emerald-400"></i>
+          <span id="langText">English</span>
+        </button>
+
+        <!-- Print / PDF -->
+        <button onclick="window.print()" class="no-print hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs sm:text-sm font-medium rounded-lg border card-subsurface hover:border-indigo-400 transition-colors" title="友善列印或另存 PDF">
+          <i data-lucide="printer" class="w-4 h-4 text-slate-400"></i>
+          <span data-i18n="btn_print">列印手冊</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 py-8 sm:px-6 sm:py-10">
+
+    <!-- HERO HEADER -->
+    <div class="text-center max-w-4xl mx-auto mb-10 space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/10 border border-indigo-500/20 text-indigo-400">
+        <i data-lucide="book-open-check" class="w-3.5 h-3.5"></i>
+        <span data-i18n="hero_pill">30 種因果分支 ✕ 完整法規解析 ✕ 思辨引導提問</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl lg:text-5xl font-black font-serif tracking-tight" data-i18n="hero_heading">
+        五大主題故事結局全覽與解析手冊
+      </h1>
+      <p class="text-sm sm:text-base text-muted max-w-3xl mx-auto leading-relaxed" data-i18n="hero_desc">
+        本手冊完整公開五大情境故事的所有因果結局、青少年決策觸發路徑、核心法律責任與心理學防護心法，供教師、家長與學生於課堂深度探討與複盤反思。
+      </p>
+
+      <!-- METRIC CHIPS -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 max-w-2xl mx-auto text-left">
+        <div class="card-surface p-3 rounded-xl border flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-black">5</div>
+          <div>
+            <div class="text-xs text-muted" data-i18n="stat_themes_label">核心主題</div>
+            <div class="text-sm font-bold" data-i18n="stat_themes_val">言論/成癮/誘騙/詐騙/AI</div>
+          </div>
+        </div>
+        <div class="card-surface p-3 rounded-xl border flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-black">30</div>
+          <div>
+            <div class="text-xs text-muted" data-i18n="stat_endings_label">因果結局</div>
+            <div class="text-sm font-bold" data-i18n="stat_endings_val">每主題各 6 種</div>
+          </div>
+        </div>
+        <div class="card-surface p-3 rounded-xl border flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center font-black">15+</div>
+          <div>
+            <div class="text-xs text-muted" data-i18n="stat_laws_label">法律與心理</div>
+            <div class="text-sm font-bold" data-i18n="stat_laws_val">刑法/民法/兒少/洗錢</div>
+          </div>
+        </div>
+        <div class="card-surface p-3 rounded-xl border flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg bg-rose-500/10 text-rose-400 flex items-center justify-center font-black">60</div>
+          <div>
+            <div class="text-xs text-muted" data-i18n="stat_questions_label">課堂思辨問題</div>
+            <div class="text-sm font-bold" data-i18n="stat_questions_val">啟發主動思考</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTROLS & FILTER BAR -->
+    <div class="no-print card-surface p-4 sm:p-5 rounded-2xl border mb-8 space-y-4">
+      
+      <!-- Search & Filters Header -->
+      <div class="flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between">
+        
+        <!-- Live Search -->
+        <div class="relative flex-1">
+          <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+          <input type="text" id="searchInput" oninput="renderEndings()" placeholder="搜尋結局名稱、觸發特徵、法條 (如: 310, 兒少, OTP, FOMO)..." class="w-full pl-10 pr-4 py-2 text-sm rounded-xl border card-subsurface focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all">
+        </div>
+
+        <!-- Tone Filter Chips -->
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 text-xs font-semibold">
+          <span class="text-muted shrink-0 mr-1" data-i18n="filter_tone_label">結局調性:</span>
+          <button onclick="setToneFilter('all')" class="tone-pill px-2.5 py-1.5 rounded-lg border transition-colors bg-indigo-600 text-white border-indigo-600" data-tone="all" data-i18n="filter_all">全部</button>
+          <button onclick="setToneFilter('legal')" class="tone-pill px-2.5 py-1.5 rounded-lg border card-subsurface transition-colors hover:border-rose-400 text-rose-400" data-tone="legal" data-i18n="filter_legal">⚖️ 震撼/涉法</button>
+          <button onclick="setToneFilter('regret')" class="tone-pill px-2.5 py-1.5 rounded-lg border card-subsurface transition-colors hover:border-amber-400 text-amber-400" data-tone="regret" data-i18n="filter_regret">🌫️ 盲從/遺憾</button>
+          <button onclick="setToneFilter('growth')" class="tone-pill px-2.5 py-1.5 rounded-lg border card-subsurface transition-colors hover:border-blue-400 text-blue-400" data-tone="growth" data-i18n="filter_growth">🩹 停損/反省</button>
+          <button onclick="setToneFilter('guardian')" class="tone-pill px-2.5 py-1.5 rounded-lg border card-subsurface transition-colors hover:border-teal-400 text-teal-400" data-tone="guardian" data-i18n="filter_guardian">🌱 溫暖/自保</button>
+          <button onclick="setToneFilter('master')" class="tone-pill px-2.5 py-1.5 rounded-lg border card-subsurface transition-colors hover:border-amber-300 text-amber-300" data-tone="master" data-i18n="filter_master">👑 卓越/全能</button>
+        </div>
+
+      </div>
+
+      <!-- Theme Selector Tabs -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-1 text-xs sm:text-sm font-bold border-t pt-3" id="themeTabsContainer">
+        <!-- Rendered dynamically -->
+      </div>
+
+    </div>
+
+    <!-- ENDINGS CONTAINER (RENDERED DYNAMICALLY) -->
+    <div id="endingsRoot" class="space-y-12">
+      <!-- Injected by JavaScript -->
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="mt-16 pt-8 border-t text-center text-xs text-muted space-y-2">
+      <div>
+        <span class="font-bold">微光與暗潮 (The Unseen Currents)</span> - 青少年情境抉擇式數位素養教材
+      </div>
+      <div>
+        本專案基於 MIT 授權條款開源發行 ｜ 專供教育、親職與輔導推廣免費使用
+      </div>
+      <div class="pt-2">
+        <a href="index.html" class="inline-flex items-center gap-1 text-indigo-400 hover:underline font-bold">
+          <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+          <span data-i18n="footer_back_game">返回線上互動體驗遊戲</span>
+        </a>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- DATA & LOGIC SCRIPT -->
+  <script>
+    const THEMES_DATA = [{"id":"theme_speech","code":"T1","symbol":"💬","title_zh":"主題一：言論與法治篇《那一張沒有人刪除的照片》","title_en":"Theme 1: Speech & Law - \"The Photo Nobody Deleted\"","subtitle_zh":"校園偷拍、私密群組外流、網路公審霸凌與民刑法連帶責任","subtitle_en":"Campus Upskirting, Group Leaks, Cyberbullying & Parental Joint Liability","desc_zh":"圍繞八年級班級群組中的一張同學摔倒狼狽泥濘照，探討按讚、轉發、私訊、公開公審的法律與道德界線。","desc_en":"Centers around a humiliating photo of a muddy classmate posted in a private class chat, exploring the legal and moral lines of reactions, sharing, and public doxxing.","endings":[{"id":"end_legal_catastrophe","symbol":"⚖️","badge_zh":"震撼教育結局","badge_en":"Legal Wake-Up Call","badgeType":"legal","title_zh":"少年法庭的傳票與家庭風暴","title_en":"Juvenile Court Summons & Family Turmoil","trigger_zh":"在群組中起鬨按笑臉、私自轉發至公開黑特迷因帳號（如 IG 匿名粉專）、在留言區嘲弄煽風點火，並在事發後試圖刪除對話紀錄串供。","trigger_en":"Encouraging harassment with laughing emojis, leaking the photo to a public meme account (e.g. IG anon page), fanning the flames in comments, and trying to delete chat logs to cover up.","takeaways_zh":"觸犯《刑法第 310 條第 2 項加重誹謗罪》與《個人資料保護法》。未成年人需經少年事件處理法調查並接受保護處分；依《民法第 187 條》，父母需負連帶高額精神損害賠償。","takeaways_en":"Violates Taiwan Criminal Code Art. 310 (Aggravated Defamation) & Personal Data Protection Act. Minors face juvenile court protection orders; under Civil Code Art. 187, parents bear joint liability for civil damages.","psychology_zh":"同儕群體認同盲從（Bandwagon Effect）、去個人化狂歡（Deindividuation）與「躲在螢幕後不用負責」的匿名僥倖心態。","psychology_en":"Bandwagon effect, deindividuation, and the dangerous illusion of online anonymity.","question_zh":"「在群組裡只是按了笑哭貼圖、轉發了照片，為什麼在法律與道德上就成了霸凌的共謀？」","question_en":"\"Why does simply hitting a laughing emoji or forwarding a meme legally and morally constitute complicity in cyberbullying?\""},{"id":"end_cyberbullying_complicity","symbol":"🌪️","badge_zh":"霸凌共犯結局","badge_en":"Bullying Accomplice","badgeType":"regret","title_zh":"迷因狂歡的代價・霸凌同謀的烙印","title_en":"Toll of Meme Carnage: The Stamp of Bullying Complicity","trigger_zh":"將照片私下轉傳至好朋友死黨群當作笑話討論，推波助瀾轉發二創迷因，雖然不是最初拍照者，但在同儕網路圈擴散了傷害。","trigger_en":"Forwarding the photo to private circles for laughs, sharing derivative memes, and fueling rumors without being the original photographer.","takeaways_zh":"網路霸凌具有「雪球效應」，每一個轉傳者都是壓垮駱駝的稻草。雖免於刑事起訴，但面臨校園霸凌防制委員會調查懲戒與長期良心自責。","takeaways_en":"Cyberbullying creates a snowball effect where every forward adds to the trauma. Even if avoiding criminal charges, one faces school bullying hearings and moral remorse.","psychology_zh":"旁觀者責任分散效應（Diffusion of Responsibility）：「大家都傳了，又不是只有我」。","psychology_en":"Diffusion of responsibility: \"Everyone was sharing it, why blame me alone?\"","question_zh":"「如果每一個轉發的人都說『我只是隨手分享』，那麼受害者所承受的痛苦該由誰負責？」","question_en":"\"If every person who shares says 'I was just forwarding,' who is accountable for the victim's suffering?\""},{"id":"end_bystander_regret","symbol":"🌫️","badge_zh":"遺憾反思結局","badge_en":"Lingering Remorse","badgeType":"regret","title_zh":"旁觀者的長夜與難言的愧疚","title_en":"The Bystander’s Long Night: Lingering Guilt","trigger_zh":"內心感到不適與同情，但害怕被班上風雲人物或小圈圈孤立排擠，選擇消極「裝作沒看到」、靜音群組、沉默已讀，未曾發聲或給予任何關心。","trigger_en":"Feeling discomfort and sympathy inside, but choosing passive silence, muting the group chat, and staying invisible out of fear of social isolation.","takeaways_zh":"沉默並不能帶來真正的安全，反而默許了惡行的蔓延。面對同儕霸凌，私下的一句溫暖問候或非對抗性的傾聽，都是破除冷漠的重要一步。","takeaways_en":"Silence never creates real safety; it enables bullying to grow. Even a private warm text or non-confrontational listening can break the ice of cold indifference.","psychology_zh":"旁觀者效應（Bystander Effect）、對社交排擠的恐懼與習得無助感。","psychology_en":"Bystander effect, terror of peer rejection, and learned helplessness.","question_zh":"「面對同學被嘲笑，選擇『多一事不如少一事』的沉默，真的是中立嗎？還是另一種默許？」","question_en":"\"When a classmate is mocked, is choosing silence really neutrality, or an unspoken consent to cruelty?\""},{"id":"end_reconcile_redemption","symbol":"🤝","badge_zh":"勇氣擔當結局","badge_en":"Courage & Reconciliation","badgeType":"growth","title_zh":"勇敢認錯的真誠和解","title_en":"The Courage to Apologize & Meaningful Reconciliation","trigger_zh":"在轉傳或跟風後察覺失控，在關鍵時刻選擇主動向受害者當面鞠躬致歉，承認自己的過失，並在群組發言要求大家刪除照片。","trigger_en":"Realizing things got out of hand after sharing; choosing to bow and apologize in person, admitting fault, and urging peers in the group to delete the post.","takeaways_zh":"修復式正義（Restorative Justice）與承擔責任的道德勇氣。真誠認錯不是軟弱，而是阻止更大法律與人際悲劇的關鍵煞車皮。","takeaways_en":"Restorative justice and moral courage. Sincere apologies are not weakness, but a vital brake against further legal and personal escalation.","psychology_zh":"道德脫鉤（Moral Disengagement）的覺醒、同理心復甦與承擔錯誤的自我效能。","psychology_en":"Awakening from moral disengagement, resurgence of empathy, and self-efficacy to take responsibility.","question_zh":"「在同儕都在起鬨的環境下，承認『我剛才做錯了』需要克服什麼心理障礙？」","question_en":"\"In a crowd that cheers for mockery, what psychological barriers must one overcome to say: 'I was wrong'?\""},{"id":"end_quiet_guardian","symbol":"🌱","badge_zh":"溫暖守護結局","badge_en":"Quiet Guardian","badgeType":"guardian","title_zh":"安靜的守護者・風暴中的避風港","title_en":"The Quiet Guardian: Sanctuary in the Storm","trigger_zh":"不與強勢霸凌者當面激烈衝突，但立刻私下遞面紙、傳訊安慰敏萱、陪同她前往健康中心，給予受害者最即時的情緒支持與陪伴。","trigger_en":"Avoiding direct confrontation with dominant peers, but discreetly offering tissues, sending comforting texts, and accompanying the victim to the nurse office.","takeaways_zh":"同理陪伴的力量。遭遇霸凌與羞辱時，受害者最需要的往往不是高調的正義口號，而是一個「相信她、願意留在她身邊」的真實依靠。","takeaways_en":"The profound power of compassionate presence. Victims in crisis often need a trusted companion who stays by their side rather than loud heroic slogans.","psychology_zh":"人際微正義（Micro-affirmation）、情感連結韌性與共感同理心。","psychology_en":"Interpersonal micro-affirmations, emotional connection resilience, and deep empathy.","question_zh":"「當你覺得自己力量微小時，有哪些『低風險但高價值』的方法可以溫柔支撐受傷的人？」","question_en":"\"When you feel powerless, what low-risk yet deeply impactful actions can comfort a wounded soul?\""},{"id":"end_civic_courage","symbol":"🏛️","badge_zh":"卓越公民結局","badge_en":"Exemplary Digital Citizen","badgeType":"master","title_zh":"破局的勇氣・卓越數位公民","title_en":"Courage to Break the Silence: Exemplary Digital Citizen","trigger_zh":"在群組中果斷發聲制止、立即截圖保留違法外流證據、陪同受害者向導師與學務處通報，甚至透過 iWIN 網路內容防護機構提出申訴下架。","trigger_en":"Decisively speaking up in chat, preserving forensic screenshots, reporting to counselors, and submitting a takedown request to iWIN.","takeaways_zh":"卓越數位公民素養：善用制度與專業資源解決衝突。懂得證據保全、向可信任體系求助，以具體行動終止霸凌惡浪。","takeaways_en":"High digital citizenship: leveraging institutions and official resources. Preserving evidence and taking action to break the spiral of silence.","psychology_zh":"道德自主性（Moral Agency）、積極旁觀者干預（Active Bystander Intervention）。","psychology_en":"Moral agency, proactive bystander intervention, and civic empowerment.","question_zh":"「通報老師或向專線求助，為什麼不是『打小報告』，而是對生命的關鍵守護？」","question_en":"\"Why is seeking help from authorities not 'tattling,' but an act of life-saving protection?\""}]},{"id":"theme_addiction","code":"T2","symbol":"🎮","title_zh":"主題二：成癮與自律篇《被偷走的深夜光年》","title_en":"Theme 2: Addiction & Self-Regulation - \"The Stolen Midnight Light\"","subtitle_zh":"段考前夕的排位賽、多巴胺劫持、限時課金誘惑與大腦前額葉修復","subtitle_en":"Exam Eve Gaming Streaks, Dopamine Traps, In-App Microtransactions & Prefrontal Self-Control","desc_zh":"面對戰隊連敗的不甘心、短影音演算法的無限下滑與限時外觀的誘惑，如何奪回生活主導權。","desc_en":"Examining the psychology of \"just one more game,\" infinite video scrolls, microtransaction guilt, and reclaiming agency over one’s time.","endings":[{"id":"end_addiction_collapse","symbol":"💥","badge_zh":"身心崩解結局","badge_en":"Physical & Trust Collapse","badgeType":"legal","title_zh":"失控的代價・信任破產與考場崩潰","title_en":"Cost of Chaos: Shattered Trust & Exam Collapse","trigger_zh":"被連敗怒火牽制，瞞著父母偷偷刷卡儲值 890 元抽卡禮包，通宵打排位到清晨五點，在段考考場上大腦當機虛脫送醫。","trigger_en":"Driven by tilt, secretly charging parents' card for an $890 bundle, binge-gaming until 5 AM, and fainting in the middle of the midterm exam.","takeaways_zh":"短影音與抽卡機制的「變動比率增強」多巴胺陷阱；未成年擅自盜刷信用卡嚴重摧毀家庭信任；剝奪深層睡眠使前額葉自控力全面癱瘓。","takeaways_en":"Variable ratio reinforcement traps in gacha and reels; unauthorized microtransactions destroy family trust; severe sleep deprivation paralyzes prefrontal control.","psychology_zh":"沉沒成本謬誤（Sunk Cost Fallacy）、情緒傾斜（Tilt）與逃避現實的惡性循環。","psychology_en":"Sunk cost fallacy, gaming tilt, and toxic escapism cycles.","question_zh":"「當你告訴自己『再打一把就好』時，究竟是你想玩，還是大腦的多巴胺在控制你？」","question_en":"\"When you say 'just one more match,' is it your free will, or a hijacked dopamine circuit speaking?\""},{"id":"end_social_fomo_trap","symbol":"⛓️","badge_zh":"社交枷鎖結局","badge_en":"Trapped by Social FOMO","badgeType":"regret","title_zh":"被同儕焦慮綁架的空虛贏家","title_en":"The Hollow Victor: Chained by Peer Anxiety","trigger_zh":"為了維持在班級戰隊中的「大神」形象與談資，即便體力不支依然不敢下線，深怕拒絕就會被踢出小圈圈失去朋友。","trigger_en":"Refusing to log off despite physical exhaustion just to keep the \"pro player\" status in the class squad, terrified of being left out.","takeaways_zh":"錯失恐懼症（FOMO）的代價。真正的健康友誼建立在互相體諒，而非建立在熬夜排位的虛擬戰績上。","takeaways_en":"The insidious cost of FOMO. True friendships are built on mutual respect and real-world care, not late-night ranked ladders.","psychology_zh":"錯失恐懼症（FOMO）、外在認同焦慮與自我價值感低落。","psychology_en":"Fear of Missing Out (FOMO), external validation dependency, and vulnerable self-esteem.","question_zh":"「如果一個朋友只因為你不熬夜打遊戲就排擠你，這段友誼真的值得你犧牲健康與學業去換嗎？」","question_en":"\"If someone excludes you because you won't ruin your sleep for games, is that friendship worth the sacrifice?\""},{"id":"end_seeking_help","symbol":"🩹","badge_zh":"勇敢求助結局","badge_en":"Courage to Seek Support","badgeType":"growth","title_zh":"承認脆弱的勇氣・向陽的第一步","title_en":"Courage in Vulnerability: The First Step Toward Sunlight","trigger_zh":"意識到自己無法抗拒螢幕誘惑後，放下防備主動向父母或輔導老師坦承：「我發現自己停不下來，請幫幫我」。","trigger_en":"Recognizing one's inability to resist screen compulsions; opening up to parents or school counselors to request structural help.","takeaways_zh":"承認失控不是軟弱，求助是成熟自律的開端。建立物理隔離（如夜間手機放客廳充電）與家庭數位契約，重建健康作息。","takeaways_en":"Admitting vulnerability is maturity, not weakness. Implementing physical separation (charging phones outside bedrooms) restores balance.","psychology_zh":"求助效能感、接納脆弱（Vulnerability Acceptance）與元認知監控。","psychology_en":"Help-seeking self-efficacy, emotional openness, and metacognitive awareness.","question_zh":"「向大人承認『我控制不了玩手機』為什麼需要極大的勇氣？這能為你帶來什麼改變？」","question_en":"\"Why does admitting 'I cannot control my screen time' require great courage, and how can it change your life?\""},{"id":"end_painful_redemption","symbol":"🌱","badge_zh":"痛定思痛結局","badge_en":"Growth Through Pain","badgeType":"growth","title_zh":"及時停損的成長痛・生命的煞車皮","title_en":"Growing Pains of Cutting Losses: The Brakes of Life","trigger_zh":"雖然經歷了一夜的掙扎與考場上的疲憊挫折，但看著慘痛的成績單深刻反省，下定決心刪除遊戲或關閉短影音通知，及時煞車。","trigger_en":"Experiencing exam exhaustion, receiving poor grades, but taking it as a wake-up call to uninstall games and mute notifications.","takeaways_zh":"挫折是成長的試金石。及時停損（Stop-loss）是人生最重要的智慧之一，允許自己犯錯，但絕不在同一個坑跌倒第二次。","takeaways_en":"Failure can be a catalyst for resilience. Cutting losses in time is crucial wisdom: allowing mistakes without repeating them.","psychology_zh":"延遲滿足能力（Delayed Gratification）的覺醒、挫折復原力（Resilience）。","psychology_en":"Delayed gratification re-calibration and academic resilience.","question_zh":"「段考考差了可以重來，但如果一直養成『拖延與逃避』的習慣，未來的代價會是什麼？」","question_en":"\"Bad test scores can be improved, but what is the long-term price of letting habitual avoidance take root?\""},{"id":"end_digital_detox","symbol":"🧘","badge_zh":"數位自律結局","badge_en":"Digital Detox Mastery","badgeType":"guardian","title_zh":"數位斷捨離・奪回大腦主導權","title_en":"Digital Detox: Reclaiming Mind & Mental Clarity","trigger_zh":"果斷在睡前半小時遠離螢幕，開啟夜間專注模式，以閱讀實體書、伸展或聽白噪音替代滑手機，守護褪黑激素分泌。","trigger_en":"Powering down screens 30 minutes before bed, setting focus modes, and reading physical books to protect melatonin secretion.","takeaways_zh":"數位健康（Digital Wellbeing）的實踐：阻隔睡前藍光、打造無干擾睡眠環境，保護大腦深度休息與記憶鞏固功能。","takeaways_en":"Practicing digital hygiene: shielding eyes from blue light, protecting circadian rhythms, and optimizing sleep memory consolidation.","psychology_zh":"環境架構設計（Choice Architecture）、內在動機激發與情緒平穩。","psychology_en":"Choice architecture design, intrinsic motivation, and emotional steadiness.","question_zh":"「當你放下手機睡前安靜閱讀十分鐘，你的心靈和大腦感受到了什麼不同的平靜？」","question_en":"\"When you unplug and read quietly before sleep, what newfound tranquility do your mind and body experience?\""},{"id":"end_master_of_autonomy","symbol":"👑","badge_zh":"全能主宰結局","badge_en":"Master of Autonomy","badgeType":"master","title_zh":"從容的掌控者・卓越身心靈主宰","title_en":"Master of Autonomy: Balanced Life Sovereign","trigger_zh":"清楚界定生活各維度優先次序，面對戰隊召喚能溫和堅定地拒絕：「明天段考，我今晚必須早點睡」，既享受娛樂又主宰學業生活。","trigger_en":"Clearly establishing priorities; responding calmly yet firmly to team invites: \"I have midterms tomorrow, see you this weekend!\"","takeaways_zh":"自我決定理論（SDT）最高境界：在勝任感、自主性與歸屬感間取得健康平衡。科技是為我所用的僕人，而非主宰心靈的主人。","takeaways_en":"High self-determination theory: balance of competence, autonomy, and relatedness. Technology serves as a tool, not a tyrannical master.","psychology_zh":"高情商堅毅力（Grit）、健康的心理邊界與強大的前額葉執行控制力。","psychology_en":"Emotional grit, clear assertive boundaries, and robust prefrontal executive control.","question_zh":"「能在誘惑面前說『不』，並從容掌控自己節奏的人，具備了哪些受用一生的底氣？」","question_en":"\"What lifelong inner strength does a person possess when they can assertively say 'no' to instant temptations?\""}]},{"id":"theme_grooming","code":"T3","symbol":"🎭","title_zh":"主題三：誘騙與隱私篇《螢幕對面的「完美朋友」》","title_en":"Theme 3: Grooming & Privacy - \"The Perfect Friend Across the Screen\"","subtitle_zh":"網路遊戲溫柔大神、限定虛寶利誘、私密照索取、性勒索與 iWIN 防護機制","subtitle_en":"Charismatic Gamers, In-Game Bribes, Nude Exploitation, Sextortion & Takedown Shields","desc_zh":"探討網路兒少性剝削與誘騙（Grooming）陷阱，學會辨識情感勒索，守住隱私防線與尋求專業救援。","desc_en":"Deconstructing online grooming steps, predatory emotional manipulation, digital sextortion defenses, and utilizing legal/iWIN shields.","endings":[{"id":"end_abyss_nightmare","symbol":"🕳️","badge_zh":"深淵噩夢結局","badge_en":"The Bottomless Abyss","badgeType":"legal","title_zh":"深淵的無底洞・恐懼與屈服的惡果","title_en":"The Bottomless Abyss: Cost of Submission & Secrecy","trigger_zh":"被甜言蜜語與昂貴造型蒙蔽而發送了私密照，遭對方勒索時因恐懼名譽掃地而隱瞞隱忍，甚至照對方指示拍更多照片以求刪除。","trigger_en":"Blinded by flattery and gifts, sending private photos, then complying with escalating demands out of panic and humiliation.","takeaways_zh":"數位性勒索（Sextortion）的殘酷法則：歹徒的胃口永遠不會滿足，妥協只會淪為更深的禁錮。「不順從、不刪除、不付錢、立即求助」是唯一脫困之道。","takeaways_en":"The harsh rule of sextortion: predators never stop. Compliance is a downward spiral. The only escape is: Never comply, preserve evidence, seek help.","psychology_zh":"恐懼癱瘓（Terror Freeze）、有毒羞恥感（Toxic Shame）與孤立無援心理。","psychology_en":"Terror freeze, internalized toxic shame, and weaponized isolation.","question_zh":"「面對歹徒威脅『不給就外流』，為什麼任何順從都只會讓籌碼越來越多？」","question_en":"\"When an extortionist threatens exposure, why does giving in only give them more power over you?\""},{"id":"end_blackmail_slave","symbol":"💸","badge_zh":"人財兩失結局","badge_en":"Double Loss to Blackmail","badgeType":"legal","title_zh":"被敲詐的羔羊・散盡零用錢的自欺","title_en":"Prey to Extortion: Squandering Savings in Self-Deception","trigger_zh":"誤以為可以用自己的零用錢或偷偷偷拿家裡的錢買遊戲點數「花錢消災」，結果對方不斷加碼索討，陷入人財兩失。","trigger_en":"Believing that paying off the blackmailer with gift cards will buy silence, only to face higher demands and empty pockets.","takeaways_zh":"敲詐勒索罪的犯罪本質。金錢絕不可能買回被盜取的私密檔案；私下交易只會讓歹徒食髓知味。","takeaways_en":"The criminal nature of extortion. Money never buys back digital files; private payouts merely fuel predator greed.","psychology_zh":"駝鳥心態、逃避現實與金錢消災的幻覺。","psychology_en":"Ostrich avoidance, magical thinking, and vulnerability to financial coercion.","question_zh":"「為什麼面對犯罪分子的恐嚇，試圖『私下花錢解決』注定是一條走不通的死胡同？」","question_en":"\"Why is trying to 'quietly buy your way out' with a criminal destined to be a dead-end street?\""},{"id":"end_courage_family_shield","symbol":"🛡️","badge_zh":"正義破局結局","badge_en":"Family Armor Broken Free","badgeType":"growth","title_zh":"家庭的堅盾・斬斷黑手的勇氣之光","title_en":"The Family Shield: Severing the Predator’s Grip","trigger_zh":"在受到威脅的第一時間，克服巨大的恐懼與羞恥感，坦白向父母求助。父母化作最堅強的護盾，報警由科技偵查隊介入將歹徒繩之以法。","trigger_en":"Overcoming profound shame at the very first threat; confessing to parents who immediately contact cyber police to apprehend the offender.","takeaways_zh":"家庭是孩子最強大的避風港。犯罪分子最懼怕的就是「體制與長輩介入」；《兒童及少年性剝削防制條例》為公訴重罪，法律會全力保護受害者。","takeaways_en":"Family is the ultimate haven. Predators fear parental and police intervention above all; Taiwan Child & Youth Sexual Exploitation Act provides strong legal shields.","psychology_zh":"打破沉默羞恥、信任依附（Secure Attachment）與家庭韌性。","psychology_en":"Breaking the shame barrier, secure attachment trust, and familial resilience.","question_zh":"「向父母坦承自己受騙時，最害怕的是什麼？父母的理解與保護為什麼比任何自責都更有力量？」","question_en":"\"What do teens fear most when confessing to parents, and why is parental protection stronger than any guilt?\""},{"id":"end_professional_rescue","symbol":"🕊️","badge_zh":"專業防護結局","badge_en":"Professional Safety Net","badgeType":"growth","title_zh":"專業防護網・破網而出的重生","title_en":"Professional Rescue: Rebirth from the Predator’s Web","trigger_zh":"不敢第一時間告訴家人，但記起學校宣導，主動撥打 iWIN 網路內容防護專線（02-2577-5118），並透過國際 StopNCII 機制阻斷影像散布。","trigger_en":"Uncertain about approaching parents right away, but dialing iWIN helpline (02-2577-5118) and submitting digital hashes to StopNCII to block image leaks.","takeaways_zh":"善用專業求助管道。iWIN 具備官方與社群平台的快速下架機制，並能提供專業心理諮商與法律轉介服務，不需獨自一人承受恐慌。","takeaways_en":"Leveraging institutional safety nets: iWIN coordinates fast takedowns with platforms, providing psychological counseling and legal assistance.","psychology_zh":"主動求生策略（Active Coping）、善用客觀系統資源。","psychology_en":"Active problem-focused coping and strategic system resource navigation.","question_zh":"「如果身邊有同學遇到私密照外流威脅不敢告訴家人，你可以提供他哪些具體的專業求助管道？」","question_en":"\"If a friend faces private photo blackmail and fears telling parents, what official resources can you guide them to?\""},{"id":"end_close_call_survivor","symbol":"⚠️","badge_zh":"警醒自保結局","badge_en":"Vigilant Survivor","badgeType":"guardian","title_zh":"警鐘長鳴・幸免於難的智慧底線","title_en":"Close Call: The Wisdom of Drawing Firm Boundaries","trigger_zh":"在對方要求開啟視訊或傳送生活隱私照片時察覺不對勁，雖然對方語氣溫柔且給予大量好處，但守住「絕不傳個人影像」的底線果斷封鎖。","trigger_en":"Noticing red flags when asked for video calls or personal photos; refusing bribes and firmly blocking the user before any boundary is breached.","takeaways_zh":"識破線上誘騙（Grooming）四部曲：親近建立關係 ➔ 孤立現實朋友 ➔ 試探身體界線 ➔ 恐嚇控制。在界線被試探時果斷說「不」是最佳防護。","takeaways_en":"Recognizing grooming stages: building rapport, isolating from family, testing bodily boundaries, and coercion. Saying \"no\" at the testing stage stops predators cold.","psychology_zh":"身體與數位界線意識（Digital Bodily Autonomy）、直覺警報機制。","psychology_en":"Bodily and digital boundary autonomy, healthy gut-check instincts.","question_zh":"「當一個網路上的陌生人對你『異常好』甚至送你貴重禮物時，你應該用什麼角度思考他的動機？」","question_en":"\"When an online acquaintance showers you with excessive gifts and attention, how should you evaluate their true motive?\""},{"id":"end_master_digital_defender","symbol":"👑","badge_zh":"全能防衛結局","badge_en":"Campus Digital Guardian","badgeType":"master","title_zh":"明鏡之心・校園數位安全防禦使","title_en":"Campus Digital Defense Envoy: Clear Mirror of Truth","trigger_zh":"面對利誘心如明鏡，第一時間識破對方的獵捕意圖，反向截圖對話留存證據，在班級與遊戲群組發布預警，保護更多同學免於受害。","trigger_en":"Instantly seeing through predatory gift traps, collecting screenshots of malicious accounts, and warning classmates and guild members to protect others.","takeaways_zh":"頂尖資安與防誘騙素養。牢記「真正的朋友絕不會要求你拿隱私去證明信任」；成為校園中主動守護他人的資安小使者。","takeaways_en":"Elite cybersecurity and anti-grooming literacy. Remembering that true friends never demand privacy compromises to prove loyalty.","psychology_zh":"反脆弱心態（Antifragile）、高情境警覺度與利他守護精神。","psychology_en":"Antifragile mindset, high situation awareness, and protective altruism.","question_zh":"「如何向同儕傳遞『保護隱私不是見外，而是真正的自我尊重』這項核心觀念？」","question_en":"\"How can we help peers understand that safeguarding privacy isn't being distant, but genuine self-respect?\""}]},{"id":"theme_scam","code":"T4","symbol":"🪙","title_zh":"主題四：詐騙與金錢篇《免費代幣的代價》","title_en":"Theme 4: Scams & Money - \"The Price of Free Tokens\"","subtitle_zh":"短影音好康釣魚、簡訊 OTP 驗證碼盜刷、洗錢人頭帳戶與 165 反詐機制","subtitle_en":"Phishing Reels, SMS OTP Bypasses, Money Laundering Mule Accounts & 165 Hotlines","desc_zh":"剖析「免費送點數」、「內部漏洞」等網路釣魚陷阱，認識驗證碼防護、防範人頭帳戶涉法風險。","desc_en":"Deconstructing free-currency lures, unauthorized carrier billing, accidental involvement in money laundering schemes, and staying cyber-smart.","endings":[{"id":"end_scam_double_loss","symbol":"💸","badge_zh":"人財兩失結局","badge_en":"Double Scam Trap","badgeType":"legal","title_zh":"貪念的代價・連環被詐與帳號永失","title_en":"Toll of Greed: Cascading Scams & Permanent Loss","trigger_zh":"相信短影音免費代幣連結在釣魚網站輸入帳密和 OTP，被盜號後又輕信網路上「專業黑客收費幫忙找回」，二次落入詐騙圈套。","trigger_en":"Entering login & OTP on phishing links for free tokens; after being hacked, paying self-proclaimed online recovery hackers, falling for a secondary scam.","takeaways_zh":"簡訊 OTP 驗證碼是金錢與個資的最高防線，等同於個人印章與簽名；網路上聲稱付費找回帳號的「科技公司/黑客」百分之百為二次詐騙。","takeaways_en":"SMS OTPs are the ultimate gatekeeper of funds and identity, equivalent to a physical signature. Online recovery agents are 100% secondary scams.","psychology_zh":"貪婪誘餌效應、沉沒成本焦慮與過度自信盲區。","psychology_en":"Greed lures, panic over sunk costs, and overconfidence bias.","question_zh":"「為什麼簡訊發送的 6 位數 OTP 驗證碼，在任何情況下都絕對不能交給任何人？」","question_en":"\"Why must a 6-digit SMS OTP verification code never, under any circumstances, be shared with anyone?\""},{"id":"end_scam_legal_nightmare","symbol":"🚨","badge_zh":"涉法危機結局","badge_en":"Legal Jeopardy: Mule Account","badgeType":"legal","title_zh":"警示帳戶的陰影・淪為洗錢人頭戶","title_en":"Shadow of Flagged Accounts: Laundering Accomplice","trigger_zh":"為了賺取「代收手續費」或挽回帳號損失，出借自己的郵局金融卡、提供密碼或協助提款轉帳，不知不覺淪為詐騙集團洗錢工具。","trigger_en":"Lending postal ATM cards or assisting fund transfers in exchange for \"commissions,\" becoming an unwitting money mule for criminal syndicates.","takeaways_zh":"觸犯《洗錢防制法》第 15 條之 2 與《刑法詐欺罪》共同正犯！個人名下所有銀行帳戶將被列為警示帳戶凍結，聯徵信用破產，終身留有司法紀錄。","takeaways_en":"Violates Anti-Money Laundering Act Art. 15-2 & fraud co-principal! All bank accounts will be blacklisted and frozen, destroying lifelong credit.","psychology_zh":"無知僥倖心理、金錢利誘盲從與法律常識真空。","psychology_en":"Naive opportunism, susceptibility to financial bribes, and legal illiteracy.","question_zh":"「只是把郵局卡片借給別人幾天賺點外快，為什麼會面臨警方移送法辦與帳戶全面凍結的嚴重後果？」","question_en":"\"Why does simply lending your ATM card for quick cash lead to criminal indictments and frozen bank accounts?\""},{"id":"end_scam_family_distrust","symbol":"💔","badge_zh":"信任破產結局","badge_en":"Fractured Family Trust","badgeType":"regret","title_zh":"破萬帳單的震盪・家庭信任的裂痕","title_en":"Five-Figure Bill Shock: Fractured Family Trust","trigger_zh":"誤將 OTP 當成一般確認碼送出，導致電信小額付款被連續盜刷上萬元，因害怕挨罵一直瞞到下個月電信催繳帳單寄達家中才引爆。","trigger_en":"Sharing OTPs leading to thousands of dollars in carrier billing fraud, hiding the incident until parents receive the massive phone bill next month.","takeaways_zh":"認識電信小額付款（Carrier Billing）機制；隱瞞錯誤只會讓問題惡化，主動溝通與止血是面對危機的唯一正確態度。","takeaways_en":"Understanding direct carrier billing risks; hiding errors compounds financial and emotional damage. Early honesty is the only way out.","psychology_zh":"害怕受罰的逃避心理、僥倖鴕鳥心態。","psychology_en":"Punishment avoidance, defensive procrastination, and communication breakdown.","question_zh":"「發生被盜刷時，及時告知父母與瞞著等帳單來，兩者的後果與信任差距有多大？」","question_en":"\"When unauthorized charges occur, how vast is the difference in trust between confessing early vs hiding until the bill arrives?\""},{"id":"end_scam_painful_lesson","symbol":"🩹","badge_zh":"誠實止血結局","badge_en":"Honest Damage Control","badgeType":"growth","title_zh":"痛定思痛的學費・誠實擔當的勇氣","title_en":"Hard-Learned Tuition: Courage to Be Honest","trigger_zh":"在被扣款後第一時間沒有說謊，立刻向父母坦白整起事件，拿零用錢分期承擔，並由家長陪同致電電信客服關閉小額付款並向 165 備案。","trigger_en":"Confessing immediately after noticing the charge, offering personal allowance to offset loss, and having parents shut down carrier billing and file a 165 report.","takeaways_zh":"金錢損失可以賺回，誠實品格無價。犯錯時不諉過、積極止血，透過承擔後果在挫折中真正學會成熟與自立。","takeaways_en":"Money can be restored; integrity is priceless. Taking responsibility and stopping further bleeding transforms mistakes into valuable life lessons.","psychology_zh":"責任承擔、挫折復原力與親子溝通重塑。","psychology_en":"Accountability, resilience, and repair of parent-child communicative trust.","question_zh":"「主動拿零用錢承擔自己犯錯造成的損失，對青少年的自立與金錢觀有什麼深遠影響？」","question_en":"\"How does taking financial responsibility for one's mistakes shape a teen's long-term maturity and money ethics?\""},{"id":"end_scam_vigilant_survivor","symbol":"⚠️","badge_zh":"警覺自保結局","badge_en":"Sober & Vigilant Survivor","badgeType":"guardian","title_zh":"止步懸崖・警覺自保的智慧清醒者","title_en":"Stepping Back from the Brink: Vigilant Survivor","trigger_zh":"在準備輸入驗證碼時，看見簡訊文字寫著「電信購買扣款 NT$2,990」，猛然警醒立刻關閉網頁、重設遊戲密碼並致電電信公司。","trigger_en":"Noticing the SMS text: \"Direct carrier charge NT$2,990\"; instantly halting, closing the tab, resetting passwords, and contacting telco.","takeaways_zh":"養成仔細閱讀驗證簡訊全文（包含交易金額、服務名稱）的習慣；牢記防詐核心心法：「天底下沒有白吃的午餐，非官方的免費福利就是陷阱」。","takeaways_en":"Always read full SMS prompts (amounts, services) instead of just numbers. \"If it is free and too good to be true, you are the product/prey.\"","psychology_zh":"批判性閱讀力、衝動煞車機制與安全直覺。","psychology_en":"Critical text evaluation, impulse braking, and situational vigilance.","question_zh":"「為什麼多數人在看簡訊時只看『數字驗證碼』，卻忽略了旁邊最重要的『交易扣款提醒』？」","question_en":"\"Why do most people glance only at the 6 digits, completely ignoring the warning labels right next to them?\""},{"id":"end_scam_master_defender","symbol":"👑","badge_zh":"卓越防詐結局","badge_en":"Campus Anti-Fraud Ambassador","badgeType":"master","title_zh":"火眼金睛・校園反詐與資安卓越使","title_en":"Campus Anti-Fraud & Cyber Guardian: Master of Discernment","trigger_zh":"一眼識破釣魚網站的偽造網址（非官方根網域），主動向 165 全民防騙網檢舉假網址，並在班級群組發布釣魚警訊，保護同學不受騙。","trigger_en":"Spotting domain spoofing instantly, reporting fraudulent URLs to the 165 anti-fraud bureau, and issuing an alert in class chats.","takeaways_zh":"頂尖資安素養：啟用雙重驗證（2FA）、辨識官方網域名稱、熟悉 165 反詐通報機制，成為校園數位安全的堅實守門人。","takeaways_en":"Elite cybersecurity literacy: 2FA adoption, domain verification, utilizing 165 channels, and acting as an active campus cybersecurity mentor.","psychology_zh":"系統思維、高度資安敏銳度與積極利他精神。","psychology_en":"Systems thinking, situational security acumen, and proactive altruism.","question_zh":"「一個具備資訊安全敏銳度的學生，如何運用自己的知識在校園中建立一道守護同儕的防護牆？」","question_en":"\"How can a cyber-literate student use their knowledge to construct an invisible safety shield around their peers?\""}]},{"id":"theme_ai","code":"T5","symbol":"🪞","title_zh":"主題五：AI 與真偽篇《真假莫辨的鏡子》","title_en":"Theme 5: AI & Truth - \"The Deceitful Mirror\"","subtitle_zh":"Deepfake 換臉造假、聲音複製惡搞、加重誹謗罪、網路公審獵巫與事實查核","subtitle_en":"Deepfakes & Voice Clones, Defamation Laws, Online Witch Hunts & Fact-Checking Literacy","desc_zh":"面對同學利用 AI 生成偽造的師長羞辱短影音與全網瘋傳公審，探討真偽辨識、法律責任與批判性思考。","desc_en":"Confronting an AI-generated deepfake video defaming a teacher, exploring how algorithms amplify witch-hunts, legal liabilities, and verification tools.","endings":[{"id":"end_ai_blind_mob","symbol":"🌪️","badge_zh":"盲從審判結局","badge_en":"Echo-Chamber Mob","badgeType":"legal","title_zh":"同溫層的俘虜・被演算法玩弄的盲從審判","title_en":"Captive of the Echo Chamber: The Witch-Hunt Mob","trigger_zh":"被激動的情緒煽動，未經查證便在 Threads、TikTok 瘋狂轉發留言，痛罵導師並參與網路公審，自詡為「正義使者」，直到真相大白時名譽掃地。","trigger_en":"Swayed by emotional outrage, forwarding deepfake videos on Threads and TikTok without verification, joining online witch-hunts until the truth emerges.","takeaways_zh":"演算法迴音室（Echo Chamber）與情緒極化效應。「打著正義旗幟的集體狂歡」往往是網路霸凌最致命的型態，對無辜者造成永久的心理傷害。","takeaways_en":"Algorithmic echo chambers and emotional polarization. Online witch-hunts disguised as righteous crusades cause irreversible devastation to innocent lives.","psychology_zh":"群體極化（Group Polarization）、道德優越感幻覺與憤怒成癮。","psychology_en":"Group polarization, self-righteous moral superiority, and indignation addiction.","question_zh":"「當網路上的影音讓你產生強烈的憤怒與道德衝動時，為什麼這時候正是最需要『停下來查證』的時刻？」","question_en":"\"When online content sparks overwhelming moral rage, why is that precisely the moment you must pause and verify?\""},{"id":"end_ai_legal_conviction","symbol":"⚖️","badge_zh":"加重誹謗結局","badge_en":"Convicted of Defamation","badgeType":"legal","title_zh":"法網難逃・轉發 AI 造假影音的法律代價","title_en":"Caught in the Net: Legal Cost of Defamatory Deepfakes","trigger_zh":"明知影片可能是 AI 偽造或來源可疑，依然為了蹭流量而大量轉發公開，甚至在警方調查時協助同學串供掩蓋事實。","trigger_en":"Knowingly spreading suspicious AI-generated videos for views and clicks, and attempting to coordinate cover-ups when police investigate.","takeaways_zh":"《刑法第 310 條第 2 項加重誹謗罪》明確規範以散布影音誹謗他人；民法上受害者得請求高額精神撫慰金並要求公開道歉，父母需承擔連帶責任。","takeaways_en":"Criminal Code Art. 310-2 treats audiovisual defamation severely. Victims can claim substantial damages and court-ordered apologies, backed by parental joint liability.","psychology_zh":"流量成癮、僥倖心態與對司法追查科技的無知。","psychology_en":"Social metric addiction, hubris, and ignorance of digital forensics.","question_zh":"「即使影片不是你做的，轉發明知有疑點的誹謗影音，在法律上為什麼同樣構成共同侵權責任？」","question_en":"\"Even if you didn't synthesize the video, why does amplifying defamatory deepfakes incur civil and criminal liability?\""},{"id":"end_ai_echo_chamber","symbol":"🌫️","badge_zh":"謠言共犯結局","badge_en":"Shadow of Rumors","badgeType":"regret","title_zh":"被出賣的誠信・二手謠言的長久陰影","title_en":"Compromised Integrity: The Shadow of Secondhand Rumors","trigger_zh":"在私人群組大肆轉發八卦並加油添醋，當整起事件被證實為 AI 假造時，自己在同儕圈中被貼上「製造假新聞、愛造謠」的標籤，失去朋友信任。","trigger_en":"Spreading the fake video in friend circles with sensational gossip; when debunked, earning a permanent reputation as an unreliable rumor-monger.","takeaways_zh":"人際信任是極度脆弱的資產。轉發未查證訊息會直接摧毀個人信譽；成為負責任的閱聽人是數位人際互動的基礎底線。","takeaways_en":"Social trust is fragile. Forwarding unverified rumors erodes personal credibility; responsible news literacy is the bedrock of digital relationships.","psychology_zh":"八卦作為社交貨幣（Gossip as Social Currency）的心理誤區。","psychology_en":"The dangerous pitfall of treating gossip as cheap social currency.","question_zh":"「為了在朋友聚會中顯得『消息靈通』而轉發八卦，為什麼最後反而會失去所有人對你的信任？」","question_en":"\"Why does sharing unverified gossip to look 'in the loop' ultimately destroy people's trust in you?\""},{"id":"end_ai_sincere_apology","symbol":"🩹","badge_zh":"誠信救贖結局","badge_en":"Honorable Rectification","badgeType":"growth","title_zh":"勇敢自清的救贖・真誠致歉的力量","title_en":"Redemption Through Truth: The Power of Sincere Apology","trigger_zh":"在得知影片為 AI 造假的第一時間，主動刪除轉發內容，在個人社群公開發布澄清道歉文，並當面向受冤枉的老師深深鞠躬道歉。","trigger_en":"Upon discovering the video is fake, immediately deleting posts, issuing public retractions, and bowing in sincere apology to the wronged teacher.","takeaways_zh":"道德修復與擔當的力量。在謠言傳播鏈中，能夠及時停步並勇敢更正訊息的人，是阻止傷害繼續擴大的關鍵節點。","takeaways_en":"The power of moral rectification. In an algorithmic firestorm, the courage to retract, clarify, and apologize halts the chain of destruction.","psychology_zh":"道德勇氣、承認過失與修復人際信任的復原力。","psychology_en":"Moral integrity, admitting mistakes, and restorative reconciliation resilience.","question_zh":"「在公開社群上發布『我之前轉發的是假消息，我為此道歉』，為什麼比刪文裝死更值得尊敬？」","question_en":"\"Why is posting 'I shared misinformation and I apologize' far more honorable than silently deleting and pretending nothing happened?\""},{"id":"end_ai_sober_observer","symbol":"🔍","badge_zh":"清醒智者結局","badge_en":"Sober Observer","badgeType":"guardian","title_zh":"冷靜審視的慧眼・破除迷霧的清醒者","title_en":"Sober Observer: Piercing the Fog of Falsehood","trigger_zh":"看到影片時不盲目跟風，敏銳觀察到影片中嘴形不同步、眨眼不自然、聲音帶有金屬機械音等 AI 生成破綻，堅持「不轉傳、不留言、冷靜求證」。","trigger_en":"Refusing to jump on the outrage bandwagon; noticing robotic lip-syncing and synthetic speech flaws; practicing \"Stop, Verify, Don't Share.\"","takeaways_zh":"媒體素養第一原則：遇到情緒激昂的爆料內容，先冷靜「停看聽」；掌握生成式 AI 在視覺與聽覺上的微小偽造破綻。","takeaways_en":"First principle of media literacy: pause when emotionally provoked. Master the detection of visual artifacts and robotic voice synthesis in deepfakes.","psychology_zh":"情緒降溫自我調節、批判性思考（Critical Thinking）與認知免疫力。","psychology_en":"Emotional down-regulation, critical thinking, and cognitive immunity.","question_zh":"「面對越來越逼真的 AI 科技，除了肉眼辨識技術，我們內心還需要具備什麼樣的『心態濾鏡』？」","question_en":"\"As AI realism evolves, what inner 'mental filter' do we need beyond technical flaw detection?\""},{"id":"end_ai_master_factchecker","symbol":"👑","badge_zh":"查核大師結局","badge_en":"Fact-Checking Pioneer","badgeType":"master","title_zh":"火眼金睛・AI 時代的事實查核領航員","title_en":"Eagle Eye: Fact-Checking Pioneer in the AI Era","trigger_zh":"運用反向截圖搜圖、台灣事實查核中心、MyGoPen 或 Cofacts 查核訊息源頭，在班級群組提出理據平息公審，並提供事證協助學校查明真相。","trigger_en":"Utilizing reverse image search, Taiwan FactCheck Center, MyGoPen, or Cofacts to trace roots, presenting factual analysis, and helping the school clarify the truth.","takeaways_zh":"SKEPTIC 查核六原則（來源、知識、證據、觀點、工具、追蹤）；善用查核工具還原真相，成為資訊混亂時代引領同儕的數位領航者。","takeaways_en":"Mastering SKEPTIC fact-checking principles (Source, Knowledge, Evidence, Perspective, Tools, Tracking), serving as a beacon of clarity in an age of disinformation.","psychology_zh":"求真科學精神、主動領導力與校園公共責任感。","psychology_en":"Commitment to objective truth, proactive leadership, and communal responsibility.","question_zh":"「在每個人都能用 AI 製造謠言的時代，為什麼『具備求證能力的人』才是最值得信賴的領袖？」","question_en":"\"In an era where anyone can synthesize rumors with AI, why are those who verify truth the most vital leaders?\""}]}];
+
+    // State
+    let currentLang = localStorage.getItem('cyber_lang') || 'zh';
+    let currentTheme = localStorage.getItem('cyber_reading_theme') || 'dark'; // 'dark' or 'cream'
+    let currentThemeFilter = 'all'; // 'all', 'theme_speech', ...
+    let currentToneFilter = 'all';
+    let searchQuery = '';
+
+    // Translations Dictionary for UI Chrome
+    const UI_I18N = {
+      zh: {
+        nav_pedagogy: '教育者與學生解析手冊',
+        nav_title: '微光與暗潮・全故事結局指南',
+        btn_play_game: '回到情境抉擇遊戲',
+        btn_print: '列印手冊',
+        hero_pill: '30 種因果分支 ✕ 完整法規解析 ✕ 思辨引導提問',
+        hero_heading: '五大主題故事結局全覽與解析手冊',
+        hero_desc: '本手冊完整公開五大情境故事的所有因果結局、青少年決策觸發路徑、核心法律責任與心理學防護心法，供教師、家長與學生於課堂深度探討與複盤反思。',
+        stat_themes_label: '核心主題',
+        stat_themes_val: '言論/成癮/誘騙/詐騙/AI',
+        stat_endings_label: '因果結局',
+        stat_endings_val: '每主題各 6 種',
+        stat_laws_label: '法律與心理',
+        stat_laws_val: '刑法/民法/兒少/洗錢',
+        stat_questions_label: '課堂思辨問題',
+        stat_questions_val: '啟發主動思考',
+        filter_tone_label: '結局調性:',
+        filter_all: '全部',
+        filter_legal: '⚖️ 震撼/涉法',
+        filter_regret: '🌫️ 盲從/遺憾',
+        filter_growth: '🩹 停損/反省',
+        filter_guardian: '🌱 溫暖/自保',
+        filter_master: '👑 卓越/全能',
+        tab_all: '🌐 全部 30 個結局',
+        tab_t1: '💬 主題一：言論法治',
+        tab_t2: '🎮 主題二：成癮自律',
+        tab_t3: '🎭 主題三：誘騙隱私',
+        tab_t4: '🪙 主題四：詐騙金錢',
+        tab_t5: '🪞 主題五：AI 真偽',
+        label_trigger_path: '🎯 觸發路徑特徵（學生心態與關鍵抉擇）',
+        label_learning_points: '📚 核心學習內容與法律規範',
+        label_psychology: '🧠 心理機制剖析',
+        label_discussion_q: '💬 課堂思辨引導提問',
+        no_results: '找不到符合條件的結局，請嘗試更換搜尋關鍵字或調性篩選。',
+        theme_dark_name: '深邃夜讀',
+        theme_cream_name: '溫潤米白',
+        footer_back_game: '返回線上互動體驗遊戲'
+      },
+      en: {
+        nav_pedagogy: 'Pedagogical & Student Guide',
+        nav_title: 'The Unseen Currents · All Endings Guide',
+        btn_play_game: 'Return to Adventure',
+        btn_print: 'Print Guide',
+        hero_pill: '30 Branching Endings ✕ Full Legal Codes ✕ Reflection Inquiries',
+        hero_heading: 'All 5 Themes: Complete Endings & Pedagogical Guide',
+        hero_desc: 'Comprehensive breakdown of all 30 branching outcomes, teenage decision pathways, legal statutes, and psychological mechanisms across all 5 scenario arcs.',
+        stat_themes_label: 'Core Themes',
+        stat_themes_val: 'Speech/Addiction/Grooming/Scam/AI',
+        stat_endings_label: 'Branching Endings',
+        stat_endings_val: '6 per theme (30 total)',
+        stat_laws_label: 'Laws & Psychology',
+        stat_laws_val: 'Criminal/Civil/Child Acts',
+        stat_questions_label: 'Inquiry Prompts',
+        stat_questions_val: '60 Discussion Starters',
+        filter_tone_label: 'Ending Tone:',
+        filter_all: 'All',
+        filter_legal: '⚖️ Legal Crisis',
+        filter_regret: '🌫️ Regret & Mob',
+        filter_growth: '🩹 Growth & Lessons',
+        filter_guardian: '🌱 Empathy & Shield',
+        filter_master: '👑 Mastery & Hero',
+        tab_all: '🌐 All 30 Endings',
+        tab_t1: '💬 T1: Speech & Law',
+        tab_t2: '🎮 T2: Addiction & Habits',
+        tab_t3: '🎭 T3: Grooming & Privacy',
+        tab_t4: '🪙 T4: Scams & Money',
+        tab_t5: '🪞 T5: AI & Truth',
+        label_trigger_path: '🎯 Trigger Decision Path & Adolescent Mindset',
+        label_learning_points: '📚 Core Educational Takeaways & Taiwan Statutes',
+        label_psychology: '🧠 Psychological Mechanism Breakdown',
+        label_discussion_q: '💬 Classroom Reflection & Inquiry Prompt',
+        no_results: 'No matching endings found. Please try another keyword or tone filter.',
+        theme_dark_name: 'Dark Reading',
+        theme_cream_name: 'Warm Cream',
+        footer_back_game: 'Back to Online Interactive Adventure'
+      }
+    };
+
+    // Tone Badge Class Helper
+    function getToneBadgeStyle(tone) {
+      if (currentTheme === 'cream') {
+        switch(tone) {
+          case 'legal': return 'bg-rose-100 text-rose-800 border-rose-300';
+          case 'regret': return 'bg-amber-100 text-amber-800 border-amber-300';
+          case 'growth': return 'bg-blue-100 text-blue-800 border-blue-300';
+          case 'guardian': return 'bg-teal-100 text-teal-800 border-teal-300';
+          case 'master': return 'bg-amber-50 text-amber-900 border-amber-400 font-black';
+          default: return 'bg-stone-200 text-stone-800 border-stone-300';
+        }
+      } else {
+        switch(tone) {
+          case 'legal': return 'bg-rose-950/80 text-rose-300 border-rose-800';
+          case 'regret': return 'bg-amber-950/80 text-amber-300 border-amber-800';
+          case 'growth': return 'bg-blue-950/80 text-blue-300 border-blue-800';
+          case 'guardian': return 'bg-teal-950/80 text-teal-300 border-teal-800';
+          case 'master': return 'bg-amber-950/90 text-amber-300 border-amber-600 font-black';
+          default: return 'bg-slate-800 text-slate-300 border-slate-700';
+        }
+      }
+    }
+
+    // Initialize Theme
+    function applyTheme() {
+      const htmlEl = document.documentElement;
+      const themeBtnText = document.getElementById('themeText');
+      const themeIcon = document.getElementById('themeIcon');
+
+      if (currentTheme === 'cream') {
+        htmlEl.classList.remove('dark');
+        htmlEl.classList.add('cream');
+        themeBtnText.textContent = UI_I18N[currentLang].theme_dark_name;
+        themeIcon.setAttribute('data-lucide', 'moon');
+        themeIcon.className = 'w-4 h-4 text-indigo-600';
+      } else {
+        htmlEl.classList.remove('cream');
+        htmlEl.classList.add('dark');
+        themeBtnText.textContent = UI_I18N[currentLang].theme_cream_name;
+        themeIcon.setAttribute('data-lucide', 'sun');
+        themeIcon.className = 'w-4 h-4 text-amber-400';
+      }
+      localStorage.setItem('cyber_reading_theme', currentTheme);
+      lucide.createIcons();
+    }
+
+    function toggleReadingTheme() {
+      currentTheme = (currentTheme === 'dark') ? 'cream' : 'dark';
+      applyTheme();
+      renderEndings(); // Re-render to update dynamic tone badge colors
+    }
+
+    // Toggle Language
+    function toggleLanguage() {
+      currentLang = (currentLang === 'zh') ? 'en' : 'zh';
+      localStorage.setItem('cyber_lang', currentLang);
+      document.getElementById('langText').textContent = (currentLang === 'zh') ? 'English' : '繁體中文';
+      applyLanguage();
+      renderThemeTabs();
+      renderEndings();
+    }
+
+    function applyLanguage() {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (UI_I18N[currentLang] && UI_I18N[currentLang][key]) {
+          el.textContent = UI_I18N[currentLang][key];
+        }
+      });
+      document.getElementById('searchInput').placeholder = currentLang === 'zh'
+        ? "搜尋結局名稱、觸發特徵、法條 (如: 310, 兒少, OTP, FOMO)..."
+        : "Search endings, triggers, laws (e.g. 310, OTP, FOMO, Sextortion)...";
+      
+      const themeBtnText = document.getElementById('themeText');
+      themeBtnText.textContent = currentTheme === 'cream' ? UI_I18N[currentLang].theme_dark_name : UI_I18N[currentLang].theme_cream_name;
+    }
+
+    // Render Theme Tabs
+    function renderThemeTabs() {
+      const container = document.getElementById('themeTabsContainer');
+      const tabs = [
+        { id: 'all', label: UI_I18N[currentLang].tab_all },
+        { id: 'theme_speech', label: UI_I18N[currentLang].tab_t1 },
+        { id: 'theme_addiction', label: UI_I18N[currentLang].tab_t2 },
+        { id: 'theme_grooming', label: UI_I18N[currentLang].tab_t3 },
+        { id: 'theme_scam', label: UI_I18N[currentLang].tab_t4 },
+        { id: 'theme_ai', label: UI_I18N[currentLang].tab_t5 }
+      ];
+
+      container.innerHTML = tabs.map(t => {
+        const isActive = (currentThemeFilter === t.id);
+        const activeClass = isActive 
+          ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm' 
+          : 'card-subsurface text-subhead hover:border-indigo-400';
+        return `<button onclick="setThemeFilter('${t.id}')" class="px-3 py-1.5 rounded-xl border shrink-0 transition-all font-bold ${activeClass}">${t.label}</button>`;
+      }).join('');
+    }
+
+    function setThemeFilter(themeId) {
+      currentThemeFilter = themeId;
+      renderThemeTabs();
+      renderEndings();
+    }
+
+    function setToneFilter(tone) {
+      currentToneFilter = tone;
+      document.querySelectorAll('.tone-pill').forEach(btn => {
+        const bTone = btn.getAttribute('data-tone');
+        if (bTone === tone) {
+          btn.className = 'tone-pill px-2.5 py-1.5 rounded-lg border transition-colors bg-indigo-600 text-white border-indigo-600 font-bold';
+        } else {
+          btn.className = 'tone-pill px-2.5 py-1.5 rounded-lg border card-subsurface transition-colors hover:border-indigo-400 font-semibold';
+        }
+      });
+      renderEndings();
+    }
+
+    // Render All Endings
+    function renderEndings() {
+      const root = document.getElementById('endingsRoot');
+      const search = (document.getElementById('searchInput').value || '').trim().toLowerCase();
+      const lang = currentLang;
+
+      // Filter Themes
+      const filteredThemes = THEMES_DATA.filter(t => {
+        if (currentThemeFilter !== 'all' && t.id !== currentThemeFilter) return false;
+        return true;
+      });
+
+      let totalMatches = 0;
+      let html = '';
+
+      filteredThemes.forEach(t => {
+        // Filter endings of this theme
+        const filteredEndings = t.endings.filter(e => {
+          // Tone filter
+          if (currentToneFilter !== 'all' && e.badgeType !== currentToneFilter) return false;
+
+          // Search filter
+          if (search) {
+            const combinedText = [
+              e.title_zh, e.title_en,
+              e.badge_zh, e.badge_en,
+              e.trigger_zh, e.trigger_en,
+              e.takeaways_zh, e.takeaways_en,
+              e.psychology_zh, e.psychology_en,
+              e.question_zh, e.question_en
+            ].join(' ').toLowerCase();
+            if (!combinedText.includes(search)) return false;
+          }
+          return true;
+        });
+
+        if (filteredEndings.length === 0) return;
+        totalMatches += filteredEndings.length;
+
+        // Theme Title & Section
+        html += `
+          <section class="space-y-6" id="${t.id}">
+            <!-- Theme Banner -->
+            <div class="card-surface p-5 sm:p-6 rounded-2xl border flex flex-col md:flex-row md:items-center justify-between gap-4 border-l-4 border-l-indigo-500">
+              <div class="space-y-1">
+                <div class="flex items-center gap-2">
+                  <span class="text-xl sm:text-2xl">${t.symbol}</span>
+                  <span class="px-2 py-0.5 rounded text-xs font-black tracking-wider uppercase bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">${t.code}</span>
+                  <h2 class="text-lg sm:text-xl font-bold font-serif">${lang === 'zh' ? t.title_zh : t.title_en}</h2>
+                </div>
+                <p class="text-xs sm:text-sm text-indigo-400 font-medium">${lang === 'zh' ? t.subtitle_zh : t.subtitle_en}</p>
+                <p class="text-xs sm:text-sm text-muted">${lang === 'zh' ? t.desc_zh : t.desc_en}</p>
+              </div>
+              <div class="shrink-0 flex items-center gap-2 text-xs font-bold text-muted">
+                <span class="px-3 py-1 rounded-full card-subsurface border">${filteredEndings.length} / 6 ${lang === 'zh' ? '種結局' : 'Endings'}</span>
+              </div>
+            </div>
+
+            <!-- Endings Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              ${filteredEndings.map((e, idx) => {
+                const badgeStyle = getToneBadgeStyle(e.badgeType);
+                return `
+                  <div class="card-surface rounded-2xl border p-5 sm:p-6 space-y-4 hover:border-indigo-500/50 transition-all flex flex-col justify-between">
+                    
+                    <div class="space-y-3.5">
+                      <!-- Card Header -->
+                      <div class="flex items-start justify-between gap-3">
+                        <div class="flex items-center gap-2.5">
+                          <span class="text-2xl sm:text-3xl p-2 rounded-xl card-subsurface border">${e.symbol}</span>
+                          <div>
+                            <span class="px-2 py-0.5 rounded text-[11px] font-bold border ${badgeStyle}">
+                              ${lang === 'zh' ? e.badge_zh : e.badge_en}
+                            </span>
+                            <h3 class="text-base sm:text-lg font-bold font-serif pt-1 text-slate-100 dark:text-slate-100 html-cream-text">
+                              ${lang === 'zh' ? e.title_zh : e.title_en}
+                            </h3>
+                          </div>
+                        </div>
+                        <span class="text-xs font-mono font-bold text-muted shrink-0">E${idx + 1}</span>
+                      </div>
+
+                      <!-- 1. Trigger Path -->
+                      <div class="card-subsurface p-3.5 rounded-xl border text-xs sm:text-sm space-y-1">
+                        <div class="font-bold text-indigo-400 flex items-center gap-1.5">
+                          <i data-lucide="git-branch" class="w-3.5 h-3.5"></i>
+                          <span>${UI_I18N[lang].label_trigger_path}</span>
+                        </div>
+                        <p class="leading-relaxed text-subhead">
+                          ${lang === 'zh' ? e.trigger_zh : e.trigger_en}
+                        </p>
+                      </div>
+
+                      <!-- 2. Core Educational Takeaways -->
+                      <div class="card-subsurface p-3.5 rounded-xl border text-xs sm:text-sm space-y-1">
+                        <div class="font-bold text-emerald-400 flex items-center gap-1.5">
+                          <i data-lucide="scale" class="w-3.5 h-3.5"></i>
+                          <span>${UI_I18N[lang].label_learning_points}</span>
+                        </div>
+                        <p class="leading-relaxed text-subhead">
+                          ${lang === 'zh' ? e.takeaways_zh : e.takeaways_en}
+                        </p>
+                      </div>
+
+                      <!-- 3. Psychological Mechanisms -->
+                      <div class="card-subsurface p-3.5 rounded-xl border text-xs sm:text-sm space-y-1">
+                        <div class="font-bold text-amber-400 flex items-center gap-1.5">
+                          <i data-lucide="brain" class="w-3.5 h-3.5"></i>
+                          <span>${UI_I18N[lang].label_psychology}</span>
+                        </div>
+                        <p class="leading-relaxed text-subhead">
+                          ${lang === 'zh' ? e.psychology_zh : e.psychology_en}
+                        </p>
+                      </div>
+                    </div>
+
+                    <!-- 4. Classroom Discussion Prompt -->
+                    <div class="p-3 rounded-xl border border-dashed border-indigo-500/30 bg-indigo-500/5 text-xs sm:text-sm space-y-1">
+                      <div class="font-bold text-indigo-400 flex items-center gap-1.5">
+                        <i data-lucide="message-square-quote" class="w-3.5 h-3.5"></i>
+                        <span>${UI_I18N[lang].label_discussion_q}</span>
+                      </div>
+                      <p class="italic text-subhead">
+                        ${lang === 'zh' ? e.question_zh : e.question_en}
+                      </p>
+                    </div>
+
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </section>
+        `;
+      });
+
+      if (totalMatches === 0) {
+        html = `
+          <div class="card-surface p-12 text-center rounded-2xl border space-y-3">
+            <div class="text-4xl">🔍</div>
+            <h3 class="text-lg font-bold">${UI_I18N[lang].no_results}</h3>
+            <button onclick="document.getElementById('searchInput').value=''; setToneFilter('all'); setThemeFilter('all');" class="px-4 py-2 rounded-xl bg-indigo-600 text-white font-bold text-xs">
+              重設篩選條件 (Reset Filters)
+            </button>
+          </div>
+        `;
+      }
+
+      root.innerHTML = html;
+      lucide.createIcons();
+    }
+
+    // Startup
+    window.addEventListener('DOMContentLoaded', () => {
+      applyTheme();
+      applyLanguage();
+      renderThemeTabs();
+      renderEndings();
+    });
+  </script>
+</body>
+</html>

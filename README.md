@@ -56,20 +56,29 @@
 
 ---
 
-## 💡 設計亮點
+## 💡 設計亮點與新功能
 
-1. **無劇透標籤**：移除所有數值與好壞提示標籤，選項均為青少年真實的內心獨白，要求學生自行權衡因果。
-2. **多幕遞進敘事**：每個故事均長達 5～7 個決策節點，層層推進衝突與心理拉鋸。
-3. **決策軌跡回顧**：結尾生成專屬的決策路徑圖，便於學生在課堂複盤反思。
-4. **思辨歷程證書**：完成故事後可輸入姓名與班級，生成專屬挑戰證書，支援一鍵列印/另存 PDF。
+1. **📖 專屬結局全覽與解析網頁（Endings & Pedagogical Guide）**：
+   * 專設獨立解析頁面 `endings.html`，公開 5 大主題全部 30 種結局。
+   * 詳細列出每一結局的**觸發路徑特徵**（青少年心態與關鍵抉擇）、**核心學習內容與法律規範**、**心理機制剖析**與 **60 題課堂思辨引導提問**。
+   * 內建即時關鍵字搜尋與調性標籤篩選（震撼涉法、盲從遺憾、停損反省、溫暖自保、卓越全能），並支援友善列印與 PDF 匯出。
+2. **🌐 一鍵切換中英文雙語（Bilingual CN / EN Toggle）**：
+   * 導覽列提供一鍵中英文切換功能，涵蓋主選單、情境題目、抉擇按鈕、證書與結局手冊，自動記憶閱聽人語言偏好。
+3. **🌙 / ☀️ 雙閱讀模式切換（深邃夜讀 ⟷ 溫潤米白）**：
+   * 除了預設的「深邃夜讀（Dark Mode）」，新增專為長時間文字閱讀打造的「溫潤米白（Warm Cream Mode）」。
+   * 米白模式採用柔和不刺眼的紙感背景色（`#FDFBF7`），搭配專門調配的高對比深暖灰炭黑文字（`#1C1917` / `#292524`），卡片邊框、對話氣泡與選項按鈕均經色彩調校，確保文字清晰易讀、不眩光。
+4. **無劇透標籤**：移除所有數值與好壞提示標籤，選項均為青少年真實的內心獨白，要求學生自行權衡因果。
+5. **多幕遞進敘事**：每個故事均長達 5～7 個決策節點，層層推進衝突與心理拉鋸。
+6. **決策軌跡回顧**：結尾生成專屬的決策路徑圖，便於學生在課堂複盤反思。
+7. **思辨歷程證書**：完成故事後可輸入姓名與班級，生成專屬挑戰證書，支援一鍵列印/另存 PDF。
 
 ---
 
 ## 🎮 線上體驗網址
 
-👉 **GitHub Pages 直接遊玩**：**[https://clive520.github.io/youth-cyber-adventure/](https://clive520.github.io/youth-cyber-adventure/)**
-
-📂 **GitHub 開源儲存庫**：[https://github.com/clive520/youth-cyber-adventure](https://github.com/clive520/youth-cyber-adventure)
+* 🚀 **互動抉擇遊戲體驗（主程式）**：**[https://clive520.github.io/youth-cyber-adventure/](https://clive520.github.io/youth-cyber-adventure/)**
+* 📖 **故事結局全覽與解析手冊**：**[https://clive520.github.io/youth-cyber-adventure/endings.html](https://clive520.github.io/youth-cyber-adventure/endings.html)**
+* 📂 **GitHub 開源儲存庫**：[https://github.com/clive520/youth-cyber-adventure](https://github.com/clive520/youth-cyber-adventure)
 
 ---
 
